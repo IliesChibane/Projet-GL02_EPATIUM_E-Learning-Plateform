@@ -1,0 +1,55 @@
+
+
+
+
+.parent{
+	-fx-background-color: transparent;
+	
+}
+
+.pane{
+	-fx-background-color: #82C46C;
+}
+
+.trans-btn-white-border{
+	-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+	-fx-border-color: #151928;
+	-fx-border-radius: 5px;
+	-fx-border-width: 1px;
+	-fx-text-fill: #151928;
+
+	
+}
+.trans-btn-whitee-border{
+	-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+	-fx-border-color: white;
+	-fx-border-radius: 5px;
+	-fx-border-width: 1px;
+	-fx-text-fill: white;
+
+	
+}
+.white-pane{
+	-fx-background-color: #151928;
+}
+
+.blue-pane{
+	-fx-background-color: #151928;
+}
+
+.tf-box{
+	-fx-background-color:  transparent;
+	-fx-border-color: #dedee4;
+	-fx-border-width: 0px 0px 1px 0px;
+	-fx-text-fill: #dedee4;
+}
+
+.tf{
+	-fx-background-color:  transparent;
+
+}
+
+
+	
