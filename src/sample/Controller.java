@@ -1,25 +1,17 @@
 package sample;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Collection;
-import java.util.ResourceBundle;
 
-import Classes.Utilisateur;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class Controller implements Initializable {   
 	
@@ -49,7 +41,7 @@ public class Controller implements Initializable {
                 	
                 	
 				} catch (Exception ex) {
-					
+					ex.printStackTrace();
 				}
                 vboxx.getChildren().removeAll();
                 //vboxx.getChildren().setAll(fxml);
@@ -86,7 +78,7 @@ public class Controller implements Initializable {
                 fxml = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
                 
             }catch(Exception ex){
-                
+                ex.printStackTrace();
             }
             vboxx.getChildren().clear();
             vboxx.getChildren().setAll(fxml);

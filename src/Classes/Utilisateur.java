@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import Connectivity.ConnectionClass;
 
@@ -16,21 +15,31 @@ public class Utilisateur {
 		ResultSet rs =null;
 		PreparedStatement  ps = null;
 		ConnectionClass cc = new ConnectionClass();
-		Boolean status = false;
+		boolean status = false;
 		try {
 			Connection conn = cc.getConnection();
-			String sql =  "SELECT nom_prof AS nom, mdp, id_prof, '' AS matricule FROM enseignant WHERE id_prof = ? and mdp = ?  UNION ALL SELECT nom_etudiant AS nom, mdp, matricule,'' AS id_prof FROM etudiant WHERE matricule =? and mdp = ? order BY nom ";
+			/*Il est preferable de creer de requete distincte pour la connexion etant donner que l'on fournis 
+			un nom unique lors de la recherche sa n'augmente pas la complexite */
+			String sql =  "Select * From enseignant where id_prof = ? and mdp = ?";
+			String sql2 = "Select * From etudiant WHERE matricule = ? and mdp = ?";
 			
 			ps = conn.prepareStatement(sql);			
 			ps.setString(1, id);
 			ps.setString(2, mdp);
-			ps.setString(3, id);
-			ps.setString(4, mdp);
-			 
-			 rs = ps.executeQuery();
-		     while (rs.next()) {
+			rs = ps.executeQuery();
+
+			if(rs.next()){
+				status = true;
+				System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_prof")+" Status : enseignant");
+			}
+			ps = conn.prepareStatement(sql2);
+			ps.setString(1, id);
+			ps.setString(2, mdp);
+			rs = ps.executeQuery();
+
+		     if (rs.next()) {
 		    	 status = true;
-		            System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom"));
+		    	 System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_etudiant")+" Status : etudiant");
 		        }
 			
 		} catch (Exception e) {
@@ -39,7 +48,9 @@ public class Utilisateur {
 			System.out.println(e.getMessage());
 		}finally {
 			try {
+				assert ps != null;
 				ps.close();
+				assert rs != null;
 				rs.close();
 			} catch (SQLException e) {
 			
@@ -58,7 +69,7 @@ public class Utilisateur {
 		int rs = 0;
 		PreparedStatement  ps = null;
 		ConnectionClass cc = new ConnectionClass();
-		Boolean status = false;
+		boolean status = false;
 		String sql ="";
 		
 		
@@ -66,7 +77,7 @@ public class Utilisateur {
 		try {
 			
 			Connection conn = cc.getConnection();
-			if (type =="Enseignant") {
+			if (type.equals("Enseignant")) {
 				
 			
 			 sql =  "insert into enseignant values(?,?,?,?)";
@@ -86,7 +97,7 @@ public class Utilisateur {
 		     
 		    }
 			
-			if (type =="Etudiant") {
+			if (type.equals("Etudiant")) {
 				
 				
 				 sql =  "insert into etudiant values(?,?,?,?,?,?)";
@@ -97,8 +108,9 @@ public class Utilisateur {
 				ps.setString(3, prenom);
 				ps.setString(4, mdp);
 				ps.setInt(5, groupe);
-				ps.setString(6, specialite.concat(section).concat(niveau) );
-				System.out.println("printing id_sec to check " + specialite.concat(section).concat(niveau) );
+				String concat = specialite.concat(section).concat(niveau);
+				ps.setString(6, concat);
+				System.out.println("printing id_sec to check " + concat);
 				
 				 rs = ps.executeUpdate();
 			     if ( rs >0 ) {
@@ -114,6 +126,7 @@ public class Utilisateur {
 			System.out.println(e.getMessage());
 		}finally {
 			try {
+				assert ps != null;
 				ps.close();
 			
 			} catch (SQLException e) {

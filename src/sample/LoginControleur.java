@@ -1,14 +1,9 @@
 package sample;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import Classes.Utilisateur;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -33,7 +28,7 @@ private TextField id;
  private TextField confirmationMdp;
  
  @FXML
- private ComboBox<String> type;
+ private ComboBox<TypeU> type;
  
  @FXML
  private TextField specialite;
@@ -60,8 +55,8 @@ private TextField id;
  @FXML
  private void inscription(ActionEvent event) {
 	  
-	  if(mdp.getText() == confirmationMdp.getText()) {
-	  if (u.inscription(id.getText(),nom.getText(),prenom.getText(),mdp.getText(), Integer.parseInt( groupe.getText()),type.getSelectionModel().getSelectedItem(), specialite.getText(), section.getText(), niveau.getText())) System.out.println("yeeehaw");
+	  if(mdp.getText().equals(confirmationMdp.getText())) {
+	  if (u.inscription(id.getText(),nom.getText(),prenom.getText(),mdp.getText(), Integer.parseInt( groupe.getText()),type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText())) System.out.println("yeeehaw");
 	  else System.out.println("nooooooooooooooo");
 	  }else {
 		  System.out.println("Veuillez saisir des mots de passes identiques");
@@ -70,8 +65,9 @@ private TextField id;
 
 @FXML 
  public void init() {
-	    type.getItems().removeAll(type.getItems());
-	    type.getItems().addAll("Enseignant", "Etudiant");
+       /*Les strings ne sont pas supporter par les combobox de javaFX quand tu veux en remplir une
+         tu dois creer une enum comme je viens de faire*/
+       this.type.setItems(FXCollections.observableArrayList(TypeU.values()));
 	  //  type.getSelectionModel().select( type.getSelectionModel().getSelectedItem());;
 	}
 
