@@ -4,8 +4,19 @@ import Classes.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 public class LoginControleur {
 
@@ -41,14 +52,20 @@ private TextField id;
  
  @FXML
  private TextField groupe;
+
+
+
  
  
  @FXML
  private void authentification(ActionEvent event) {
-	  
-	  
-	  if (u.identification(id.getText(),mdp.getText())) System.out.println("yeeehaw");
-	  else System.out.println("nooooooooooooooo");
+	  String mode = u.identification(id.getText(),mdp.getText());
+	  switch (mode){
+          case "etudiant" : open("MenuEtudiant.fxml"); break;
+          case "enseignant" : open("MenuEnseignant.fxml"); break;
+          default : System.out.println("ALLEZ VOUS INSCRIRE DABORD !!!!!");
+      }
+     ((Node)event.getSource()).getScene().getWindow().hide();
  }
  
  
@@ -71,9 +88,29 @@ private TextField id;
 	  //  type.getSelectionModel().select( type.getSelectionModel().getSelectedItem());;
 	}
 
-//@FXML
-public void choisir() {
-	//Définir une méthode pour choisir etudiant ou bien enseignant
-}
+
+ public void open(String name){    //ceci est juste pour ouvrir la fenetre convenable
+     Parent root = null;
+     Stage primaryStage = new Stage();
+     try {
+         root = FXMLLoader.load(getClass().getResource(name));
+         Scene scene = new Scene(root);
+         scene.setFill(Color.TRANSPARENT);
+         scene.getStylesheets().add(getClass().getResource("/sample/style.css").toExternalForm());
+
+         primaryStage.setScene(scene);
+         primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+
+         primaryStage.setTitle("Plateforme Epatium");
+         Image image = new Image("/Pictures/logo.png");
+         primaryStage.getIcons().add(image);
+         primaryStage.show();
+     } catch (IOException e) {
+         e.printStackTrace();
+     }
+ }
+
+
   }
 

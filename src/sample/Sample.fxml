@@ -71,6 +71,21 @@
                         </Label>
                      </children>
                   </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="A propos de nous" textAlignment="CENTER" textFill="#dedee4">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
                </children></VBox>
             <Button layoutX="969.0" layoutY="7.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
          </children></Pane>

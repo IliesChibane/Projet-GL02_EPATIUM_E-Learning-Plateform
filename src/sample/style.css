@@ -51,5 +51,17 @@
 
 }
 
+.rounded-btn{
+-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+	-fx-border-color: #82C46C;
+	-fx-border-radius: 15px;
+	-fx-border-width: 1px;
+	-fx-text-fill: #82C46C;
+	-fx-shape:"M 100 100 a 50 50 0 1 0 0.00001 0";
+}
+.toolbar{
+-fx-background-color :#151928;
+}
 
 	

@@ -8,14 +8,27 @@ import java.sql.SQLException;
 import Connectivity.ConnectionClass;
 
 public class Utilisateur {
-	
-	
-	public Boolean identification(String id, String mdp) {
+	private static String nom, prenom, idd;  //on a besoin de es infos pour les afficher dans le menu
+
+	public String getNom() { // pour les afficher
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public String getId() {
+		return idd;
+	}
+
+	public String identification(String id, String mdp) {
 		
 		ResultSet rs =null;
 		PreparedStatement  ps = null;
 		ConnectionClass cc = new ConnectionClass();
-		boolean status = false;
+
+		String mode = "rien"; // Pour ouvrir la fenetre convenable (etudiant/enseignant)
 		try {
 			Connection conn = cc.getConnection();
 			/*Il est preferable de creer de requete distincte pour la connexion etant donner que l'on fournis 
@@ -29,8 +42,12 @@ public class Utilisateur {
 			rs = ps.executeQuery();
 
 			if(rs.next()){
-				status = true;
-				System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_prof")+" Status : enseignant");
+				nom = rs.getString("nom_prof"); // on prend ces informations pour les afficher lors de l'ouverture de la fenetre
+				prenom = rs.getString("prenom_prof");
+				idd = rs.getString("id_prof");
+
+				mode = "enseignant";
+				System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_prof")+", Status : enseignant");
 			}
 			ps = conn.prepareStatement(sql2);
 			ps.setString(1, id);
@@ -38,8 +55,12 @@ public class Utilisateur {
 			rs = ps.executeQuery();
 
 		     if (rs.next()) {
-		    	 status = true;
-		    	 System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_etudiant")+" Status : etudiant");
+		    	 mode ="etudiant";
+				 nom = rs.getString("nom_etudiant");
+				 prenom = rs.getString("prenom_etudiant");
+				 idd = rs.getString("matricule");
+
+		    	 System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_etudiant")+", Status : etudiant");
 		        }
 			
 		} catch (Exception e) {
@@ -59,7 +80,7 @@ public class Utilisateur {
 			
 		}
 
-                   return status;
+                   return mode;
 	       }
 	
 	
@@ -115,7 +136,7 @@ public class Utilisateur {
 				 rs = ps.executeUpdate();
 			     if ( rs >0 ) {
 			    	 status = true;
-			            System.out.println("Row insertes successfullyyyyy");
+			            System.out.println("Row inserted successfullyyyyy");
 			     }
 			     
 			    }

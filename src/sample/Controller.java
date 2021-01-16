@@ -36,8 +36,8 @@ public class Controller implements Initializable {
             
                 try {
 					//fxml = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
-                	final FXMLLoader fxmload = new FXMLLoader(Controller.class.getClassLoader().getResource("SignIn.fxml"));
-                     fxml = fxmload.load();
+                	//final FXMLLoader fxmload = new FXMLLoader(Controller.class.getClassLoader().getResource("SignIn.fxml"));
+                   //  fxml = fxmload.load();
                 	
                 	
 				} catch (Exception ex) {
