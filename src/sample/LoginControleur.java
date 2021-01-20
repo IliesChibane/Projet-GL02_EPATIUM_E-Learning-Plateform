@@ -52,10 +52,6 @@ private TextField id;
  
  @FXML
  private TextField groupe;
-
-
-
- 
  
  @FXML
  private void authentification(ActionEvent event) {

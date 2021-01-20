@@ -18,9 +18,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javafx.scene.control.Button;
 
-
-
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,44 +29,10 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     private Parent fxml;
 
     @FXML
+    static VBox vbox2 ;
+    @FXML
     Button decon;
 
-    @FXML
-    private Label iddd;
-    @FXML
-    private Label nomm;
-    @FXML
-    private Label prenoom;
-
-    private Utilisateur u = new Utilisateur();
-
-
-/*  @FXML
-    public void afficherToolBar() {
-        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
-        t.setToX(vbox.getLayoutX() * 3);
-        t.play();
-        t.setOnFinished((e) -> {
-            open("ToolBarEtudiant.fxml");
-          try {
-
-                fxml = FXMLLoader.load(getClass().getResource("ToolBarEtudiant.fxml"));
-
-
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }finally {
-                vbox.getChildren().clear();
-                vbox.getChildren().setAll(fxml);
-
-            ;
-
-            }
-
-      });
-    }
-    */
 
 
     @FXML
@@ -91,7 +54,7 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
         t.setToX(vbox.getLayoutX() * 3);
         t.play();
         t.setOnFinished((e)  -> {
-            Stage primaryStage = new Stage();
+
             FXMLLoader loader = new FXMLLoader();
             Pane root = null;
 
@@ -105,28 +68,11 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
             // root = loader.load(getClass().getResource("ToolBarEtudiant.fxml").openStream());
                 ToolBarEtudiantControleur menu = (ToolBarEtudiantControleur) loader.getController();
                 menu.setUser();
-               /* Scene scene = new Scene(root);
-                scene.setFill(Color.TRANSPARENT);
-                //scene.getStylesheets().add(getClass().getResource("/sample/style.css").toExternalForm());
-
-                primaryStage.setScene(scene);
-                primaryStage.initStyle(StageStyle.TRANSPARENT);
-
-                primaryStage.setTitle("Plateforme Epatium");
-                javafx.scene.image.Image image = new Image("/Pictures/logo.png");
-                primaryStage.getIcons().add(image);
-                primaryStage.show(); */
-
 
                 if (root!=null){
                     vbox.getChildren().clear();
                     vbox.getChildren().addAll(root);
                 }
-              /*  nomm.setText(u.getNom());
-                prenoom.setText(u.getPrenom());
-                iddd.setText(u.getId()); */
-
-
         });
     }
     @FXML
@@ -153,5 +99,20 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
             e.printStackTrace();
         }
     }
+    public void hover(){
+        System.out.println("you are innnnn");
+    }
+
+    public void setVbox(Pane root){
+        if(root == null) System.out.println("le roooooooooooooot est vide.");
+        vbox2.getChildren().clear();
+        vbox2.getChildren().addAll(root);
+    }
+
+
+  /*  public VBox getVbox(){
+        return vbox2;
+    }
+    */
 }
 

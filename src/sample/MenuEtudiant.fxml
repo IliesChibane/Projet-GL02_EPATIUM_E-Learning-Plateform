@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="1283.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEtudiantControleur">
+<AnchorPane prefHeight="870.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEtudiantControleur">
    <children>
-      <VBox fx:id="vbox" layoutX="-1.0" onMouseEntered="#afficherToolBar" onMouseExited="#hideToolBar" prefHeight="870.0" prefWidth="180.0" styleClass="blue-pane" stylesheets="@style.css">
-         <children>
-            <HBox alignment="CENTER" prefHeight="531.0" prefWidth="180.0" styleClass="blue-pane">
-               <children>
-                  <ImageView fitHeight="159.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Pictures/EpatiumPlan de travail 1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <VBox.margin>
-                  <Insets top="150.0" />
-               </VBox.margin>
-            </HBox>
-         </children></VBox>
+      <VBox fx:id="vbox" layoutX="-1.0" onMouseEntered="#afficherToolBar" onMouseExited="#hideToolBar" prefHeight="870.0" prefWidth="180.0" styleClass="blue-pane" stylesheets="@style.css" />
       <HBox layoutX="1203.0" layoutY="778.0" onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="90.0" prefWidth="78.0">
          <children>
             <Button fx:id="decon" mnemonicParsing="false" onMouseClicked="#deco" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" stylesheets="@style.css" text="Déconnexion">
@@ -35,5 +19,9 @@
             </Button>
          </children>
       </HBox>
+      <VBox fx:id="vbox2" layoutX="179.0" layoutY="-1.0" onMouseEntered="#hover" prefHeight="778.0" prefWidth="1104.0">
+         <children>
+            <Label text="Mes cours" />
+         </children></VBox>
    </children>
 </AnchorPane>

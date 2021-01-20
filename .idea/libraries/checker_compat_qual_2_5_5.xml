@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="checker-compat-qual-2.5.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/checker-compat-qual-2.5.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

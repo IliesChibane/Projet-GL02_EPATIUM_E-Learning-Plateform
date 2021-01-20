@@ -64,4 +64,31 @@
 -fx-background-color :#151928;
 }
 
+.content .hyperlink {
+    -fx-text-fill: #2365b4;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
+}
+
+.hyperlink:focused {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+.hyperlink:visited {
+    -fx-text-fill: #2365b4;
+}
+
+.label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
 	
