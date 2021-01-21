@@ -9,11 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.Button;
 import java.io.IOException;
+import java.net.URL;
 
 
 public class MenuEtudiantControleur { // ce truc est fait pour controler le classromm / pareil pout MenuEnseignantControleur
@@ -39,6 +42,9 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     private Label prenom;
     @FXML
     private Label id;
+
+    @FXML
+    private BorderPane etudiantPane;
 
 
     public void setUser(){  // on recup les infos de l'utilisateur pour les afficher dans le toolbar (appelle a cette méthode dans MenuEtudiant
@@ -72,7 +78,48 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
         }
     }
 
+    public void getPage(String fxmlFileName) {   //ouvrir le fichier fxml convenable selon le bouton
+        Pane vue= null;
+        try {
+            URL filePath = this.getClass().getResource("/sample/" + fxmlFileName + ".fxml");
 
+
+
+        if (filePath == null) throw new java.io.FileNotFoundException("Cette page est corrompue");
+
+        vue = new FXMLLoader().load(filePath);
+        etudiantPane.setCenter(vue);
+
+    }catch(Exception e ) {
+          e.printStackTrace();
+    }
+
+    }
+
+    @FXML
+    public void getEmploi(){
+        getPage("EmploiEtudiant");
+    }
+
+    @FXML
+    public void getDrive(){
+        getPage("Drive");
+    }
+    @FXML
+    public void getDevoir(){
+        getPage("DevoirsEtudiant");
+    }
+    @FXML
+    public void getNotes(){
+        getPage("NotesEtudiant");
+    }
+    @FXML
+    public void getEnseignants(){
+        getPage("EnseignantsEtudiant");
+    }
+   public void getClassroom(){
+       getPage("Classroom");
+   }
 
 }
 

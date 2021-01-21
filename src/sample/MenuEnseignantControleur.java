@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -20,6 +21,7 @@ import javafx.scene.control.Button;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
 
 public class MenuEnseignantControleur {
 
@@ -33,6 +35,8 @@ public class MenuEnseignantControleur {
     private javafx.scene.control.Label nomm;
     @FXML
     private Label prenoom;
+    @FXML
+    private BorderPane enseignantPane;
 
     private Utilisateur u = new Utilisateur();
 
@@ -76,5 +80,48 @@ public class MenuEnseignantControleur {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getPage(String fxmlFileName) {   //ouvrir le fichier fxml convenable selon le bouton
+        Pane vue= null;
+        try {
+            URL filePath = this.getClass().getResource("/sample/" + fxmlFileName + ".fxml");
+
+
+
+            if (filePath == null) throw new java.io.FileNotFoundException("Cette page est corrompue");
+
+            vue = new FXMLLoader().load(filePath);
+            enseignantPane.setCenter(vue);
+
+        }catch(Exception e ) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    public void getEmploi(){
+        getPage("EmploiEnseignant");
+    }
+
+    @FXML
+    public void getDrive(){
+        getPage("Drive");
+    }
+    @FXML
+    public void getDevoir(){
+        getPage("DevoirsEnseignant");
+    }
+    @FXML
+    public void getNotes(){
+        getPage("NotesEnseignant");
+    }
+    @FXML
+    public void getEtudiants(){
+        getPage("EtudiantsEnseignant");
+    }
+    public void getClassroom(){
+        getPage("Classroom");
     }
 }

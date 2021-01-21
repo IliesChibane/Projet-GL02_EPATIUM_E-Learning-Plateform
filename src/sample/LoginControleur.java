@@ -99,9 +99,11 @@ private TextField id;
          if(role.equals("etudiant")) {
              MenuEtudiantControleur menu = (MenuEtudiantControleur) loader.getController();
              menu.setUser();
+             menu.getClassroom();
          }else if(role.equals("enseignant")){
              MenuEnseignantControleur menu = (MenuEnseignantControleur) loader.getController();
              menu.setUser();
+             menu.getClassroom();
          }
 
          Scene scene = new Scene(root);
