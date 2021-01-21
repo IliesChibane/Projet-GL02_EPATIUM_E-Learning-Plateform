@@ -22,9 +22,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class MenuEnseignantControleur {
-    @FXML
-    private VBox vbox;
-    private Parent fxml;
+
 
     @FXML
     Button decon;
@@ -39,38 +37,13 @@ public class MenuEnseignantControleur {
     private Utilisateur u = new Utilisateur();
 
 
-/*  @FXML
-    public void afficherToolBar() {
-        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
-        t.setToX(vbox.getLayoutX() * 3);
-        t.play();
-        t.setOnFinished((e) -> {
-            open("ToolBarEtudiant.fxml");
-          try {
-
-                fxml = FXMLLoader.load(getClass().getResource("ToolBarEtudiant.fxml"));
-
-
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }finally {
-                vbox.getChildren().clear();
-                vbox.getChildren().setAll(fxml);
-
-            ;
-
-            }
-
-      });
+    public void setUser(){
+        nomm.setText(u.getNom());
+        prenoom.setText(u.getPrenom());
+        iddd.setText(u.getId());
     }
-    */
 
 
-    @FXML
-    public void hideToolBar() {
-        vbox.getChildren().clear();
-    }
     @FXML
     public void showDeco(){
         decon.setVisible(true);
@@ -80,50 +53,6 @@ public class MenuEnseignantControleur {
         decon.setVisible(false);
     }
 
-    @FXML
-    public void afficherToolBar()  {
-        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
-        t.setToX(vbox.getLayoutX() * 3);
-        t.play();
-        t.setOnFinished((e)  -> {
-            Stage primaryStage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            Pane root = null;
-
-            try {
-                root = loader.load(getClass().getResource("ToolBarEnseignant.fxml").openStream());
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-
-
-            // root = loader.load(getClass().getResource("ToolBarEtudiant.fxml").openStream());
-            ToolBarEnseignantControleur menu = (ToolBarEnseignantControleur) loader.getController();
-            menu.setUser();
-               /* Scene scene = new Scene(root);
-                scene.setFill(Color.TRANSPARENT);
-                //scene.getStylesheets().add(getClass().getResource("/sample/style.css").toExternalForm());
-
-                primaryStage.setScene(scene);
-                primaryStage.initStyle(StageStyle.TRANSPARENT);
-
-                primaryStage.setTitle("Plateforme Epatium");
-                javafx.scene.image.Image image = new Image("/Pictures/logo.png");
-                primaryStage.getIcons().add(image);
-                primaryStage.show(); */
-
-
-            if (root!=null){
-                vbox.getChildren().clear();
-                vbox.getChildren().addAll(root);
-            }
-              /*  nomm.setText(u.getNom());
-                prenoom.setText(u.getPrenom());
-                iddd.setText(u.getId()); */
-
-
-        });
-    }
     @FXML
     public void deco(MouseEvent mouseEvent) {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();

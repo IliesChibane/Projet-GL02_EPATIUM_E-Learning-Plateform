@@ -1,7 +1,6 @@
 package sample;
 
 import Classes.Utilisateur;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,35 +9,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 import javafx.scene.control.Button;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 public class MenuEtudiantControleur { // ce truc est fait pour controler le classromm / pareil pout MenuEnseignantControleur
 
-    @FXML
-    private VBox vbox;
     private Parent fxml;
 
     @FXML
-    static VBox vbox2 ;
-    @FXML
     Button decon;
 
-
-
-    @FXML
-    public void hideToolBar() {
-        vbox.getChildren().clear();
-    }
     @FXML
     public void showDeco(){
         decon.setVisible(true);
@@ -48,33 +32,21 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
         decon.setVisible(false);
     }
 
+    Utilisateur u = new Utilisateur();
     @FXML
-    public void afficherToolBar()  {
-        TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
-        t.setToX(vbox.getLayoutX() * 3);
-        t.play();
-        t.setOnFinished((e)  -> {
-
-            FXMLLoader loader = new FXMLLoader();
-            Pane root = null;
-
-            try {
-                root = loader.load(getClass().getResource("ToolBarEtudiant.fxml").openStream());
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+    private Label nom;
+    @FXML
+    private Label prenom;
+    @FXML
+    private Label id;
 
 
-            // root = loader.load(getClass().getResource("ToolBarEtudiant.fxml").openStream());
-                ToolBarEtudiantControleur menu = (ToolBarEtudiantControleur) loader.getController();
-                menu.setUser();
-
-                if (root!=null){
-                    vbox.getChildren().clear();
-                    vbox.getChildren().addAll(root);
-                }
-        });
+    public void setUser(){  // on recup les infos de l'utilisateur pour les afficher dans le toolbar (appelle a cette méthode dans MenuEtudiant
+        nom.setText(u.getNom());
+        prenom.setText(u.getPrenom());
+        id.setText(u.getId());
     }
+
     @FXML
     public void deco(MouseEvent mouseEvent) {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
@@ -99,20 +71,8 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
             e.printStackTrace();
         }
     }
-    public void hover(){
-        System.out.println("you are innnnn");
-    }
-
-    public void setVbox(Pane root){
-        if(root == null) System.out.println("le roooooooooooooot est vide.");
-        vbox2.getChildren().clear();
-        vbox2.getChildren().addAll(root);
-    }
 
 
-  /*  public VBox getVbox(){
-        return vbox2;
-    }
-    */
+
 }
 

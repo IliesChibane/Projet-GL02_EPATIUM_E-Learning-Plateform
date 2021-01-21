@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -57,8 +58,9 @@ private TextField id;
  private void authentification(ActionEvent event) {
 	  String mode = u.identification(id.getText(),mdp.getText());
 	  switch (mode){
-          case "etudiant" : open("MenuEtudiant.fxml"); break;
-          case "enseignant" : open("MenuEnseignant.fxml"); break;
+          case "etudiant" : open("MenuEtudiant.fxml","etudiant");
+          break;
+          case "enseignant" : open("MenuEnseignant.fxml","enseignant"); break;
           default : System.out.println("ALLEZ VOUS INSCRIRE DABORD !!!!!");
       }
      ((Node)event.getSource()).getScene().getWindow().hide();
@@ -81,20 +83,35 @@ private TextField id;
        /*Les strings ne sont pas supporter par les combobox de javaFX quand tu veux en remplir une
          tu dois creer une enum comme je viens de faire*/
        this.type.setItems(FXCollections.observableArrayList(TypeU.values()));
-	  //  type.getSelectionModel().select( type.getSelectionModel().getSelectedItem());;
+
 	}
 
 
- public void open(String name){    //ceci est juste pour ouvrir la fenetre convenable
-     Parent root = null;
+ public void open(String fxml, String role){    //ceci est juste pour ouvrir la fenetre convenable
+   //  Parent root = null;
      Stage primaryStage = new Stage();
+     FXMLLoader loader = new FXMLLoader();
+     Pane root = null;
      try {
-         root = FXMLLoader.load(getClass().getResource(name));
+         root = loader.load(getClass().getResource(fxml).openStream());
+
+
+         if(role.equals("etudiant")) {
+             MenuEtudiantControleur menu = (MenuEtudiantControleur) loader.getController();
+             menu.setUser();
+         }else if(role.equals("enseignant")){
+             MenuEnseignantControleur menu = (MenuEnseignantControleur) loader.getController();
+             menu.setUser();
+         }
+
          Scene scene = new Scene(root);
          scene.setFill(Color.TRANSPARENT);
-         scene.getStylesheets().add(getClass().getResource("/sample/style.css").toExternalForm());
+         scene.getStylesheets().setAll(
+                 getClass().getResource("/sample/style.css").toExternalForm()
+         );
 
          primaryStage.setScene(scene);
+
          primaryStage.initStyle(StageStyle.TRANSPARENT);
 
 

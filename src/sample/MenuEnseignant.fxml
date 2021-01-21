@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,30 +10,58 @@
 
 <AnchorPane prefHeight="870.0" prefWidth="1283.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEnseignantControleur">
    <children>
-      <VBox fx:id="vbox" layoutX="-1.0" onMouseEntered="#afficherToolBar" onMouseExited="#hideToolBar" prefHeight="870.0" prefWidth="180.0" styleClass="blue-pane" stylesheets="@style.css">
+      <VBox fx:id="vbox" alignment="CENTER" layoutX="-1.0" prefHeight="870.0" prefWidth="180.0" styleClass="blue-pane" >
          <children>
-            <HBox alignment="CENTER" prefHeight="531.0" prefWidth="180.0">
-               <children>
-                  <ImageView fitHeight="159.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Pictures/EpatiumPlan de travail 1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <VBox.margin>
-                  <Insets top="150.0" />
-               </VBox.margin>
-            </HBox>
+            <ImageView fitHeight="140.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nomm" prefHeight="17.0" prefWidth="134.0" text="Nom" textFill="#82c46c">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="prenoom" prefHeight="17.0" prefWidth="134.0" text="Prénom" textFill="#82c46c">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="iddd" prefHeight="17.0" prefWidth="134.0" text="ID" textFill="#82c46c">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="rounded-btn" text="Emploi du temps">
+               <font>
+                  <Font name="Arial Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="rounded-btn" text="Cours">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="rounded-btn" text="Devoirs">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="rounded-btn" text="Notes">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="rounded-btn" text="Etudiants">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
          </children></VBox>
       <HBox layoutX="1203.0" layoutY="780.0" onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="90.0" prefWidth="78.0">
          <children>
-            <Button fx:id="decon" mnemonicParsing="false" onMouseClicked="#deco" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" stylesheets="@style.css" text="Déconnexion">
+            <Button fx:id="decon" mnemonicParsing="false" onMouseClicked="#deco" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" text="Déconnexion">
                <font>
                   <Font name="System Bold" size="9.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="179.0" layoutY="-1.0" prefHeight="780.0" prefWidth="1104.0" />
    </children>
 </AnchorPane>
