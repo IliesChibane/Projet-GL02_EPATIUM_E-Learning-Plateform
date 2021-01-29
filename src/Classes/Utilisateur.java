@@ -2,12 +2,18 @@ package Classes;
 
 import java.io.*;
 import java.sql.*;
+import java.util.Locale;
+import java.util.function.Predicate;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.ListView;
 import Connectivity.ConnectionClass;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -20,6 +26,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Utilisateur {
 	private static String nom, prenom, idd;  //on a besoin de es infos pour les afficher dans le menu
+	final ObservableList<Fichier> data = FXCollections.observableArrayList();
 
 	public String getNom() { // pour les afficher
 		return nom;
@@ -32,6 +39,8 @@ public class Utilisateur {
 	public String getId() {
 		return idd;
 	}
+
+	public void setID(String id) {Utilisateur.idd = id;}
 
 	public String identification(String id, String mdp) {
 
@@ -224,7 +233,7 @@ public class Utilisateur {
 		ResultSet rs =null;
 		PreparedStatement ps = null;
 		ConnectionClass cc = new ConnectionClass();
-		final ObservableList<Fichier> data = FXCollections.observableArrayList();
+
 
 		String name ="";
 
@@ -239,6 +248,7 @@ public class Utilisateur {
 
 			while(rs.next()){
 				name = rs.getString("file_name");
+				icon = new ImageView(new Image("/Pictures/dossier.png",100,100,false,false));
 				Fichier f = new Fichier(icon, name);
 				data.add(f);
 			}
@@ -327,6 +337,25 @@ public class Utilisateur {
 
 		}
 
+
+
+	}
+
+	public void chercherFicher(TextField searchFiled, TableView table){
+		FilteredList<Fichier> filteredList = new FilteredList<Fichier>(data, e->true);
+		searchFiled.setOnKeyReleased(e ->{
+			searchFiled.textProperty().addListener((ObservableValue, oldValue, newValue)->{
+				filteredList.setPredicate((Predicate<? super Fichier>) fichier->{
+					if(newValue ==null || newValue.isEmpty()) return true;
+					String lowerCaseSearch = newValue.toLowerCase();
+					if(fichier.getNom().toLowerCase().contains(lowerCaseSearch)) return true;
+					return false;
+				});
+			});
+			SortedList<Fichier> sortedData = new SortedList<>(filteredList);
+			sortedData.comparatorProperty().bind(table.comparatorProperty());
+			table.setItems(sortedData);
+		});
 
 
 	}

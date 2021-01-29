@@ -56,7 +56,7 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     @FXML
     public void deco(MouseEvent mouseEvent) {
         ((Node)mouseEvent.getSource()).getScene().getWindow().hide();
-         open("Sample.fxml");
+        open("Sample.fxml");
     }
 
     public void open(String name){  //celle ci ouvre seulement
@@ -85,14 +85,14 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
 
 
 
-        if (filePath == null) throw new java.io.FileNotFoundException("Cette page est corrompue");
+            if (filePath == null) throw new java.io.FileNotFoundException("Cette page est corrompue");
 
-        vue = new FXMLLoader().load(filePath);
-        etudiantPane.setCenter(vue);
+            vue = new FXMLLoader().load(filePath);
+            etudiantPane.setCenter(vue);
 
-    }catch(Exception e ) {
-          e.printStackTrace();
-    }
+        }catch(Exception e ) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -117,9 +117,9 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     public void getEnseignants(){
         getPage("EnseignantsEtudiant");
     }
-   public void getClassroom(){
-       getPage("Classroom");
-   }
+    public void getClassroom(){
+        getPage("Classroom");
+    }
 
 }
 

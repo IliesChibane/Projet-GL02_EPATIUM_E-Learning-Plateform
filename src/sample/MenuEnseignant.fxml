@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="1283.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEnseignantControleur">
+<AnchorPane prefHeight="646.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEnseignantControleur">
    <children>
-      <BorderPane fx:id="enseignantPane" prefHeight="870.0" prefWidth="1283.0">
+      <BorderPane fx:id="enseignantPane" prefHeight="646.0" prefWidth="1054.0">
          <left>
-            <VBox fx:id="vbox" alignment="CENTER" prefHeight="870.0" prefWidth="180.0" styleClass="blue-pane" BorderPane.alignment="CENTER">
+            <VBox fx:id="vbox" alignment="CENTER" prefHeight="794.0" prefWidth="175.0" styleClass="blue-pane" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="140.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="nomm" prefHeight="17.0" prefWidth="134.0" text="Nom" textFill="#82c46c">
@@ -66,7 +66,7 @@
             </VBox>
          </left>
          <right>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="737.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="90.0" prefWidth="78.0">
                      <children>
@@ -77,7 +77,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets top="775.0" />
+                        <Insets top="550.0" />
                      </VBox.margin>
                   </HBox>
                </children>

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="870.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEtudiantControleur">
+<AnchorPane prefHeight="646.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuEtudiantControleur">
    <children>
-      <BorderPane fx:id="etudiantPane" prefHeight="870.0" prefWidth="1200.0">
+      <BorderPane fx:id="etudiantPane" prefHeight="646.0" prefWidth="1054.0">
          <left>
             <VBox alignment="CENTER" prefHeight="317.0" prefWidth="175.0" styleClass="blue-pane" BorderPane.alignment="CENTER">
                <children>
@@ -66,9 +66,9 @@
             </VBox>
          </left>
          <right>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="631.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="90.0" prefWidth="78.0">
+                  <HBox alignment="CENTER" onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="67.0" prefWidth="100.0">
                      <children>
                         <Button fx:id="decon" mnemonicParsing="false" onMouseClicked="#deco" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" text="Déconnexion">
                            <font>
@@ -77,7 +77,7 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets top="775.0" />
+                        <Insets top="550.0" />
                      </VBox.margin>
                   </HBox>
                </children>
