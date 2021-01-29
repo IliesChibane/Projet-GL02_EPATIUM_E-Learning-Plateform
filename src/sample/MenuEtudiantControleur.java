@@ -47,6 +47,8 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     private BorderPane etudiantPane;
 
 
+
+
     public void setUser(){  // on recup les infos de l'utilisateur pour les afficher dans le toolbar (appelle a cette méthode dans MenuEtudiant
         nom.setText(u.getNom());
         prenom.setText(u.getPrenom());

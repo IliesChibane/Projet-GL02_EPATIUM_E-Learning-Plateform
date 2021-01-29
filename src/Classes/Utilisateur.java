@@ -22,6 +22,8 @@ public class Utilisateur {
 		return idd;
 	}
 
+	public void setID(String id) {Utilisateur.idd = id;}
+
 	public String identification(String id, String mdp) {
 		
 		ResultSet rs =null;
