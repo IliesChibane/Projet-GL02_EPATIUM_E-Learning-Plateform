@@ -1,0 +1,92 @@
+
+
+
+
+.parent{
+	-fx-background-color: transparent;
+	
+}
+
+.pane{
+	-fx-background-color: #82C46C;
+}
+
+.trans-btn-white-border{
+	-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+	-fx-border-color: #151928;
+	-fx-border-radius: 5px;
+	-fx-border-width: 1px;
+	-fx-text-fill: #151928;
+
+	
+}
+.trans-btn-whitee-border{
+	-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+	-fx-border-color: white;
+	-fx-border-radius: 5px;
+	-fx-border-width: 1px;
+	-fx-text-fill: white;
+
+	
+}
+.white-pane{
+	-fx-background-color: #151928;
+}
+
+.blue-pane{
+	-fx-background-color: #151928;
+}
+
+.tf-box{
+	-fx-background-color:  transparent;
+	-fx-border-color: #dedee4;
+	-fx-border-width: 0px 0px 1px 0px;
+	-fx-text-fill: #dedee4;
+}
+
+.tf{
+	-fx-background-color:  transparent;
+
+}
+
+.rounded-btn{
+-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+	-fx-border-color: #82C46C;
+	-fx-border-radius: 15px;
+	-fx-border-width: 1px;
+	-fx-text-fill: #82C46C;
+	-fx-shape:"M 100 100 a 50 50 0 1 0 0.00001 0";
+}
+.toolbar{
+-fx-background-color :#151928;
+}
+
+.content .hyperlink {
+    -fx-text-fill: #2365b4;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
+}
+
+.hyperlink:focused {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+.hyperlink:visited {
+    -fx-text-fill: #2365b4;
+}
+
+.label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
