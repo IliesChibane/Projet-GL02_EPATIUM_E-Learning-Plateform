@@ -119,9 +119,9 @@ public class Module {
             m.id_module = new SimpleStringProperty(rs.getString(1));
             m.nom_module = new SimpleStringProperty(rs.getString(2));
             m.section.setId_Section(rs.getString(3));
-            m.prof_cours.setID(rs.getString(4));
-            m.prof_td.setID(rs.getString(5));
-            m.prof_tp.setID(rs.getString(6));
+            m.prof_cours.setId(rs.getString(4));
+            m.prof_td.setId(rs.getString(5));
+            m.prof_tp.setId(rs.getString(6));
 
             ResultSet rs1 =null;
             PreparedStatement ps1 = null;
@@ -246,4 +246,26 @@ public class Module {
         return null;
     }
 
+    public static Module getModule(String id) throws SQLException {
+        Module m = new Module();
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String sql = "Select * from module where id_module = ?";
+
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,id);
+
+        rs = ps.executeQuery();
+
+        if(rs.next())
+        {
+            m.setId_module(id);
+            m.setNom_module(rs.getString("nom_module"));
+            m.getSection().setId_Section(rs.getString("id_section"));
+        }
+
+        return m;
+    }
 }

@@ -44,7 +44,7 @@ public class MenuEnseignantControleur {
     public void setUser(){
         nomm.setText(u.getNom());
         prenoom.setText(u.getPrenom());
-        iddd.setText(u.getId());
+        iddd.setText(u.getIdd());
     }
 
 

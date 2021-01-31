@@ -4,17 +4,30 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 //Classe Enseignant utiliser pour manipuler les information de l'enseignant
-public class Enseignant extends Utilisateur {
+public class Enseignant{
 
-    private StringProperty nom;
-    private StringProperty prenom;
+    private StringProperty id,nom,prenom,email;
 
-    public Enseignant() {
+    public Enseignant(){
+
+        this.id = new SimpleStringProperty();
         this.nom = new SimpleStringProperty();
         this.prenom = new SimpleStringProperty();
+        this.email = new SimpleStringProperty();
     }
 
-    @Override
+    public String getId() {
+        return id.get();
+    }
+
+    public StringProperty idProperty() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id.set(id);
+    }
+
     public String getNom() {
         return nom.get();
     }
@@ -27,7 +40,6 @@ public class Enseignant extends Utilisateur {
         this.nom.set(nom);
     }
 
-    @Override
     public String getPrenom() {
         return prenom.get();
     }
@@ -40,4 +52,15 @@ public class Enseignant extends Utilisateur {
         this.prenom.set(prenom);
     }
 
+    public String getEmail() {
+        return email.get();
+    }
+
+    public StringProperty emailProperty() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
 }

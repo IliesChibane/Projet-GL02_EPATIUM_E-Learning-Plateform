@@ -2,13 +2,16 @@ package sample;
 
 import Classes.Module;
 import Classes.Seance;
+import Classes.Section;
 import Classes.Utilisateur;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -26,9 +29,6 @@ public class EmploiEnseignantController implements Initializable {
     @FXML
     private GridPane gp;
 
-    @FXML
-    private Button J2;
-
     Utilisateur u = new Utilisateur();
 
     @Override
@@ -36,25 +36,37 @@ public class EmploiEnseignantController implements Initializable {
 
         LinkedList<Seance> lls = new LinkedList<>();
         try {
-            lls = Seance.getSeanceProf(u.getId());
+            lls = Seance.getSeanceProf(u.getIdd());
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
         }
 
         for(Seance s : lls){
             //on détermine la colone et la ligne ou se doit se trouver la seance
-            int l = Seance.getNumJour(s.getJour())+1;
+            int l = Seance.getNumJourE(s.getJour())+1;
             int c = Seance.NumHeure(s.getHorraire())+1;
-            for(Node n : gp.getChildren())
-            {
-                if(GridPane.getColumnIndex(n) == c && GridPane.getRowIndex(n) == l)
-                {
-                    //et apres s'y etre positioner on est sensé écrire les info de la seance sur le bouton mais sa fontionne pas
-                    // on obtiens un javafx.fxml.LoadException:Caused by: java.lang.NullPointerException
-                    n.setAccessibleText(s.getType()+" "+s.getModule().getNom_module()+" "+s.getSection().getSpecialite()+" "+s.getSection().getCode_Section());
-                }
+
+            String text = null;
+            try {
+                text = s.getType()+" "+ Module.getModule(s.getModule().getId_module()).getNom_module()+" "+Section.getSection(s.getSection().getId_Section()).getAnnee_scolaire()+" "+Section.getSection(s.getSection().getId_Section()).getSpecialite()+" "+Section.getSection(s.getSection().getId_Section()).getCode_Section();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
 
+            javafx.scene.control.Button b = new javafx.scene.control.Button(text);
+
+            b.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            try {
+                                Seance.openSeanceProf(u.getIdd(),s.getHorraire(),s.getJour());
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            }
+                        }
+                    });
+            gp.add(b,c,l);
         }
     }
 

@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EnseignantsEtudiantController">
    <children>
-      <Label layoutX="199.0" layoutY="163.0" prefHeight="108.0" prefWidth="213.0" text="enseignants etudiant" />
+      <Label layoutX="34.0" layoutY="24.0" prefHeight="108.0" prefWidth="213.0" text="enseignants etudiant" />
+      <TableView fx:id="ListeEnseignant" layoutX="34.0" layoutY="132.0" prefHeight="226.0" prefWidth="532.0">
+        <columns>
+          <TableColumn fx:id="Matriculle" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="Nom" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="Prenom" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="mail" prefWidth="75.0" text="e mail" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
    </children>
 </AnchorPane>

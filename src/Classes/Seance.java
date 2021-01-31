@@ -232,6 +232,25 @@ public class Seance {
         }
     }
 
+    public static int getNumJourE(String j)
+    {
+        switch (j){
+            case "Dimanche":
+                return 1;
+            case "Lundi":
+                return 2;
+            case "Mardi":
+                return 3;
+            case "Mercredi":
+                return 4;
+            case "Jeudi":
+                return 5;
+            case "Samedi":
+                return 0;
+            default: return -1;
+        }
+    }
+
     //méthode permettant d'avoir les horaires sous forme de int
     public static  int NumHeure(String h)
     {
@@ -240,16 +259,12 @@ public class Seance {
                 return 0;
             case "9:40-11:10":
                 return 1;
-            case "Mardi":
-                return 2;
             case "11:20-12:50":
-                return 3;
-            case "Jeudi":
-                return 4;
+                return 2;
             case "13:00-14:30":
-                return 5;
+                return 3;
             case "14:40-16:30":
-                return 6;
+                return 4;
             default: return -1;
         }
     }
@@ -336,7 +351,35 @@ public class Seance {
             Seance s = new Seance();
             s.setHorraire(rs.getString("horaire"));
             s.getSection().setId_Section(rs.getString("id_section"));
-            s.getProf().setID(id);
+            s.getProf().setId(id);
+            s.setType(rs.getString("types"));
+            s.setLien(rs.getString("link"));
+            s.getModule().setId_module(rs.getString("id_module"));
+            s.setJour(rs.getString("jour"));
+            s.setDate(rs.getString("dates"));
+
+            lls.add(s);
+        }
+        return lls;
+    }
+
+    public static LinkedList<Seance> getSeanceEtudiant(String id) throws SQLException, ParseException {
+
+        LinkedList<Seance> lls = new LinkedList<Seance>();
+
+        ResultSet rs =null;
+        PreparedStatement ps = null;
+        String sql = "Select * from seance where id_section = ? and dates < ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,id);
+        ps.setString(2,Seance.getsemaine());
+        rs = ps.executeQuery();
+        while(rs.next())
+        {
+            Seance s = new Seance();
+            s.setHorraire(rs.getString("horaire"));
+            s.getSection().setId_Section(rs.getString("id_section"));
+            s.getProf().setId(id);
             s.setType(rs.getString("types"));
             s.setLien(rs.getString("link"));
             s.getModule().setId_module(rs.getString("id_module"));

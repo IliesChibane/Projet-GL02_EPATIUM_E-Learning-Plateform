@@ -5,6 +5,8 @@ import java.sql.*;
 import java.util.Locale;
 import java.util.function.Predicate;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,19 +30,34 @@ public class Utilisateur {
 	private static String nom, prenom, idd;  //on a besoin de es infos pour les afficher dans le menu
 	final ObservableList<Fichier> data = FXCollections.observableArrayList();
 
-	public String getNom() { // pour les afficher
+	public Utilisateur()
+	{
+
+	}
+
+	public static String getNom() {
 		return nom;
+	}
+
+	public void setNom(String nom) {
+		Utilisateur.nom = nom;
 	}
 
 	public String getPrenom() {
 		return prenom;
 	}
 
-	public String getId() {
+	public void setPrenom(String prenom) {
+		Utilisateur.prenom = prenom;
+	}
+
+	public String getIdd() {
 		return idd;
 	}
 
-	public void setID(String id) {Utilisateur.idd = id;}
+	public void setIdd(String idd) {
+		Utilisateur.idd = idd;
+	}
 
 	public String identification(String id, String mdp) {
 

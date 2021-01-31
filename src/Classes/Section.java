@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Section
 {
@@ -109,5 +110,56 @@ public class Section
             return null;
     }
 
+    public static LinkedList<Etudiant> getEtudiantSection(String idS) throws SQLException {
 
+        ResultSet rs =null;
+        PreparedStatement ps = null;
+
+        String sql = "Select * From etudiant where id_section = ?";
+
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,idS);
+
+        rs = ps.executeQuery();
+
+        LinkedList<Etudiant> lle = new LinkedList<>();
+
+        while(rs.next())
+        {
+            Etudiant e = new Etudiant();
+
+            e.setMatricule(rs.getString("matricule"));
+            e.setNom(rs.getString("nom_etudiant"));
+            e.setPrenom(rs.getString("prenom_etudiant"));
+
+            lle.add(e);
+        }
+
+        return lle;
+    }
+
+    public static Section getSection(String id) throws SQLException {
+
+        Section s = new Section();
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String sql = "Select * from section where id_section= ?";
+
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,id);
+
+        rs = ps.executeQuery();
+
+        if(rs.next())
+        {
+            s.setId_Section(id);
+            s.setSpecialite(rs.getString(1));
+            s.setCode_Section(rs.getString(2));
+            s.setAnnee_scolaire(rs.getString(3));
+        }
+
+        return s;
+    }
 }
