@@ -41,7 +41,7 @@ public class DriveControleur implements Initializable {
 
         icon.setCellValueFactory(new PropertyValueFactory<>("type"));
         name.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        u.consulterFichiers(this.table,img);
+        u.consulterFichiers(this.table, this.img);
     }
 
     public void chooseFile(ActionEvent event){

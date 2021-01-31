@@ -13,36 +13,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="parent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Pane layoutY="87.0" prefHeight="500.0" prefWidth="1000.0" styleClass="pane" stylesheets="@style.css">
+      <Pane layoutY="87.0" prefHeight="500.0" prefWidth="1000.0" styleClass="pane">
          <children>
-            <Button layoutX="120.0" layoutY="151.0" mnemonicParsing="false" onAction="#signup" prefHeight="32.0" prefWidth="93.0" styleClass="trans-btn-white-border" stylesheets="@style.css" text="Inscription" />
-            <Label layoutX="120.0" layoutY="58.0" text="Inscription" textFill="#151928">
+            <Button layoutX="120.0" layoutY="151.0" mnemonicParsing="false" onAction="#signup" prefHeight="32.0" prefWidth="93.0" styleClass="trans-btn-white-border" text="Inscription" />
+            <Label layoutX="120.0" layoutY="58.0" styleClass="singup-blue" text="Inscription" textFill="#151928">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="120.0" layoutY="106.0" text="Vous n'êtes pas encore inscrit  ?" textFill="#151928">
+            <Label layoutX="120.0" layoutY="106.0" styleClass="blue-text" text="Vous n'êtes pas encore inscrit  ?" textFill="#151928">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="120.0" layoutY="130.0" text="Inscrivez vous ici." textFill="#151928" wrapText="true">
+            <Label layoutX="120.0" layoutY="130.0" styleClass="blue-text" text="Inscrivez vous ici." textFill="#151928" wrapText="true">
                <font>
                   <Font name="Arial" size="10.0" />
                </font>
             </Label>
-            <Button layoutX="647.0" layoutY="153.0" mnemonicParsing="false" onAction="#signin" prefHeight="32.0" prefWidth="93.0" styleClass="trans-btn-white-border" stylesheets="@style.css" text="Identification" textAlignment="CENTER" textFill="#151928" />
-            <Label layoutX="650.0" layoutY="60.0" text="Identification" textAlignment="CENTER" textFill="#151928">
+            <Button layoutX="647.0" layoutY="153.0" mnemonicParsing="false" onAction="#signin" prefHeight="32.0" prefWidth="93.0" styleClass="trans-btn-white-border" text="Identification" textAlignment="CENTER" textFill="#151928" />
+            <Label layoutX="650.0" layoutY="60.0" styleClass="singup-blue" text="Identification" textAlignment="CENTER" textFill="#151928">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="647.0" layoutY="108.0" text="Vous avez déjà un compte  ?" textAlignment="CENTER" textFill="#151928">
+            <Label layoutX="647.0" layoutY="108.0" styleClass="blue-text" text="Vous avez déjà un compte  ?" textAlignment="CENTER" textFill="#151928">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="647.0" layoutY="132.0" text="Identifiez vous ici." textAlignment="CENTER" textFill="#151928" wrapText="true">
+            <Label layoutX="647.0" layoutY="132.0" styleClass="blue-text" text="Identifiez vous ici." textAlignment="CENTER" textFill="#151928" wrapText="true">
                <font>
                   <Font name="Arial" size="10.0" />
                </font>
@@ -57,14 +57,14 @@
                   <Image url="@../Pictures/logo.png" />
                </image>
             </ImageView>
-            <VBox id="vbox" fx:id="vboxx" layoutX="20.0" layoutY="-87.0" prefHeight="700.0" prefWidth="480.0" styleClass="white-pane" stylesheets="@style.css">
+            <VBox id="vbox" fx:id="vboxx" layoutX="20.0" layoutY="-87.0" prefHeight="700.0" prefWidth="480.0" styleClass="white-pane">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="20.0" right="20.0" top="50.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Bienvenue à Epatium" textFill="#dedee4">
+                        <Label styleClass="singup-white" text="Bienvenue à Epatium" textFill="#dedee4">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="38.0" />
                            </font>
@@ -73,9 +73,9 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="A propos de nous" textAlignment="CENTER" textFill="#dedee4">
+                        <Label styleClass="white-text" text="A propos de nous" textAlignment="CENTER" textFill="#dedee4">
                            <font>
-                              <Font name="Arial" size="24.0" />
+                              <Font name="Arial" size="30.0" />
                            </font>
                         </Label>
                      </children>

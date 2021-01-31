@@ -109,3 +109,17 @@
 -fx-text-fill: #82c46c;
 -fx-font-size : 38;
 }
+.singup-white{
+-fx-text-fill: #ffffff;
+-fx-font-size : 34;
+}
+.singup-blue{
+-fx-text-fill: #151928;
+-fx-font-size : 34;
+}
+.white-text{
+-fx-text-fill: #ffffff;
+}
+.blue-text{
+-fx-text-fill: #151928;
+}
