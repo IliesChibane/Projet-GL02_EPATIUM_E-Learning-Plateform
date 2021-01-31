@@ -11,7 +11,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="480.0" styleClass="blue-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginControleur">
    <children>
-      <Label text="Inscription" textFill="#dedee4" VBox.vgrow="ALWAYS">
+      <Label styleClass="singup-white" text="Inscription" textFill="#dedee4" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets left="15.0" top="25.0" />
          </VBox.margin>
