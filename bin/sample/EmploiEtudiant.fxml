@@ -3,119 +3,133 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmploiEtudiant">
    <children>
-      <Label layoutX="8.0" layoutY="7.0" prefHeight="34.0" prefWidth="92.0" text="emploi etudiant" />
-      <GridPane gridLinesVisible="true" layoutX="63.0" layoutY="240.0" prefHeight="145.0" prefWidth="567.0" AnchorPane.rightAnchor="14.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="8:00-9:30" textAlignment="CENTER" GridPane.columnIndex="1">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="9:40-11:10" textAlignment="CENTER" GridPane.columnIndex="2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="11:20-12:50" textAlignment="CENTER" GridPane.columnIndex="3">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="13:00-14:30" textAlignment="CENTER" GridPane.columnIndex="4">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="14:40-16:10" textAlignment="CENTER" GridPane.columnIndex="5">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Samedi" textAlignment="CENTER" GridPane.rowIndex="1">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Dimanche" textAlignment="CENTER" GridPane.rowIndex="2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Lundi" textAlignment="CENTER" GridPane.rowIndex="3">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Mardi" textAlignment="CENTER" GridPane.rowIndex="4">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Jeudi" textAlignment="CENTER" GridPane.rowIndex="6">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Mercredi" textAlignment="CENTER" GridPane.rowIndex="5">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
+      <BorderPane prefHeight="555.0" prefWidth="721.0">
+         <top>
+            <Label prefHeight="55.0" prefWidth="692.0" styleClass="title" stylesheets="@style.css" text="Mon emploi du temps" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <GridPane fx:id="gp" gridLinesVisible="true" prefHeight="145.0" prefWidth="567.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="99.0" styleClass="rounded-btn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="8:00-9:30" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="9:40-11:10" textAlignment="CENTER" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="11:20-12:50" textAlignment="CENTER" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="13:00-14:30" textAlignment="CENTER" GridPane.columnIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="14:40-16:10" textAlignment="CENTER" GridPane.columnIndex="5">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Samedi" textAlignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Dimanche" textAlignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Lundi" textAlignment="CENTER" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Mardi" textAlignment="CENTER" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Jeudi" textAlignment="CENTER" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="80.0" text="Mercredi" textAlignment="CENTER" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </center>
+         <right>
+            <VBox prefHeight="345.0" prefWidth="8.0" BorderPane.alignment="CENTER" />
+         </right>
+         <left>
+            <VBox prefHeight="500.0" prefWidth="102.0" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>

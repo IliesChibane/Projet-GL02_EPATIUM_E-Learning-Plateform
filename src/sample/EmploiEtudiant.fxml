@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmploiEtudiant">
    <children>
       <BorderPane prefHeight="555.0" prefWidth="721.0">
          <top>
             <Label prefHeight="55.0" prefWidth="692.0" styleClass="title" stylesheets="@style.css" text="Mon emploi du temps" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <GridPane gridLinesVisible="true" prefHeight="145.0" prefWidth="567.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+            <GridPane fx:id="gp" gridLinesVisible="true" prefHeight="145.0" prefWidth="567.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
