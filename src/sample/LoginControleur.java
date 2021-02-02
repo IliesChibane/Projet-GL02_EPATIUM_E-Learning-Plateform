@@ -59,11 +59,14 @@ private TextField id;
 	  String mode = u.identification(id.getText(),mdp.getText());
 	  switch (mode){
           case "etudiant" : open("MenuEtudiant.fxml","etudiant");
+              ((Node)event.getSource()).getScene().getWindow().hide();
           break;
-          case "enseignant" : open("MenuEnseignant.fxml","enseignant"); break;
-          default : System.out.println("ALLEZ VOUS INSCRIRE DABORD !!!!!");
+          case "enseignant" : open("MenuEnseignant.fxml","enseignant");
+              ((Node)event.getSource()).getScene().getWindow().hide();
+          break;
+          default : Dialogue.afficherDialogue("Allez vous inscrire d'abord");
       }
-     ((Node)event.getSource()).getScene().getWindow().hide();
+
  }
  
  
@@ -71,10 +74,10 @@ private TextField id;
  private void inscription(ActionEvent event) {
 	  
 	  if(mdp.getText().equals(confirmationMdp.getText())) {
-	  if (u.inscription(id.getText(),nom.getText(),prenom.getText(),mdp.getText(), Integer.parseInt( groupe.getText()),type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText())) System.out.println("yeeehaw");
-	  else System.out.println("nooooooooooooooo");
+	  if (u.inscription(id.getText(),nom.getText(),prenom.getText(),mdp.getText(), Integer.parseInt( groupe.getText()),type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText())) Dialogue.afficherDialogue("Inscription faites avec succès");
+	  else Dialogue.afficherDialogue("Il y a eu une erreur lors de l'inscription");
 	  }else {
-		  System.out.println("Veuillez saisir des mots de passes identiques");
+          Dialogue.afficherDialogue("Veuillez saisir des mots de passes identiques");
 	  }
  }
 

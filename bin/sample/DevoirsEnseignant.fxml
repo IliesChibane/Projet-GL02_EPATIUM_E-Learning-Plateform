@@ -1,11 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="650.0" prefWidth="797.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DevoirEnseignantController">
    <children>
-      <Label layoutX="244.0" layoutY="141.0" text="Devoirs de l'enseignant" />
+      <BorderPane layoutX="-1.0" prefHeight="650.0" prefWidth="797.0">
+         <top>
+            <HBox prefHeight="67.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="67.0" prefWidth="42.0" />
+                  <Label prefHeight="55.0" prefWidth="429.0" styleClass="title" text="Devoirs" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <VBox prefHeight="534.0" prefWidth="674.0" BorderPane.alignment="CENTER">
+               <children>
+                  <SplitPane prefHeight="608.0" prefWidth="674.0">
+                     <items>
+                        <SplitPane dividerPositions="0.24064171122994651" prefHeight="498.0" prefWidth="672.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Label layoutX="-2.0" layoutY="1.0" prefHeight="37.0" prefWidth="180.0" styleClass="green-text" text="      Historique" />
+                                    <ListView fx:id="devoirs" layoutX="-1.0" layoutY="38.0" onMouseEntered="#afficherDetailsDevoir" onMouseExited="#cacherDetailsDevoir" prefHeight="544.0" prefWidth="179.0" styleClass="blue-text" />
+                                 </children></AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="571.0">
+                                 <children>
+                                    <TextField fx:id="titre" layoutX="133.0" layoutY="24.0" prefHeight="27.0" prefWidth="255.0" promptText="Titre" styleClass="trans-btn-white-border" />
+                                    <Label layoutX="36.0" layoutY="27.0" text="Titre" />
+                                    <Label layoutX="35.0" layoutY="155.0" text="Module" />
+                                    <Label layoutX="36.0" layoutY="90.0" text="Section" />
+                                    <Label layoutX="40.0" layoutY="296.0" text="Date remise" />
+                                    <Label layoutX="36.0" layoutY="219.0" text="Date envoi" />
+                                    <Label layoutX="43.0" layoutY="376.0" text="Explication" />
+                                    <ComboBox fx:id="modules" layoutX="133.0" layoutY="152.0" prefHeight="25.0" prefWidth="255.0" styleClass="trans-btn-white-border" />
+                                    <ComboBox fx:id="sections" layoutX="133.0" layoutY="87.0" onAction="#SetupModuleCombo" prefHeight="25.0" prefWidth="255.0" styleClass="trans-btn-white-border" />
+                                    <TextArea fx:id="explication" layoutX="139.0" layoutY="375.0" prefHeight="103.0" prefWidth="256.0" styleClass="trans-btn-white-border" />
+                                    <DatePicker fx:id="dateEnvoi" layoutX="135.0" layoutY="216.0" prefHeight="25.0" prefWidth="252.0" styleClass="trans-btn-white-border" />
+                                    <DatePicker fx:id="dateRemise" layoutX="136.0" layoutY="293.0" prefHeight="25.0" prefWidth="254.0" styleClass="trans-btn-white-border" />
+                                    <Button layoutX="221.0" layoutY="523.0" mnemonicParsing="false" onAction="#publierDevoir" styleClass="trans-btn-white-border" text="Publier devoir" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <VBox prefHeight="479.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <VBox prefHeight="0.0" prefWidth="721.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <VBox prefHeight="479.0" prefWidth="47.0" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>

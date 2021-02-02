@@ -76,16 +76,8 @@ public class Section
         this.annee_scolaire.set(annee_scolaire);
     }
 
-    static ConnectionClass cc = new ConnectionClass();
-    static Connection conn;
+    static Connection conn = ConnectionClass.c;
 
-    static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
     //Méthode me permettant de récupérer l'id de la section de la bdd cette méthode m'a servis dans pas mal de cas
     public static String GetIDS(String sec) throws SQLException {
         ResultSet rs =null;

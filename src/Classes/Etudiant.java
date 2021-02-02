@@ -54,18 +54,7 @@ public class Etudiant{
     public void setPrenom(String prenom) {
         this.prenom.set(prenom);
     }
-
-    static ConnectionClass cc = new ConnectionClass();
-    static Connection conn;
-
-    static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    static Connection conn= ConnectionClass.c;
     public static String getSectionE(String id) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;

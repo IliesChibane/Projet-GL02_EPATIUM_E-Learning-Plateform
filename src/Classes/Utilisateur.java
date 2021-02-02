@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import sample.Dialogue;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -67,7 +68,7 @@ public class Utilisateur {
 
 		String mode = "rien"; // Pour ouvrir la fenetre convenable (etudiant/enseignant)
 		try {
-			Connection conn = cc.getConnection();
+			Connection conn = ConnectionClass.c;
 			/*Il est preferable de creer de requete distincte pour la connexion etant donner que l'on fournis
 			un nom unique lors de la recherche sa n'augmente pas la complexite */
 			String sql =  "Select * From enseignant where id_prof = ? and mdp = ?";
@@ -84,7 +85,7 @@ public class Utilisateur {
 				idd = rs.getString("id_prof");
 
 				mode = "enseignant";
-				System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_prof")+", Status : enseignant");
+				Dialogue.afficherDialogue("Bienvenue à EPATIUM "+ nom+", Status : enseignant");
 			}
 			ps = conn.prepareStatement(sql2);
 			ps.setString(1, id);
@@ -97,13 +98,12 @@ public class Utilisateur {
 				prenom = rs.getString("prenom_etudiant");
 				idd = rs.getString("matricule");
 
-				System.out.println("Bienvenue à EPATIUM "+ rs.getString("nom_etudiant")+", Status : etudiant");
+				Dialogue.afficherDialogue("Bienvenue à EPATIUM "+nom+", Status : etudiant");
 			}
 
 		} catch (Exception e) {
 
-
-			System.out.println(e.getMessage());
+			Dialogue.afficherDialogue(e.getMessage());
 		}finally {
 			try {
 				assert ps != null;
@@ -126,7 +126,6 @@ public class Utilisateur {
 
 		int rs = 0;
 		PreparedStatement  ps = null;
-		ConnectionClass cc = new ConnectionClass();
 		boolean status = false;
 		String sql ="";
 
@@ -134,7 +133,7 @@ public class Utilisateur {
 
 		try {
 
-			Connection conn = cc.getConnection();
+			Connection conn = ConnectionClass.c;
 			if (type.equals("Enseignant")) {
 
 
@@ -150,7 +149,6 @@ public class Utilisateur {
 				rs = ps.executeUpdate();
 				if ( rs >0 ) {
 					status = true;
-					System.out.println("Row insertes successfullyyyyy for student");
 				}
 
 			}
@@ -166,14 +164,12 @@ public class Utilisateur {
 				ps.setString(3, prenom);
 				ps.setString(4, mdp);
 				ps.setInt(5, groupe);
-				String concat = specialite.concat(section).concat(niveau);
+				String concat = niveau +" "+specialite+" "+section;
 				ps.setString(6, concat);
-				System.out.println("printing id_sec to check " + concat);
 
 				rs = ps.executeUpdate();
 				if ( rs >0 ) {
 					status = true;
-					System.out.println("Row inserted successfullyyyyy");
 				}
 
 			}
@@ -181,7 +177,7 @@ public class Utilisateur {
 		} catch (Exception e) {
 
 
-			System.out.println(e.getMessage());
+			Dialogue.afficherDialogue(e.getMessage());
 		}finally {
 			try {
 				assert ps != null;
@@ -204,13 +200,12 @@ public class Utilisateur {
 
 		int rs = 0;
 		PreparedStatement  ps = null;
-		ConnectionClass cc = new ConnectionClass();
 		boolean status = false;
 		String sql ="";
 
 		try {
 
-			Connection conn = cc.getConnection();
+			Connection conn =  ConnectionClass.c;
 
 			sql =  "insert into fichiers values(?,?)";
 
@@ -222,13 +217,13 @@ public class Utilisateur {
 			rs = ps.executeUpdate();
 			if ( rs >0 ) {
 				status = true;
-				System.out.println("imaaaage inserted successfullyyyyy for student");
+				Dialogue.afficherDialogue("Fichier téléchargé vers le serveur avec succès");
 			}
 
 		} catch (Exception e) {
 
 
-			System.out.println(e.getMessage());
+			Dialogue.afficherDialogue(e.getMessage());
 		}finally {
 			try {
 				assert ps != null;
@@ -249,13 +244,10 @@ public class Utilisateur {
 
 		ResultSet rs =null;
 		PreparedStatement ps = null;
-		ConnectionClass cc = new ConnectionClass();
-
-
 		String name ="";
 
 		try {
-			Connection conn = cc.getConnection();
+			Connection conn = ConnectionClass.c;
 
 			String sql =  "Select * From fichiers ";
 
@@ -274,7 +266,7 @@ public class Utilisateur {
 		} catch (Exception e) {
 
 
-			System.out.println(e.getMessage());
+			Dialogue.afficherDialogue(e.getMessage());
 		}finally {
 			try {
 				assert ps != null;
@@ -288,20 +280,18 @@ public class Utilisateur {
 
 		}
 
-
-
 	}
 	public void telechargerFichier(String file_name){
 
 		ResultSet rs =null;
 		PreparedStatement ps = null;
-		ConnectionClass cc = new ConnectionClass();
+
 		InputStream is ;
 		OutputStream os;
 
 
 		try {
-			Connection conn = cc.getConnection();
+			Connection conn = ConnectionClass.c;
 
 			String sql =  "Select * From fichiers where file_name = ?";
 
@@ -322,25 +312,12 @@ public class Utilisateur {
 				os.close();
 				is.close();
 
-				/* String file_path = "file:" + file_name;
-
-				 File f = new File(file_path);
-
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-				DocumentBuilder builder = factory.newDocumentBuilder();
-
-				Document document = builder.parse(is);
-
-				document.getDocumentElement().normalize();
-
-				Element root = document.getDocumentElement();*/
 			}
 
 		} catch (Exception e) {
 
 
-			System.out.println(e.getMessage());
+			Dialogue.afficherDialogue(e.getMessage());
 		}finally {
 			try {
 				assert ps != null;
@@ -353,8 +330,6 @@ public class Utilisateur {
 			}
 
 		}
-
-
 
 	}
 

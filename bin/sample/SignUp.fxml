@@ -60,7 +60,7 @@
       </HBox>
       <HBox onMouseEntered="#init" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Type                               " textFill="#dedee4" />
+            <Label styleClass="white-text" text="Type                               " textFill="#dedee4" />
             <ComboBox fx:id="type" prefWidth="150.0" styleClass="trans-btn-whitee-border" stylesheets="@style.css" visibleRowCount="2" />
          </children>
          <padding>
