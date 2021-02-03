@@ -4,7 +4,6 @@ import Connectivity.ConnectionClass;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import sample.Dialogue;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -144,7 +143,7 @@ public class Enseignant {
         try {
             Connection conn = ConnectionClass.c;
 
-            String sql = "Select * From devoir where id_prof = ?";
+            String sql = "Select * From devoir where id_prof = ?  AND date_remise BETWEEN  NOW() + '-4 months' AND NOW() ";
 
             ps = conn.prepareStatement(sql);
             ps.setString(1,idProf);

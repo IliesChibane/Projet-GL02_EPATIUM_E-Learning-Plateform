@@ -65,6 +65,5 @@ public class Dialogue {
     private void setMessage(String msg){
         this.infoo.setWrapText(true);
         this.infoo.setText(msg);
-        System.out.println(msg +" setting the message");
     }
 }

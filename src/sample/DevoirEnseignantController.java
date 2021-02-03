@@ -33,6 +33,7 @@ public class DevoirEnseignantController implements Initializable {
  private DatePicker dateRemise;
  @FXML
  private TextArea explication;
+
  private Label id_module = new Label(),
          dateeEnvoi= new Label(),
          dateeRemise= new Label();
@@ -40,6 +41,7 @@ public class DevoirEnseignantController implements Initializable {
     private Enseignant e = new Enseignant();
     private Utilisateur u = new Utilisateur();
     private Stage stickyNotesStage = new Stage();
+
 
 
 
@@ -61,15 +63,13 @@ public class DevoirEnseignantController implements Initializable {
 
     }
 
-    public void montrerDetailsDevoir(){
-        String nomDevoir= devoirs.getSelectionModel().getSelectedItem().toString();
-        e.afficherDetailsDevoir(nomDevoir);
-
-
-    }
     public void SetupModuleCombo() throws SQLException, ClassNotFoundException {
          modules.setDisable(false);
         modules.setItems(Module.SetComboM(Module.ModuleProf(u.getIdd()), sections.getSelectionModel().getSelectedItem()));
+
+
+
+        //trier la liste des devoirs par section
     }
     public void publierDevoir(){
         e.publierDevoir(titre.getText(),sections.getSelectionModel().getSelectedItem().toString().concat(modules.getSelectionModel().getSelectedItem().toString()), u.getIdd(), java.sql.Date.valueOf(dateEnvoi.getValue()),java.sql.Date.valueOf(dateRemise.getValue()), explication.getText());
@@ -83,11 +83,12 @@ public class DevoirEnseignantController implements Initializable {
         arr.add(id_module);
         arr.add(dateeEnvoi);
         arr.add(dateeRemise);
+
+        //setting up the labels in the hoverPnae ---on les rajoute au panel et on ajuste leur position
         stickyNotesPane.getChildren().addAll(arr);
         stickyNotesPane.getChildren().get(0).setTranslateX(0);
         stickyNotesPane.getChildren().get(1).setTranslateX(0);
         stickyNotesPane.getChildren().get(2).setTranslateX(0);
-
         stickyNotesPane.getChildren().get(0).setTranslateY(-33);
         stickyNotesPane.getChildren().get(1).setTranslateY(5);
         stickyNotesPane.getChildren().get(2).setTranslateY(43);
@@ -113,14 +114,14 @@ public class DevoirEnseignantController implements Initializable {
                     };
                     cell.hoverProperty().addListener((obs, wasHovered, isNowHovered) -> {
                         if (isNowHovered && ! cell.isEmpty()) {
-                            //////////////showPopup(cell);
+
                             e.afficherDetailsDevoir(cell.getText());
                             id_module.setText("Module: ".concat(Devoir.getIdModule()));
                             dateeEnvoi.setText("Date d'envoi: ".concat(Devoir.getDateEnvoi().toString()));
-                            dateeRemise.setText("Date d'envoi: ".concat(Devoir.getDateRemise().toString()));
+                            dateeRemise.setText("Date de Remise: ".concat(Devoir.getDateRemise().toString()));
                             stickyNotesStage.show();
                         } else {
-                            ////////////// hidePopup();
+
                             stickyNotesStage.hide();
                         }
                     });
@@ -135,4 +136,5 @@ public class DevoirEnseignantController implements Initializable {
     public void cacherDetailsDevoir(){
         stickyNotesStage.hide();
     }
+
 }

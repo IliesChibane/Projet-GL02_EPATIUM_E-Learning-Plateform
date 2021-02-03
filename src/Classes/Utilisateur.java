@@ -2,33 +2,21 @@ package Classes;
 
 import java.io.*;
 import java.sql.*;
-import java.util.Locale;
 import java.util.function.Predicate;
-
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.scene.control.ListView;
 import Connectivity.ConnectionClass;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import sample.Dialogue;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 
 public class Utilisateur {
-	private static String nom, prenom, idd;  //on a besoin de es infos pour les afficher dans le menu
+	private static String nom, prenom, idd, section;  //on a besoin de es infos pour les afficher dans le menu
 	final ObservableList<Fichier> data = FXCollections.observableArrayList();
 
 	public Utilisateur()
@@ -54,6 +42,9 @@ public class Utilisateur {
 
 	public String getIdd() {
 		return idd;
+	}
+	public String getIdSec() {
+		return section;
 	}
 
 	public void setIdd(String idd) {
@@ -84,6 +75,7 @@ public class Utilisateur {
 				prenom = rs.getString("prenom_prof");
 				idd = rs.getString("id_prof");
 
+
 				mode = "enseignant";
 				Dialogue.afficherDialogue("Bienvenue à EPATIUM "+ nom+", Status : enseignant");
 			}
@@ -97,6 +89,7 @@ public class Utilisateur {
 				nom = rs.getString("nom_etudiant");
 				prenom = rs.getString("prenom_etudiant");
 				idd = rs.getString("matricule");
+				section = rs.getString("id_section");
 
 				Dialogue.afficherDialogue("Bienvenue à EPATIUM "+nom+", Status : etudiant");
 			}
