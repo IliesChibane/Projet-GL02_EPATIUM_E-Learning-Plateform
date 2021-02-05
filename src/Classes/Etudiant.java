@@ -152,4 +152,25 @@ public class Etudiant{
 
         return llen;
     }
+
+    public static Etudiant getEtudiant(String id) throws SQLException {
+        Etudiant e = new Etudiant();
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String sql = "Select * From etudiant where matricule = ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,id);
+
+        rs = ps.executeQuery();
+
+        if(rs.next())
+        {
+            e.setMatricule(id);
+            e.setNom(rs.getString("nom_etudiant"));
+            e.setPrenom(rs.getString("prenom_etudiant"));
+        }
+        return e;
+    }
 }

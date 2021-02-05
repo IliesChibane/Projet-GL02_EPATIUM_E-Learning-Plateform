@@ -264,6 +264,9 @@ public class Module {
             m.setId_module(id);
             m.setNom_module(rs.getString("nom_module"));
             m.getSection().setId_Section(rs.getString("id_section"));
+            m.getProf_cours().setId(rs.getString(4));
+            m.getProf_td().setId(rs.getString(5));
+            m.getProf_tp().setId(rs.getString(6));
         }
 
         return m;

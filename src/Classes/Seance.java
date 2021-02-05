@@ -416,4 +416,30 @@ public class Seance {
         }
 
     }
+
+    //permet d'ouvrir la réunion sur le navigateur par défaut de l'utilisateur
+    public static void openSeanceEtudiant(String id,String h, String j) throws SQLException {
+        ResultSet rs =null;
+        PreparedStatement ps = null;
+        String sql = "Select link from seance where id_section = ? and horaire = ? and jour = ?";
+
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,id);
+        ps.setString(2,h);
+        ps.setString(3,j);
+
+        rs = ps.executeQuery();
+
+        if(rs.next())
+        {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            try {
+                URI oURL = new URI(rs.getString(1));
+                desktop.browse(oURL);
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

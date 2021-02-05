@@ -44,14 +44,14 @@ public class EmploiEtudiant implements Initializable {
             }
 
             javafx.scene.control.Button b = new javafx.scene.control.Button(text);
-           //b.setStyle("rounded-btn");
+            b.getStyleClass().add("rounded-btn");
 
             b.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     try {
-                        Seance.openSeanceProf(u.getIdd(),s.getHorraire(),s.getJour());
+                        Seance.openSeanceEtudiant(s.getSection().getId_Section(),s.getHorraire(),s.getJour());
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
