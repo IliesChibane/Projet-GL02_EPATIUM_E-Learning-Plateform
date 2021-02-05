@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="543.0" styleClass="TRANSPARENT" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AjouterSeanceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AjouterSeanceController">
    <children>
       <ComboBox fx:id="section" layoutX="30.0" layoutY="30.0" onAction="#SetupModuleCombo" prefWidth="150.0" />
       <ComboBox fx:id="horraire" layoutX="316.0" layoutY="99.0" onAction="#LINK" prefWidth="150.0" />

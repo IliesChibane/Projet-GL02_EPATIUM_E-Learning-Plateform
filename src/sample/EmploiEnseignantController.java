@@ -14,9 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -76,6 +74,7 @@ public class EmploiEnseignantController implements Initializable {
         Parent root= FXMLLoader.load(getClass().getResource("AjouterSeance.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 

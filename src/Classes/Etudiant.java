@@ -3,16 +3,18 @@ package Classes;
 import Connectivity.ConnectionClass;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+import sample.Dialogue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Etudiant{
 
     private StringProperty matricule, nom, prenom;
+    final ArrayList<String>  devoirsattribues = new ArrayList<String>();
 
     public Etudiant(){
         this.matricule = new SimpleStringProperty();
@@ -54,18 +56,7 @@ public class Etudiant{
     public void setPrenom(String prenom) {
         this.prenom.set(prenom);
     }
-
-    static ConnectionClass cc = new ConnectionClass();
-    static Connection conn;
-
-    static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    static Connection conn= ConnectionClass.c;
     public static String getSectionE(String id) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -153,24 +144,94 @@ public class Etudiant{
         return llen;
     }
 
-    public static Etudiant getEtudiant(String id) throws SQLException {
-        Etudiant e = new Etudiant();
 
-        PreparedStatement ps = null;
+    public void consulterDevoir(String titreDevoir) {
         ResultSet rs = null;
+        PreparedStatement ps = null;
 
-        String sql = "Select * From etudiant where matricule = ?";
-        ps = conn.prepareStatement(sql);
-        ps.setString(1,id);
+        try {
+            Connection conn = ConnectionClass.c;
 
-        rs = ps.executeQuery();
+            String sql = "Select * From devoir where titre_devoir = ?";  //aficher tous les détails du devoir pour l'étudiant
 
-        if(rs.next())
-        {
-            e.setMatricule(id);
-            e.setNom(rs.getString("nom_etudiant"));
-            e.setPrenom(rs.getString("prenom_etudiant"));
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, titreDevoir);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Devoir.setTitreDevoir(titreDevoir);
+                Devoir.setIdModule(rs.getString("id_module"));
+                Devoir.setIdProf(rs.getString("id_prof"));
+                Devoir.setDateEnvoi(rs.getDate("date_envoi"));
+                Devoir.setDateRemise(rs.getDate("date_remise"));
+                Devoir.setExplication(rs.getString("explication"));
+            }
+
+        } catch (Exception e) {
+            Dialogue.afficherDialogue(e.getMessage());
+
+        } finally {
+            try {
+                assert ps != null;
+                ps.close();
+                assert rs != null;
+                rs.close();
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+
         }
-        return e;
+
+
+    }
+
+    public ArrayList<String> voirListeDevoirs(String idSection) {
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        String titreDevoir = "";
+        String idModu = "";
+
+        try {
+            Connection conn = ConnectionClass.c;
+
+
+            String sq = "Select * From module where id_section = ?";
+            String sql = "Select * From Devoir where id_Module = ? and date_remise >CURRENT_DATE and date_envoi >CURRENT_DATE  "; //afficher les devoirs desquels le delai ne s'est pas ecroulé  //delimitation par date
+            ps = conn.prepareStatement(sq);
+            ps.setString(1,idSection);
+
+            rs = ps.executeQuery();
+
+            while  (rs.next()) {
+                idModu = rs.getString("id_module");
+            }
+
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,idModu);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                titreDevoir = rs.getString("titre_devoir");
+                devoirsattribues.add(titreDevoir);
+            }
+
+
+        } catch (Exception e) {
+
+            Dialogue.afficherDialogue(e.getMessage());
+        } finally {
+            try {
+                assert ps != null;
+                ps.close();
+                assert rs != null;
+                rs.close();
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return devoirsattribues;
     }
 }

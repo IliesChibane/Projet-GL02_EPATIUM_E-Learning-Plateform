@@ -87,16 +87,8 @@ public class Module {
         this.prof_tp = prof_tp;
     }
 
-    static ConnectionClass cc = new ConnectionClass();
-    static Connection conn;
+    static Connection  conn = ConnectionClass.c;
 
-    static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     //Methode permetant de récuperer l'integralite des modules que le prof enseigne
     public static LinkedList<Module> ModuleProf(String id) throws SQLException, ClassNotFoundException {

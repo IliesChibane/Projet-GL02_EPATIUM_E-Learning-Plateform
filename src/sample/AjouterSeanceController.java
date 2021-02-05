@@ -5,14 +5,17 @@ import Classes.Module;
 import Classes.Seance;
 import Classes.Section;
 import Classes.Utilisateur;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,6 +39,8 @@ public class AjouterSeanceController implements Initializable {
 
     @FXML
     private Label confirmation;
+    @FXML
+    private Button closeButton;
 
     Utilisateur u = new Utilisateur();
 
@@ -91,6 +96,13 @@ public class AjouterSeanceController implements Initializable {
             String DateS = Seance.DateSeance(Seance.getNumJour(j));
         //-----------------------------------------------------------
         Seance.AjoutSeane(id_setion,id_module,type.getSelectionModel().getSelectedItem(),DateS,j,horraire.getSelectionModel().getSelectedItem(),link.getText(),u.getIdd());
-        confirmation.setText("Seance Ajouter");
+        confirmation.setText("Seance Ajoutée");
+    }
+    @FXML
+    private void quit() {
+        // get a handle to the stage
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 }

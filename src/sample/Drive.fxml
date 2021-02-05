@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="418.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DriveControleur">
     <children>
-        <BorderPane prefHeight="555.0" prefWidth="721.0">
+        <BorderPane prefHeight="650.0" prefWidth="797.0">
             <top>
                 <HBox prefHeight="63.0" prefWidth="890.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
@@ -65,12 +65,12 @@
                 <TableView fx:id="table" prefHeight="479.0" prefWidth="583.0" styleClass="table" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn id="icon" fx:id="icon" prefWidth="201.0" text="Type" />
-                        <TableColumn id="name" fx:id="name" prefWidth="276.0" text="Fichiers" />
+                        <TableColumn id="name" fx:id="name" prefWidth="352.0" text="Fichiers" />
                     </columns>
                 </TableView>
             </center>
             <right>
-                <VBox prefHeight="482.0" prefWidth="27.0" BorderPane.alignment="CENTER" />
+                <VBox prefHeight="577.0" prefWidth="27.0" BorderPane.alignment="CENTER" />
             </right>
          <bottom>
             <VBox prefHeight="10.0" prefWidth="890.0" BorderPane.alignment="CENTER" />

@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="650.0" prefWidth="797.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DevoirEtudiantController">
    <children>
-      <Label layoutX="172.0" layoutY="163.0" prefHeight="110.0" prefWidth="181.0" text="devoir etudiant" />
+      <BorderPane layoutX="-1.0" prefHeight="650.0" prefWidth="797.0">
+         <top>
+            <HBox prefHeight="67.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="67.0" prefWidth="42.0" />
+                  <Label prefHeight="55.0" prefWidth="429.0" styleClass="title" text="Devoirs" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <VBox prefHeight="534.0" prefWidth="674.0" BorderPane.alignment="CENTER">
+               <children>
+                  <SplitPane prefHeight="608.0" prefWidth="674.0" styleClass="trans-btn-white-border">
+                     <items>
+                        <SplitPane dividerPositions="0.24064171122994651" prefHeight="498.0" prefWidth="672.0" styleClass="trans-btn-white-border">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Label layoutX="-2.0" layoutY="1.0" prefHeight="37.0" prefWidth="180.0" styleClass="green-text" text="      Historique" />
+                                    <ListView fx:id="devoirsAttribues" layoutX="-1.0" layoutY="38.0" onMouseClicked="#showDetailsDevoir" prefHeight="544.0" prefWidth="179.0" styleClass="trans-btn-white-border" />
+                                 </children></AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="571.0">
+                                 <children>
+                                    <Label fx:id="titre" layoutX="36.0" layoutY="27.0" prefHeight="58.0" prefWidth="495.0" styleClass="titleB" />
+                                    <Label fx:id="module" layoutX="39.0" layoutY="119.0" prefHeight="41.0" prefWidth="492.0" />
+                                    <Label fx:id="dateRemise" layoutX="40.0" layoutY="183.0" prefHeight="34.0" prefWidth="363.0" />
+                                    <Label fx:id="explication" layoutX="42.0" layoutY="234.0" prefHeight="277.0" prefWidth="479.0" />
+                                    <Button layoutX="221.0" layoutY="523.0" mnemonicParsing="false" styleClass="trans-btn-white-border" text="Marquer comme fait" />
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <VBox prefHeight="479.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <VBox prefHeight="0.0" prefWidth="721.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <VBox prefHeight="479.0" prefWidth="47.0" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>

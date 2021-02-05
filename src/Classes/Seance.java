@@ -126,16 +126,7 @@ public class Seance {
         this.prof = prof;
     }
 
-    static ConnectionClass cc = new ConnectionClass();
-    static Connection conn;
-
-    static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    static Connection conn = ConnectionClass.c;
 
     //Méthode qui permet d'obtenir les horaires disponible en vérifiant les horraire libre de la section et du prof
     public static ObservableList<String> getHorraireDispo(String id_Section, String id_Prof, String jour) throws SQLException {

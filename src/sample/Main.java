@@ -1,5 +1,5 @@
 package sample;
-
+import Connectivity.ConnectionClass;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage){
-       try { 
+       try {
+           ConnectionClass cc= new ConnectionClass();
+           cc.getConnection();
 
         Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
         Scene scene = new Scene(root);
@@ -32,7 +34,7 @@ public class Main extends Application {
 
     
     }catch(Exception e) {
-    	System.out.println(e.getMessage());
+           Dialogue.afficherDialogue(e.getMessage());
     }
     	
     }
