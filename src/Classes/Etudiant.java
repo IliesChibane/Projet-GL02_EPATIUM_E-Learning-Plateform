@@ -57,6 +57,7 @@ public class Etudiant{
         this.prenom.set(prenom);
     }
     static Connection conn= ConnectionClass.c;
+
     public static String getSectionE(String id) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -233,5 +234,25 @@ public class Etudiant{
             }
         }
         return devoirsattribues;
+    }
+
+    public static Etudiant getEtudiant(String mat) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "Select * from etudiant where matricule = ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,mat);
+        rs = ps.executeQuery();
+
+        Etudiant e = new Etudiant();
+        if(rs.next())
+        {
+            e.setMatricule(mat);
+            e.setNom(rs.getString("nom_etudiant"));
+            e.setPrenom(rs.getString("prenom_etudiant"));
+        }
+        ps.close();
+        rs.close();
+        return e;
     }
 }

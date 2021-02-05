@@ -53,17 +53,9 @@ public class Note {
         this.etudiant = etudiant;
     }
 
-    //static ConnectionClass cc = new ConnectionClass();
-    //static Connection conn;
+    static Connection conn = ConnectionClass.c;
 
-    /*static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
-
+    //recupere la note d'un etudiant dans un module (peut etre une note de cours de td ou de tp)
     public static Note getNote(String id_Module,String id_Etudiant, String t) throws SQLException {
 
         PreparedStatement ps = null;
@@ -71,7 +63,7 @@ public class Note {
 
         String sql = "Select * From notes where id_module = ? and id_etudiant = ? and Type = ?";
 
-        ps = NEM.conn.prepareStatement(sql);
+        ps = conn.prepareStatement(sql);
         ps.setString(1,id_Module);
         ps.setString(2,id_Etudiant);
         ps.setString(3,t);

@@ -66,17 +66,9 @@ public class NEM {
         Note_TP = note_TP;
     }
 
-    static ConnectionClass cc = new ConnectionClass();
-    public static Connection conn;
+    static Connection conn = ConnectionClass.c;
 
-    static {
-        try {
-            conn = cc.getConnection();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    //Recupere les notes que l'enseignant a donner a ses eleves d'une meme section dans un module particulier
     public static ObservableList<NEM> getNEM(String id_Module, String id_Section) throws SQLException {
         LinkedList<NEM> llnem = new LinkedList<>();
 
@@ -103,5 +95,33 @@ public class NEM {
         }
         return FXCollections.observableList(llnem);
 
+    }
+
+    //recupere les notes d'un etudiant dans tout les modules qu'il etudie
+    public static ObservableList<NEM> getNoteEtudiant(String mat) throws SQLException {
+        LinkedList<NEM> llnem = new LinkedList<>();
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String ids = Etudiant.getSectionE(mat);
+        LinkedList<Module> llm = Etudiant.getModule(ids);
+        String[] type = new String[3];
+        type[0] = "Exam";
+        type[1] = "TD";
+        type[2] = "TP";
+
+        for (Module m : llm)
+        {
+            NEM nem = new NEM();
+            nem.setEtudiant(Etudiant.getEtudiant(mat));
+            nem.setModule(m);
+            nem.setNote_Cours(Note.getNote(m.getId_module(),mat,type[0]));
+            nem.setNote_TD(Note.getNote(m.getId_module(),mat,type[1]));
+            nem.setNote_TP(Note.getNote(m.getId_module(),mat,type[2]));
+            llnem.add(nem);
+        }
+
+        return FXCollections.observableList(llnem);
     }
 }

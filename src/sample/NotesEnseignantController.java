@@ -2,7 +2,7 @@ package sample;
 
 import Classes.*;
 import Classes.Module;
-import javafx.beans.Observable;
+import Connectivity.ConnectionClass;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
@@ -30,9 +31,15 @@ public class NotesEnseignantController implements Initializable {
 
     Utilisateur u = new Utilisateur();
 
+    static Connection conn = ConnectionClass.c;
+
     TreeMap<String, String> NC = new TreeMap<String, String>();
     TreeMap<String, String> NTD = new TreeMap<String, String>();
     TreeMap<String, String> NTP = new TreeMap<String, String>();
+
+    TreeMap<String,Boolean> nouvelle_note_cours = new TreeMap<>();
+    TreeMap<String,Boolean>  nouvelle_note_td = new TreeMap<>();;
+    TreeMap<String,Boolean> nouvelle_note_tp = new TreeMap<>();;
 
 
     @Override
@@ -106,8 +113,14 @@ public class NotesEnseignantController implements Initializable {
             Set<String> key = NC.keySet();
             for(String NCK : key) {
                 PreparedStatement ps = null;
-                String sql = "Insert into notes values(?,?,?,?)";
-                ps = NEM.conn.prepareStatement(sql);
+
+                String sql;
+                if(!nouvelle_note_cours.get(NCK))
+                   sql = "Insert into notes values(?,?,?,?)";
+                else{
+                    sql = "Update notes set note = ? where id_module = ? and type = ? and id_etudiant = ?";
+                }
+                ps = conn.prepareStatement(sql);
                 ps.setFloat(1,Float.parseFloat(NC.get(NCK).toString()));
                 ps.setString(2,idM);
                 ps.setString(3,"Exam");
@@ -122,8 +135,13 @@ public class NotesEnseignantController implements Initializable {
             Set<String> key = NTD.keySet();
             for(String NCK : key) {
                 PreparedStatement ps = null;
-                String sql = "Insert into notes values(?,?,?,?)";
-                ps = NEM.conn.prepareStatement(sql);
+                String sql;
+                if(!nouvelle_note_td.get(NCK))
+                    sql = "Insert into notes values(?,?,?,?)";
+                else{
+                    sql = "Update notes set note = ? where id_module = ? and type = ? and id_etudiant = ?";
+                }
+                ps = conn.prepareStatement(sql);
                 ps.setFloat(1,Float.parseFloat(NTD.get(NCK).toString()));
                 ps.setString(2,idM);
                 ps.setString(3,"TD");
@@ -138,8 +156,13 @@ public class NotesEnseignantController implements Initializable {
             Set<String> key = NTP.keySet();
             for(String NCK : key) {
                 PreparedStatement ps = null;
-                String sql = "Insert into notes values(?,?,?,?)";
-                ps = NEM.conn.prepareStatement(sql);
+                String sql;
+                if(!nouvelle_note_cours.get(NCK))
+                    sql = "Insert into notes values(?,?,?,?)";
+                else{
+                    sql = "Update notes set note = ? where id_module = ? and type = ? and id_etudiant = ?";
+                }
+                ps = conn.prepareStatement(sql);
                 ps.setFloat(1,Float.parseFloat(NTP.get(NCK).toString()));
                 ps.setString(2,idM);
                 ps.setString(3,"TP");
@@ -155,6 +178,12 @@ public class NotesEnseignantController implements Initializable {
         if(!edditedCell.getNewValue().toString().equals(""))
         {
             NEM nem = TableNote.getSelectionModel().getSelectedItem();
+            if(!edditedCell.getOldValue().toString().equals(""))
+            {
+                nouvelle_note_cours.put(nem.getEtudiant().getMatricule(),true);
+            }else{
+                nouvelle_note_cours.put(nem.getEtudiant().getMatricule(),false);
+            }
             NC.put(nem.getEtudiant().getMatricule(),edditedCell.getNewValue().toString());
         }
     }
@@ -164,6 +193,12 @@ public class NotesEnseignantController implements Initializable {
         if(!edditedCell.getNewValue().toString().equals(""))
         {
             NEM nem = TableNote.getSelectionModel().getSelectedItem();
+            if(!edditedCell.getOldValue().toString().equals(""))
+            {
+                nouvelle_note_td.put(nem.getEtudiant().getMatricule(),true);
+            }else{
+                nouvelle_note_td.put(nem.getEtudiant().getMatricule(),false);
+            }
             NTD.put(nem.getEtudiant().getMatricule(),edditedCell.getNewValue().toString());
         }
     }
@@ -173,6 +208,12 @@ public class NotesEnseignantController implements Initializable {
         if(!edditedCell.getNewValue().toString().equals(""))
         {
             NEM nem = TableNote.getSelectionModel().getSelectedItem();
+            if(!edditedCell.getOldValue().toString().equals(""))
+            {
+                nouvelle_note_tp.put(nem.getEtudiant().getMatricule(),true);
+            }else{
+                nouvelle_note_tp.put(nem.getEtudiant().getMatricule(),false);
+            }
             NTP.put(nem.getEtudiant().getMatricule(),edditedCell.getNewValue().toString());
         }
     }
