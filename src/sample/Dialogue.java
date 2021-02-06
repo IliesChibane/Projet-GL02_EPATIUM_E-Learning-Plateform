@@ -23,8 +23,6 @@ public class Dialogue {
     private Label infoo = new Label();
     @FXML
     private static AnchorPane pane = new AnchorPane();
-    @FXML
-    private static Button quitter;
     private static Stage primaryStage;
 
     public static void afficherDialogue(String phrase){
@@ -56,11 +54,9 @@ public class Dialogue {
 
     @FXML
     private void quit() {
-        // get a handle to the stage
-
-        // do what you have to do
-        primaryStage.hide();
-        primaryStage.close();
+        Stage stage = (Stage) infoo.getScene().getWindow();
+        stage.hide();
+        stage.close();
     }
     private void setMessage(String msg){
         this.infoo.setWrapText(true);

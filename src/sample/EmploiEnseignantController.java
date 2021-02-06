@@ -52,6 +52,7 @@ public class EmploiEnseignantController implements Initializable {
             }
 
             javafx.scene.control.Button b = new javafx.scene.control.Button(text);
+            b.getStyleClass().add("rounded-btn"); //j'ai réjouté ceci psk tu l'as oublié x)
 
             b.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 

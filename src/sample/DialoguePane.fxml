@@ -13,6 +13,6 @@
          </font>
       </Label>
       <Label fx:id="infoo" layoutX="14.0" layoutY="49.0" prefHeight="206.0" prefWidth="371.0" styleClass="blue-text" />
-      <Button fx:id="quitter" layoutX="356.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
+      <Button layoutX="356.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
    </children>
 </AnchorPane>

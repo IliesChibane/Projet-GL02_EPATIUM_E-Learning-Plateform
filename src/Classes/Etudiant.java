@@ -14,7 +14,7 @@ import java.util.LinkedList;
 public class Etudiant{
 
     private StringProperty matricule, nom, prenom;
-    final ArrayList<String>  devoirsattribues = new ArrayList<String>();
+
 
     public Etudiant(){
         this.matricule = new SimpleStringProperty();
@@ -162,8 +162,7 @@ public class Etudiant{
 
             while (rs.next()) {
                 Devoir.setTitreDevoir(titreDevoir);
-                Devoir.setIdModule(rs.getString("id_module"));
-                Devoir.setIdProf(rs.getString("id_prof"));
+                Module.setId_module(rs.getString("id_module"));
                 Devoir.setDateEnvoi(rs.getDate("date_envoi"));
                 Devoir.setDateRemise(rs.getDate("date_remise"));
                 Devoir.setExplication(rs.getString("explication"));
@@ -193,6 +192,7 @@ public class Etudiant{
         PreparedStatement ps = null;
         String titreDevoir = "";
         String idModu = "";
+        final ArrayList<String>  devoirsattribues = new ArrayList<>();
 
         try {
             Connection conn = ConnectionClass.c;

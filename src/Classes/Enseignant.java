@@ -15,9 +15,7 @@ import java.util.Date;
 public class Enseignant {
 
     private StringProperty id, nom, prenom, email;
-    final ArrayList<String>  devoirs = new ArrayList<String>();
     private Utilisateur u = new Utilisateur();
-
     public Enseignant() {
 
         this.id = new SimpleStringProperty();
@@ -136,6 +134,7 @@ public class Enseignant {
     public ArrayList<String> afficherHistoriqueDevoirs(String idProf) {
         ResultSet rs = null;
         PreparedStatement ps = null;
+        final ArrayList<String>  devoirs = new ArrayList<String>();
 
 
         String titreDevoir = "";
@@ -192,8 +191,7 @@ public class Enseignant {
 
             while (rs.next()) {
                 Devoir.setTitreDevoir(titreDevoir);
-                Devoir.setIdModule(rs.getString("id_module"));
-                Devoir.setIdProf(rs.getString("id_prof"));
+                Module.setId_module(rs.getString("id_module"));
                 Devoir.setDateEnvoi(rs.getDate("date_envoi"));
                 Devoir.setDateRemise(rs.getDate("date_remise"));
                 Devoir.setExplication(rs.getString("explication"));

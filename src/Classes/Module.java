@@ -1,7 +1,6 @@
 package Classes;
 
 import Connectivity.ConnectionClass;
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -15,7 +14,7 @@ import java.util.LinkedList;
 
 //class module utiliser pour manipuler les information d'un module et pour stocker certaines méthodes neccesaire au fontionement du logiciel
 public class Module {
-    private StringProperty id_module;
+    private static StringProperty id_module;
     private StringProperty nom_module;
     private Section section;
     private Enseignant prof_cours;
@@ -31,7 +30,7 @@ public class Module {
         this.prof_tp = new Enseignant();
     }
 
-    public String getId_module() {
+    public static String getId_module() {
         return id_module.get();
     }
 
@@ -39,8 +38,8 @@ public class Module {
         return id_module;
     }
 
-    public void setId_module(String id_module) {
-        this.id_module.set(id_module);
+    public static void setId_module(String idMod) {
+        id_module.set(idMod);
     }
 
     public String getNom_module() {

@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AjouterSeanceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="543.0" styleClass="panevertee" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AjouterSeanceController">
    <children>
-      <ComboBox fx:id="section" layoutX="30.0" layoutY="30.0" onAction="#SetupModuleCombo" prefWidth="150.0" />
-      <ComboBox fx:id="horraire" layoutX="316.0" layoutY="99.0" onAction="#LINK" prefWidth="150.0" />
-      <ComboBox fx:id="type" layoutX="361.0" layoutY="30.0" onAction="#SetupJour" prefWidth="150.0" />
-      <ComboBox fx:id="module" layoutX="197.0" layoutY="30.0" onAction="#SetupType" prefWidth="150.0" />
-      <TextField fx:id="link" layoutX="100.0" layoutY="185.0" prefHeight="25.0" prefWidth="360.0" />
-      <Button layoutX="258.0" layoutY="265.0" mnemonicParsing="false" onAction="#Ajout" text="Button" />
-      <ComboBox fx:id="jour" layoutX="92.0" layoutY="99.0" onAction="#SetupH" prefWidth="150.0" />
+      <ComboBox fx:id="section" layoutX="30.0" layoutY="49.0" onAction="#SetupModuleCombo" prefWidth="150.0" styleClass="trans-btn-white-border" />
+      <ComboBox fx:id="horraire" layoutX="316.0" layoutY="118.0" onAction="#LINK" prefWidth="150.0" styleClass="trans-btn-white-border" />
+      <ComboBox fx:id="type" layoutX="361.0" layoutY="49.0" onAction="#SetupJour" prefWidth="150.0" styleClass="trans-btn-white-border" />
+      <ComboBox fx:id="module" layoutX="197.0" layoutY="49.0" onAction="#SetupType" prefWidth="150.0" styleClass="trans-btn-white-border" />
+      <TextField fx:id="link" layoutX="100.0" layoutY="204.0" prefHeight="25.0" prefWidth="360.0" styleClass="trans-btn-white-border" />
+      <Button layoutX="232.0" layoutY="258.0" mnemonicParsing="false" onAction="#Ajout" styleClass="trans-btn-white-border" text="Ajouter séance" />
+      <ComboBox fx:id="jour" layoutX="92.0" layoutY="118.0" onAction="#SetupH" prefWidth="150.0" styleClass="trans-btn-white-border" />
       <Label fx:id="confirmation" alignment="CENTER" layoutX="104.0" layoutY="228.0" prefHeight="17.0" prefWidth="360.0" />
+      <Button layoutX="513.0" layoutY="4.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
    </children>
 </AnchorPane>

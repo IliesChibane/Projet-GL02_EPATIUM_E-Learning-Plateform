@@ -116,7 +116,7 @@ public class DevoirEnseignantController implements Initializable {
                         if (isNowHovered && ! cell.isEmpty()) {
 
                             e.afficherDetailsDevoir(cell.getText());
-                            id_module.setText("Module: ".concat(Devoir.getIdModule()));
+                            id_module.setText("Module: ".concat(Module.getId_module()));
                             dateeEnvoi.setText("Date d'envoi: ".concat(Devoir.getDateEnvoi().toString()));
                             dateeRemise.setText("Date de Remise: ".concat(Devoir.getDateRemise().toString()));
                             stickyNotesStage.show();

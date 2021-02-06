@@ -3,8 +3,10 @@ package Classes;
 import java.util.Date;
 
 public class Devoir {
-    private static String titreDevoir, idModule, idProf, explication;
+    private static String titreDevoir,explication;
     private static Date dateEnvoi, dateRemise;
+    private static Module mod = new Module();/********************************************/
+    private static Enseignant ens = new Enseignant();/************************************/
 
 
     public static String getTitreDevoir() {
@@ -14,23 +16,6 @@ public class Devoir {
     public static void setTitreDevoir(String titreDevoir) {
         Devoir.titreDevoir = titreDevoir;
     }
-
-    public static String getIdModule() {
-        return idModule;
-    }
-
-    public static void setIdModule(String idModule) {
-        Devoir.idModule = idModule;
-    }
-
-    public static String getIdProf() {
-        return idProf;
-    }
-
-    public static void setIdProf(String idProf) {
-        Devoir.idProf = idProf;
-    }
-
     public static String getExplication() {
         return explication;
     }

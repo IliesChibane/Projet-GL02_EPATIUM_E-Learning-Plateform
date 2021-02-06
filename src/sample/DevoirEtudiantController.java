@@ -3,6 +3,7 @@ package sample;
 import Classes.Devoir;
 import Classes.Enseignant;
 import Classes.Etudiant;
+import Classes.Module;
 import Classes.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,7 +47,7 @@ public class DevoirEtudiantController implements Initializable {
         if(title != null){
             e.consulterDevoir(title);
             titre.setText(title);
-            module.setText("Module : "+Devoir.getIdModule());
+            module.setText("Module : ".concat(Module.getId_module()));
             dateRemise.setText("A rendre le : "+Devoir.getDateRemise().toString());
             explication.setText("Explication : "+Devoir.getExplication());
 
