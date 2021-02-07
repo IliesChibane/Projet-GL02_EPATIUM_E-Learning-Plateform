@@ -31,9 +31,9 @@ public class ClassroomController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        scroll.setPannable(true);
+      /*  scroll.setPannable(true);
         ScrollBar bar = getVerticalScrollbar(scroll);
-        bar.valueProperty().addListener(this::scrolled);
+        bar.valueProperty().addListener(this::scrolled);*/
     }
     void scrolled(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
         double value = newValue.doubleValue();

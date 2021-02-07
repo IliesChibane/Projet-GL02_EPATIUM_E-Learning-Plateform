@@ -5,8 +5,6 @@ import java.util.Date;
 public class Devoir {
     private static String titreDevoir,explication;
     private static Date dateEnvoi, dateRemise;
-    private static Module mod = new Module();/********************************************/
-    private static Enseignant ens = new Enseignant();/************************************/
 
 
     public static String getTitreDevoir() {
