@@ -16,7 +16,6 @@ public class Enseignant {
 
     private StringProperty id, nom, prenom, email;
     final ArrayList<String>  devoirs = new ArrayList<String>();
-    private Utilisateur u = new Utilisateur();
 
     public Enseignant() {
 

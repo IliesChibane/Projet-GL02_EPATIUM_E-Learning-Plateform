@@ -309,7 +309,7 @@ public class Seance {
 
         if(date.getDay()!=6)
         {
-            i = 6-date.getDay();
+            i = date.getDay();
         }
 
         String debutsemaine = date.toString();

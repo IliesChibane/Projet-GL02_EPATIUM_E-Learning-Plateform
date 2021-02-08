@@ -2,8 +2,6 @@ package Classes;
 
 
 import Connectivity.ConnectionClass;
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -11,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
 
 public class Note {
 
@@ -58,8 +55,8 @@ public class Note {
     //recupere la note d'un etudiant dans un module (peut etre une note de cours de td ou de tp)
     public static Note getNote(String id_Module,String id_Etudiant, String t) throws SQLException {
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        PreparedStatement ps;
+        ResultSet rs;
 
         String sql = "Select * From notes where id_module = ? and id_etudiant = ? and Type = ?";
 
