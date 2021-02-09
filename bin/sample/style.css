@@ -136,3 +136,9 @@
 -fx-text-fill: #151928;
 -fx-font-size : 30;
 }
+.scroll-bar:vertical .thumb {
+    -fx-background-color:  #82C46C;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+    -fx-pref-width: 16.5;
+}
