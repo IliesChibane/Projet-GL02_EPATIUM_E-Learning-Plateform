@@ -121,6 +121,7 @@ public class MenuEnseignantControleur {
     public void getEtudiants(){
         getPage("EtudiantsEnseignant");
     }
+    @FXML
     public void getClassroom(){
         getPage("Classroom");
     }

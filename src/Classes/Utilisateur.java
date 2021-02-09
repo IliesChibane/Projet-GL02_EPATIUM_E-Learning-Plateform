@@ -19,6 +19,7 @@ public class Utilisateur {
 	private static String nom, prenom, idd, section;  //on a besoin de es infos pour les afficher dans le menu
 	final ObservableList<Fichier> data = FXCollections.observableArrayList();
 
+
 	public Utilisateur()
 	{
 
@@ -344,6 +345,53 @@ public class Utilisateur {
 
 
 	}
+
+	public ObservableList chargerAnnonce(){
+		ObservableList<Annonce> items = FXCollections.observableArrayList();
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+
+		try {
+			Connection conn = ConnectionClass.c;
+
+			String sql = "Select * From Annonce order by date_publication asc";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Annonce a = new Annonce();
+
+				a.setContenu(rs.getString("contenu"));
+
+				// Module.setId_module(rs.getString("id_module"));   /////////////////elle pose un prob wtf ???
+
+				a.setDatePubli(rs.getTimestamp("date_publication"));
+
+				a.getE().setId(rs.getString("id_prof"));
+
+				items.add(a);
+			}
+
+		} catch (Exception ex) {
+
+
+		} finally {
+			try {
+				assert ps != null;
+				ps.close();
+				assert rs != null;
+				rs.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+		return items;
+	}
+
+
 }
 
 

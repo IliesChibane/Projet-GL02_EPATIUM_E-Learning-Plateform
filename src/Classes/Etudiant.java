@@ -3,6 +3,8 @@ package Classes;
 import Connectivity.ConnectionClass;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import sample.Dialogue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -255,4 +257,6 @@ public class Etudiant{
         rs.close();
         return e;
     }
+
+
 }

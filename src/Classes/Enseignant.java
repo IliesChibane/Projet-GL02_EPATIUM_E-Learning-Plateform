@@ -15,6 +15,7 @@ import java.util.Date;
 public class Enseignant {
 
     private StringProperty id, nom, prenom, email;
+
     private Utilisateur u = new Utilisateur();
     public Enseignant() {
 

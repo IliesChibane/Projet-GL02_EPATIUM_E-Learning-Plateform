@@ -117,6 +117,7 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     public void getEnseignants(){
         getPage("EnseignantsEtudiant");
     }
+    @FXML
     public void getClassroom(){
         getPage("Classroom");
     }
