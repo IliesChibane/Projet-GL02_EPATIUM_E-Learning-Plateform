@@ -58,7 +58,10 @@ public class NotesEnseignantController implements Initializable {
 
     public void SetupModuleCombo() throws SQLException, ClassNotFoundException {
 
+        TableNote.setItems(null);
         module.setDisable(false);
+        module.accessibleTextProperty().set("");
+        module.setItems(null);
         module.setItems(Module.SetComboM(Module.ModuleProf(u.getIdd()),section.getSelectionModel().getSelectedItem()));
     }
 
@@ -66,7 +69,7 @@ public class NotesEnseignantController implements Initializable {
 
         TableNote.setItems(null);
 
-        String idS = Section.GetIDS(section.getSelectionModel().getSelectedItem());
+        String idS = section.getSelectionModel().getSelectedItem();
         String idM = Module.getIDMODULE(module.getSelectionModel().getSelectedItem(),idS);
         Module m = Module.getModule(idM);
         ObservableList<NEM> llnem = NEM.getNEM(idM,idS);
@@ -82,22 +85,34 @@ public class NotesEnseignantController implements Initializable {
 
         boolean a,b,c;
 
+        if(idM != null){
         a = Module.getModule(idM).getProf_cours().getId().equals(u.getIdd());
         b = Module.getModule(idM).getProf_td().getId().equals(u.getIdd());
-        c = Module.getModule(idM).getProf_td().getId().equals(u.getIdd());
+        c = Module.getModule(idM).getProf_tp().getId().equals(u.getIdd());
 
         if(!a)
         {
             ExamC.setEditable(false);
         }
+        else{
+            ExamC.setEditable(true);
+        }
+
         if(!b)
         {
             TDC.setEditable(false);
         }
+        else{
+            TDC.setEditable(true);
+        }
+
         if(!c)
         {
             TPC.setEditable(false);
         }
+        else{
+            TPC.setEditable(true);
+        }}
 
     }
 
@@ -105,7 +120,7 @@ public class NotesEnseignantController implements Initializable {
     public void Noter() throws SQLException {
         boolean a=ExamC.isEditable(),b=TDC.isEditable(),c=TPC.isEditable();
         LinkedList<NEM> llnem = new LinkedList<>();
-        String idS = Section.GetIDS(section.getSelectionModel().getSelectedItem());
+        String idS = section.getSelectionModel().getSelectedItem();
         String idM = Module.getIDMODULE(module.getSelectionModel().getSelectedItem(),idS);
 
         if(a)

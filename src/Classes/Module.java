@@ -156,8 +156,8 @@ public class Module {
             if(rs1.next())
             {
                 m.section.setCode_Section(rs1.getString("code_section"));
-                m.section.setSpecialite(rs1.getString(3));
-                m.section.setAnnee_scolaire(rs1.getString(4));
+                m.section.setSpecialite(rs1.getString("specialite"));
+                m.section.setAnnee_scolaire(rs1.getString("annee_scolaire"));
             }
 
             rs1.close();
@@ -178,7 +178,9 @@ public class Module {
         for (Module m : llm)
         {
             //On récupére l'année la spéciallité et le code de la section pour connaitre la section exacte par exemple L3 ISIL B
-            lls.add(m.getSection().getAnnee_scolaire()+" "+m.getSection().getSpecialite()+" "+m.getSection().getCode_Section());
+            String codeSection = m.getSection().getId_Section();
+            if(!lls.contains(codeSection))
+              lls.add(codeSection);
         }
 
         return FXCollections.observableList(lls);

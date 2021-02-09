@@ -1,17 +1,13 @@
 package Classes;
 
 import Connectivity.ConnectionClass;
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Section
@@ -77,30 +73,6 @@ public class Section
     }
 
     static Connection conn = ConnectionClass.c;
-
-    //Méthode me permettant de récupérer l'id de la section de la bdd cette méthode m'a servis dans pas mal de cas
-    public static String GetIDS(String sec) throws SQLException {
-        ResultSet rs =null;
-        PreparedStatement ps = null;
-        String[] s;
-
-        s = sec.split(" ");
-
-        String sql = "Select * from section where annee_scolaire = ? and specialite = ? and code_section = ?";
-
-        ps = conn.prepareStatement(sql);
-        ps.setString(1, s[0]);
-        ps.setString(2, s[1]);
-        ps.setString(3, s[2]);
-        rs = ps.executeQuery();
-
-        if(rs.next())
-        {
-            return rs.getString(1);
-        }
-        else
-            return null;
-    }
 
     public static LinkedList<Etudiant> getEtudiantSection(String idS) throws SQLException {
 

@@ -64,21 +64,33 @@ public class AjouterSeanceController implements Initializable {
 
         module.setDisable(false);
         module.setItems(Module.SetComboM(Module.ModuleProf(u.getIdd()),section.getSelectionModel().getSelectedItem()));
+        type.setDisable(true);
+        horraire.setDisable(true);
+        link.setDisable(true);
+        jour.setDisable(true);
+        jour.accessibleTextProperty().set("");
+        horraire.accessibleTextProperty().set("");
+        link.accessibleTextProperty().set("");
     }
 
     public void SetupType() throws SQLException, ClassNotFoundException {
         type.setDisable(false);
         type.setItems(Module.SetComboT(Module.ModuleProf(u.getIdd()),section.getSelectionModel().getSelectedItem(),module.getSelectionModel().getSelectedItem(),u.getIdd()));
+        horraire.setDisable(true);
+        link.setDisable(true);
+        jour.setDisable(true);
     }
 
     public void SetupJour(){
         jour.setDisable(false);
         jour.setItems(FXCollections.observableArrayList(JourSemaine.values()));
+        horraire.setDisable(true);
+        link.setDisable(true);
     }
 
     public void SetupH() throws SQLException {
         horraire.setDisable(false);
-        horraire.setItems(Seance.getHorraireDispo(Section.GetIDS(section.getSelectionModel().getSelectedItem()),u.getIdd(),jour.getSelectionModel().getSelectedItem().toString()));
+        horraire.setItems(Seance.getHorraireDispo(section.getSelectionModel().getSelectedItem(),u.getIdd(),jour.getSelectionModel().getSelectedItem().toString()));
     }
 
     public void LINK(){
@@ -87,7 +99,7 @@ public class AjouterSeanceController implements Initializable {
 
     //Méthode qui permet d'ajouter une seance a la bdd
     public void Ajout() throws SQLException, ParseException {
-        String id_setion = Section.GetIDS(section.getSelectionModel().getSelectedItem());
+        String id_setion = section.getSelectionModel().getSelectedItem();
         String id_module = Module.getIDMODULE(module.getSelectionModel().getSelectedItem(),id_setion);
         String j = jour.getSelectionModel().getSelectedItem().toString();
         //----------obtention de la date courante--------------------

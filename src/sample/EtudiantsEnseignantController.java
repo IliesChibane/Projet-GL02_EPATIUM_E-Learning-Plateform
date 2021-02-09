@@ -38,7 +38,7 @@ public class EtudiantsEnseignantController implements Initializable {
     public void RemplirListe() throws SQLException {
 
         ListeEtudiant.setItems(null);
-        LinkedList<Etudiant> lle = Section.getEtudiantSection(Section.GetIDS(section.getSelectionModel().getSelectedItem()));
+        LinkedList<Etudiant> lle = Section.getEtudiantSection(section.getSelectionModel().getSelectedItem());
 
        ObservableList<Etudiant> le = FXCollections.observableArrayList();
         for(Etudiant e : lle)
