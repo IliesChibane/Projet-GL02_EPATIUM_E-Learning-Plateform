@@ -19,7 +19,7 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="ListeEnseignant" prefHeight="548.0" prefWidth="597.0">
+                  <TableView fx:id="ListeEnseignant" onMouseClicked="#loadThing" prefHeight="548.0" prefWidth="597.0">
                     <columns>
                       <TableColumn fx:id="Matriculle" prefWidth="75.0" text="ID" />
                       <TableColumn fx:id="Nom" prefWidth="151.0" text="Nom" />

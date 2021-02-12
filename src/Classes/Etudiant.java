@@ -155,7 +155,7 @@ public class Etudiant{
         try {
             Connection conn = ConnectionClass.c;
 
-            String sql = "Select * From devoir where titre_devoir = ?";  //aficher tous les détails du devoir pour l'étudiant
+            String sql = "Select * From devoir where titre_devoir = ?";  //aficher tous les d?tails du devoir pour l'?tudiant
 
             ps = conn.prepareStatement(sql);
             ps.setString(1, titreDevoir);
@@ -201,7 +201,7 @@ public class Etudiant{
 
 
             String sq = "Select * From module where id_section = ?";
-            String sql = "Select * From Devoir where id_Module = ? and date_remise >CURRENT_DATE and date_envoi >CURRENT_DATE  "; //afficher les devoirs desquels le delai ne s'est pas ecroulé  //delimitation par date
+            String sql = "Select * From Devoir where id_Module = ? and date_remise >CURRENT_DATE and date_envoi >CURRENT_DATE  "; //afficher les devoirs desquels le delai ne s'est pas ecroul?  //delimitation par date
             ps = conn.prepareStatement(sq);
             ps.setString(1,idSection);
 

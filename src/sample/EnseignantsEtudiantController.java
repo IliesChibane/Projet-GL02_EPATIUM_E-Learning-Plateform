@@ -6,13 +6,26 @@ import Classes.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class EnseignantsEtudiantController implements Initializable {
@@ -24,6 +37,8 @@ public class EnseignantsEtudiantController implements Initializable {
     @FXML private TableColumn<Enseignant, String> Nom;
     @FXML private TableColumn<Enseignant, String> Prenom;
     @FXML private TableColumn<Enseignant, String> mail;
+
+
 
     Utilisateur u = new Utilisateur();
 
@@ -49,4 +64,15 @@ public class EnseignantsEtudiantController implements Initializable {
             ListeEnseignant.setItems(le);
         }
     }
+    public void loadThing() throws IOException {
+        Stage primaryStage =new Stage();
+        Parent root= FXMLLoader.load(getClass().getResource("Email.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.show();
+
+    }
+
+
 }

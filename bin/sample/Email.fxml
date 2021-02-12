@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="585.0" styleClass="panevertee" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmailControleur">
+    <children>
+      <BorderPane prefHeight="661.0" prefWidth="617.0">
+         <top>
+            <HBox prefHeight="62.0" prefWidth="617.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="68.0" prefWidth="586.0">
+                     <children>
+                        <Label prefHeight="45.0" prefWidth="302.0" styleClass="titleB" text="Envoyer un e-mail">
+                           <VBox.margin>
+                              <Insets left="30.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                          <Button fx:id="closeButton" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X">
+                           <VBox.margin>
+                              <Insets right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox prefHeight="64.0" prefWidth="617.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="87.0" prefWidth="617.0">
+                     <children>
+                          <Button mnemonicParsing="false" onAction="#envoyerEmail" styleClass="trans-btn-white-border" text="Ajouter séance" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="71.0" prefWidth="496.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="161.0">
+                           <children>
+                              <Label text="Envoyer à " />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="338.0">
+                           <children>
+                              <TextField fx:id="mailto" prefWidth="301.0" styleClass="trans-btn-white-border" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="71.0" prefWidth="496.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="161.0">
+                           <children>
+                              <Label text="Mon Gmail" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="338.0">
+                           <children>
+                              <TextField fx:id="mailfrom" styleClass="trans-btn-white-border" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="71.0" prefWidth="496.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="161.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="107.0" text="Mot de passe " />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="338.0">
+                           <children>
+                              <PasswordField fx:id="password" styleClass="trans-btn-white-border" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="71.0" prefWidth="496.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="161.0">
+                           <children>
+                              <Label text="Objet" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="338.0">
+                           <children>
+                              <TextField fx:id="subject" styleClass="trans-btn-white-border" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="253.0" prefWidth="519.0">
+                     <children>
+                        <HBox alignment="TOP_CENTER" prefHeight="253.0" prefWidth="114.0">
+                           <children>
+                              <Label text="Message" />
+                           </children>
+                        </HBox>
+                        <TextArea fx:id="contenu" prefHeight="238.0" prefWidth="407.0" styleClass="trans-btn-white-border" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+    </children>
+</AnchorPane>

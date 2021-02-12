@@ -30,8 +30,6 @@ import java.util.ResourceBundle;
 
 public class ClassroomController extends ScrollPane implements Initializable {
 
-    private final static int TRANSITION_DURATION = 200;
-    private final static double BASE_MODIFIER = 1;
 
     @FXML
     AnchorPane anchorpane;
@@ -79,7 +77,6 @@ public class ClassroomController extends ScrollPane implements Initializable {
             ImageView img = new ImageView(new Image("/Pictures/empty.png",500,500,false,false));  // on leur affiche que c'est fini
             vboxx.getChildren().add(img);
         }
-
         int l = 0;
         while ( i < j && l <2) {
             if (posts.get(i).isPub() == false) {
@@ -161,14 +158,7 @@ public class ClassroomController extends ScrollPane implements Initializable {
         double value = newValue.doubleValue();
          System.out.println("Scrolled to " + value);
         ScrollBar bar = getVerticalScrollbar(anchorpane);
-        bar.setOnScroll(new EventHandler<ScrollEvent>(){
-            @Override
-            public void handle(ScrollEvent event) {
 
-            }
-
-
-        });
         if (value == bar.getMax()) {
 
             //vboxx.getChildren().removeAll();
@@ -179,6 +169,5 @@ public class ClassroomController extends ScrollPane implements Initializable {
             bar.setValue(60);   //on reset le scrollbar
         }
     }
-
 
 }
