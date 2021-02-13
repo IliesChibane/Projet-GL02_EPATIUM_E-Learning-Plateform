@@ -22,18 +22,21 @@ import java.net.URL;
 
 public class MenuEtudiantControleur { // ce truc est fait pour controler le classromm / pareil pout MenuEnseignantControleur
 
-    private Parent fxml;
 
     @FXML
     Button decon;
+    @FXML
+    Button param;
 
     @FXML
     public void showDeco(){
         decon.setVisible(true);
+        param.setVisible(true);
     }
     @FXML
     public void hideDeco(){
         decon.setVisible(false);
+        param.setVisible(false);
     }
 
     Utilisateur u = new Utilisateur();

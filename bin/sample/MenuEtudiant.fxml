@@ -69,18 +69,33 @@
             </VBox>
          </left>
          <right>
-            <VBox prefHeight="646.0" prefWidth="81.0" BorderPane.alignment="CENTER">
+            <VBox onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="646.0" prefWidth="81.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" onMouseEntered="#showDeco" onMouseExited="#hideDeco" prefHeight="67.0" prefWidth="82.0">
+                  <HBox alignment="CENTER" prefHeight="147.0" prefWidth="81.0">
                      <children>
-                        <Button fx:id="decon" mnemonicParsing="false" onMouseClicked="#deco" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" text="Déconnexion">
+                        <Button fx:id="param" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" text="Paramètres">
+                           <font>
+                              <Font name="System Bold" size="9.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="475.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="126.0" prefWidth="81.0">
+                     <children>
+                        <Button fx:id="decon" mnemonicParsing="false" onMouseClicked="#deco" prefHeight="217.0" prefWidth="70.0" styleClass="rounded-btn" text="Déconnexion">
                            <font>
                               <Font name="System Bold" size="9.0" />
                            </font>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets top="550.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
                </children>

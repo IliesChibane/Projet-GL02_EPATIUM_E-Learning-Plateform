@@ -41,6 +41,8 @@ public class MenuEnseignantControleur {
 
     @FXML
     private ImageView photoProfile;
+    @FXML
+    Button param;
 
     private Utilisateur u = new Utilisateur();
 
@@ -59,13 +61,16 @@ public class MenuEnseignantControleur {
         photoProfile.setImage(new Image("/Pictures/teacher.png",550,525,false,false));
     }
 
+
     @FXML
     public void showDeco(){
         decon.setVisible(true);
+        param.setVisible(true);
     }
     @FXML
     public void hideDeco(){
         decon.setVisible(false);
+        param.setVisible(false);
     }
 
     @FXML
