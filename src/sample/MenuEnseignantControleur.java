@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -38,15 +39,25 @@ public class MenuEnseignantControleur {
     @FXML
     private BorderPane enseignantPane;
 
+    @FXML
+    private ImageView photoProfile;
+
     private Utilisateur u = new Utilisateur();
 
 
     public void setUser(){
         nomm.setText(u.getNom());
+        nomm.getStyleClass().add("white-text");
         prenoom.setText(u.getPrenom());
+        prenoom.getStyleClass().add("white-text");
         iddd.setText(u.getIdd());
-    }
+        iddd.getStyleClass().add("white-text");
+        setPhotoProfile();
 
+    }
+    public void setPhotoProfile(){
+        photoProfile.setImage(new Image("/Pictures/teacher.png",550,525,false,false));
+    }
 
     @FXML
     public void showDeco(){

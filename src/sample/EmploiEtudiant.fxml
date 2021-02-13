@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmploiEtudiant">
+<AnchorPane maxHeight="650.0" maxWidth="797.0" prefHeight="650.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmploiEtudiant">
    <children>
-      <BorderPane prefHeight="584.0" prefWidth="759.0">
+      <BorderPane maxHeight="650.0" maxWidth="797.0" prefHeight="584.0" prefWidth="759.0">
          <top>
             <Label prefHeight="55.0" prefWidth="797.0" styleClass="title" stylesheets="@style.css" text="Mon emploi du temps" BorderPane.alignment="CENTER" />
          </top>

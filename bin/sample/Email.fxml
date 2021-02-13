@@ -43,7 +43,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="87.0" prefWidth="617.0">
                      <children>
-                          <Button mnemonicParsing="false" onAction="#envoyerEmail" styleClass="trans-btn-white-border" text="Ajouter séance" />
+                          <Button mnemonicParsing="false" onAction="#envoyerEmail" styleClass="trans-btn-white-border" text="Envoyer E-Mail" />
                      </children>
                   </VBox>
                </children>

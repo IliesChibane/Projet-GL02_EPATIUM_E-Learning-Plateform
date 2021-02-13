@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="797.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.EmploiEnseignantController">
    <children>
-      <BorderPane prefHeight="555.0" prefWidth="721.0">
+      <BorderPane maxHeight="650.0" maxWidth="797.0" prefHeight="650.0" prefWidth="797.0">
          <top>
             <Label prefHeight="55.0" prefWidth="678.0" styleClass="title" text="Mon emploi du temps" BorderPane.alignment="CENTER" />
          </top>
@@ -135,12 +135,14 @@
             <HBox prefHeight="66.0" prefWidth="721.0" BorderPane.alignment="BOTTOM_CENTER">
                <children>
                   <VBox prefHeight="73.0" prefWidth="721.0" />
-                  <VBox alignment="CENTER" prefHeight="73.0" prefWidth="721.0" />
+                  <VBox alignment="CENTER" prefHeight="73.0" prefWidth="721.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#testM" prefHeight="34.0" prefWidth="98.0" styleClass="trans-btn-white-border" text="Ajouter Seance" />
+                     </children></VBox>
                   <VBox prefHeight="73.0" prefWidth="721.0" />
                </children>
             </HBox>
          </bottom>
       </BorderPane>
-      <Button layoutX="361.0" layoutY="555.0" mnemonicParsing="false" onAction="#testM" prefHeight="34.0" prefWidth="98.0" styleClass="trans-btn-white-border" text="Ajouter Seance" />
    </children>
 </AnchorPane>

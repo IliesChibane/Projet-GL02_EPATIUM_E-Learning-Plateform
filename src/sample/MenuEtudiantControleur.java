@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -46,11 +47,22 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     @FXML
     private BorderPane etudiantPane;
 
+    @FXML
+    private ImageView photoProfile;
+
 
     public void setUser(){  // on recup les infos de l'utilisateur pour les afficher dans le toolbar (appelle a cette méthode dans MenuEtudiant
         nom.setText(u.getNom());
+        nom.getStyleClass().add("white-text");
         prenom.setText(u.getPrenom());
+        prenom.getStyleClass().add("white-text");
         id.setText(u.getIdd());
+        id.getStyleClass().add("white-text");
+        setPhotoProfile();
+
+    }
+    public void setPhotoProfile(){
+        photoProfile.setImage(new Image("/Pictures/student.png",550,525,false,false));
     }
 
     @FXML
