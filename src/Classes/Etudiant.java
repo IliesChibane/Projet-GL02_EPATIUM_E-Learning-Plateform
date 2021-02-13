@@ -3,8 +3,6 @@ package Classes;
 import Connectivity.ConnectionClass;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import sample.Dialogue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -60,6 +58,7 @@ public class Etudiant{
     }
     static Connection conn= ConnectionClass.c;
 
+    //Methode permettant d'obtenir l'id de la section de l'etudiant cette methode est regulierement utiliser
     public static String getSectionE(String id) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -76,6 +75,7 @@ public class Etudiant{
         }
         return "";
     }
+    //Cette methode permet d'obtenir lla liste des module que l'etudiant etudie
     public static LinkedList<Module> getModule(String id) throws SQLException {
 
         LinkedList<Module> llm = new LinkedList<>();
@@ -105,6 +105,7 @@ public class Etudiant{
         return llm;
     }
 
+    //Cette methode permet d'obtenir la liste des enseignants qui enseigne le dite etudiant
     public static LinkedList<Enseignant> getListeEnseignant(LinkedList<Module> llm) throws SQLException {
         LinkedList<Enseignant> llen = new LinkedList<>();
 
@@ -113,6 +114,7 @@ public class Etudiant{
 
         String sql = "SELECT * FROM enseignant where id_prof = ANY (?)";
 
+        /*Pour utiliser ANY en java sql il faut creer un tableau contenant l'ensemble des valeurs*/
         String[] id = new String[100];
         int i =0;
 
@@ -125,6 +127,7 @@ public class Etudiant{
             id[i] = m.getProf_tp().getId();
             i++;
         }
+        /*********************************************************************************************/
 
         ps = conn.prepareStatement(sql);
 
@@ -139,7 +142,7 @@ public class Etudiant{
             e.setId(rs.getString(1));
             e.setNom(rs.getString(2));
             e.setPrenom(rs.getString(3));
-            e.setEmail("mail");
+            e.setEmail(rs.getString("email"));
 
             llen.add(e);
         }
@@ -238,6 +241,7 @@ public class Etudiant{
         return devoirsattribues;
     }
 
+    //Cette methode perme d'obtenir l'ensemble des infos de l'etudiant via sont matricule
     public static Etudiant getEtudiant(String mat) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;

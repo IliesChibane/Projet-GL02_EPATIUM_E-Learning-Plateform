@@ -2,6 +2,7 @@ package Classes;
 
 import java.io.*;
 import java.sql.*;
+import java.util.LinkedList;
 import java.util.function.Predicate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -156,8 +157,8 @@ public class Utilisateur {
 				ps.setString(1, id);
 				ps.setString(2, nom);
 				ps.setString(3, prenom);
-				ps.setString(4, mdp);
-				ps.setInt(5, groupe);
+				ps.setInt(4, groupe);
+				ps.setString(5, mdp);
 				String concat = niveau +" "+specialite+" "+section;
 				ps.setString(6, concat);
 
@@ -187,6 +188,7 @@ public class Utilisateur {
 		return status;
 
 	}
+
 
 
 
@@ -354,8 +356,27 @@ public class Utilisateur {
 		try {
 			Connection conn = ConnectionClass.c;
 
-			String sql = "Select * From Annonce order by date_publication asc";
-			ps = conn.prepareStatement(sql);
+			String sql;
+			if(typeUtilisateur(idd).equals("Prof")){
+				sql= "Select * From Annonce where id_prof = ? order by date_publication asc";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1,idd);
+			}
+			else{
+				sql= "Select * From Annonce where id_module = any (?) order by date_publication asc";
+				ps = conn.prepareStatement(sql);
+				LinkedList<Module> llm = Etudiant.getModule(Etudiant.getSectionE(idd));
+				String[] id = new String[100];
+				int i =0;
+				for(Module m : llm)
+				{
+					id[i] = Module.getIDMODULE(m.getNom_module(),m.getSection().getId_Section());
+					i++;
+				}
+				ps.setArray(1, conn.createArrayOf("text", id));
+			}
+
+
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -380,8 +401,8 @@ public class Utilisateur {
 			try {
 				assert ps != null;
 				ps.close();
-				assert rs != null;
-				rs.close();
+				//assert rs != null;
+				//rs.close();
 			} catch (SQLException e) {
 
 				e.printStackTrace();
@@ -391,7 +412,11 @@ public class Utilisateur {
 		return items;
 	}
 
-
+	public static String typeUtilisateur(String id){
+		if(id.contains("E"))
+			return "Prof";
+		else return "Etudiant";
+	}
 }
 
 

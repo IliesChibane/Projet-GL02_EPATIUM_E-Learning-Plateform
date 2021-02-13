@@ -47,6 +47,27 @@ public class Annonce {
         this.e = e;
     }
 
+    static Connection  conn = ConnectionClass.c;
+
+    //Cette méthode permert d'ajouter une annonce dans la bdd elle est utilisé dans le Controller Classroom
+    public static void AjoutAnonce(String contenu,String idm,String idp,Timestamp ts) throws SQLException {
+
+        PreparedStatement ps;
+
+        String sql = "insert into annonce values(?,?,?,?)";
+
+        ps =  conn.prepareStatement(sql);
+        ps.setString(1,contenu);
+        ps.setString(2,idm);
+        ps.setString(3,idp);
+        ps.setTimestamp(4,ts);
+
+        ps.executeUpdate();
+
+        ps.close();
+
+    }
+
 
 
 }

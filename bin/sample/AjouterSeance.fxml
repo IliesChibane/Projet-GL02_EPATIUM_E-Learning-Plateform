@@ -16,6 +16,6 @@
       <Button layoutX="232.0" layoutY="258.0" mnemonicParsing="false" onAction="#Ajout" styleClass="trans-btn-white-border" text="Ajouter séance" />
       <ComboBox fx:id="jour" layoutX="92.0" layoutY="118.0" onAction="#SetupH" prefWidth="150.0" styleClass="trans-btn-white-border" />
       <Label fx:id="confirmation" alignment="CENTER" layoutX="104.0" layoutY="228.0" prefHeight="17.0" prefWidth="360.0" />
-      <Button layoutX="513.0" layoutY="4.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
+      <Button fx:id="closeButton" layoutX="513.0" layoutY="4.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
    </children>
 </AnchorPane>

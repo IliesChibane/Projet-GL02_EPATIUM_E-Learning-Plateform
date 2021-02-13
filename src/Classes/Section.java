@@ -74,6 +74,7 @@ public class Section
 
     static Connection conn = ConnectionClass.c;
 
+    //Cette methode permet de récupérer la liste des étudiants de la section
     public static LinkedList<Etudiant> getEtudiantSection(String idS) throws SQLException {
 
         ResultSet rs =null;
@@ -102,6 +103,7 @@ public class Section
         return lle;
     }
 
+    //Cette methode permet de récupérer les infos d'une section
     public static Section getSection(String id) throws SQLException {
 
         Section s = new Section();

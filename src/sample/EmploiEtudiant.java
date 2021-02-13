@@ -38,13 +38,14 @@ public class EmploiEtudiant implements Initializable {
 
             String text = null;
             try {
-                text = s.getType()+" "+ Module.getModule(s.getModule().getId_module()).getNom_module()+" "+ Section.getSection(s.getSection().getId_Section()).getAnnee_scolaire()+" "+Section.getSection(s.getSection().getId_Section()).getSpecialite()+" "+Section.getSection(s.getSection().getId_Section()).getCode_Section();
+                text = s.getType()+" "+ Module.getModule(s.getModule().getId_module()).getNom_module();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
             javafx.scene.control.Button b = new javafx.scene.control.Button(text);
             b.getStyleClass().add("rounded-btn");
+            b.setPrefSize(114,75);
 
             b.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 

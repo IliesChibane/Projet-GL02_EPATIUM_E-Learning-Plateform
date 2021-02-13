@@ -345,7 +345,7 @@ public class Seance {
             s.getProf().setId(id);
             s.setType(rs.getString("types"));
             s.setLien(rs.getString("link"));
-            s.getModule().setId_module(rs.getString("id_module"));
+            s.setModule(Module.getModule(rs.getString("id_module")));
             s.setJour(rs.getString("jour"));
             s.setDate(rs.getString("dates"));
 
@@ -380,6 +380,59 @@ public class Seance {
             lls.add(s);
         }
         return lls;
+    }
+
+    //Cette methode permet de modifier les infos d'une seance
+    public static void ModifSeance(String j,String h, String dateS,String l,String id,String jj, String hh, String dd) throws SQLException {
+
+        PreparedStatement ps = null;
+        String sql = "UPDATE seance set horaire = ?, jour = ?, link = ?, dates = ? where id_section = ? and horaire = ? and jour = ? and dates = ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,h);
+        ps.setString(2,j);
+        ps.setString(3,l);
+        ps.setString(4,dateS);
+        ps.setString(5,id);
+        ps.setString(6,hh);
+        ps.setString(7,jj);
+        ps.setString(8,dd);
+
+        ps.executeUpdate();
+
+        ps.close();
+    }
+
+    //Cette methode permet de supprimer les infos d'une seance
+    public static void SuppSeance(String id,String jj, String hh, String dd) throws SQLException {
+
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM seance WHERE id_section = ? and horaire = ? and jour = ? and dates = ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,id);
+        ps.setString(2,hh);
+        ps.setString(3,jj);
+        ps.setString(4,dd);
+
+        ps.executeUpdate();
+
+        ps.close();
+    }
+
+    //Cette methode permet de supprimer les veilles seances s'excute automatiquement au lancement ddu programme
+    public static void InitSuppSeance() throws SQLException {
+
+        long millis = System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM seance WHERE dates < ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,sdf.format(date));
+
+        System.out.println(sdf.format(date));
+        ps.executeUpdate();
+
+        ps.close();
     }
 
     //permet d'ouvrir la réunion sur le navigateur par défaut de l'utilisateur

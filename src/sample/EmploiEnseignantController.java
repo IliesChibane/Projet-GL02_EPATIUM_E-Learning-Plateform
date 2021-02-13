@@ -8,13 +8,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -28,6 +29,8 @@ public class EmploiEnseignantController implements Initializable {
     private GridPane gp;
 
     Utilisateur u = new Utilisateur();
+
+    static Seance seance;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,28 +46,43 @@ public class EmploiEnseignantController implements Initializable {
             //on détermine la colone et la ligne ou se doit se trouver la seance
             int l = Seance.getNumJourE(s.getJour())+1;
             int c = Seance.NumHeure(s.getHorraire())+1;
+            seance = s;
 
             String text = null;
-            try {
-                text = s.getType()+" "+ Module.getModule(s.getModule().getId_module()).getNom_module()+" "+Section.getSection(s.getSection().getId_Section()).getAnnee_scolaire()+" "+Section.getSection(s.getSection().getId_Section()).getSpecialite()+" "+Section.getSection(s.getSection().getId_Section()).getCode_Section();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            text = s.getType()+" "+ s.getModule().getNom_module()+" "+s.getSection().getId_Section();
 
             javafx.scene.control.Button b = new javafx.scene.control.Button(text);
-            b.getStyleClass().add("rounded-btn"); //j'ai rajouté ceci psk tu l'as oublié x)
+            b.getStyleClass().add("rounded-btn");
+            b.setPrefSize(114,75);
+            b.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+                if (mouseEvent.getButton() == MouseButton.PRIMARY){
+                try {
+                    Seance.openSeanceProf(u.getIdd(),s.getHorraire(),s.getJour());
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }}
+            });
+            //en cas de clique droit ouvre une autre fenetre permettant de modifier ou supprimer la seance
+            b.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<>() {
+                @Override
+                public void handle(MouseEvent e) {
+                    if (e.getButton() == MouseButton.SECONDARY) {
+                        Stage primaryStage = new Stage();
 
-            b.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            try {
-                                Seance.openSeanceProf(u.getIdd(),s.getHorraire(),s.getJour());
-                            } catch (SQLException throwables) {
-                                throwables.printStackTrace();
-                            }
+                        Parent root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("ModifierSupprimerSeance.fxml"));
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
                         }
-                    });
+                        assert root != null;
+                        Scene scene = new Scene(root);
+                        primaryStage.setScene(scene);
+                        primaryStage.initStyle(StageStyle.UNDECORATED);
+                        primaryStage.show();
+                    }
+                }
+            });
             gp.add(b,c,l);
         }
     }

@@ -22,7 +22,7 @@ public class Module {
     private Enseignant prof_tp;
 
     public Module() {
-        this.id_module = new SimpleStringProperty();
+        id_module = new SimpleStringProperty();
         this.nom_module = new SimpleStringProperty();
         this.section = new Section();
         this.prof_cours = new Enseignant();
@@ -238,7 +238,7 @@ public class Module {
             return rs.getString(1);
         return null;
     }
-
+    //Cette methode perme d'obtenir l'ensemble des infos du module via sont id
     public static Module getModule(String id) throws SQLException {
         Module m = new Module();
 
@@ -263,5 +263,18 @@ public class Module {
         }
 
         return m;
+    }
+
+    //cette methode permet d'obtenir l'ensemble des id des module enseigner par un prof
+    public static ObservableList<String> getIDModuleProf(String id) throws SQLException, ClassNotFoundException {
+        LinkedList<Module> llm = ModuleProf(id);
+        LinkedList<String> llidm = new LinkedList<>();
+
+        for (Module m : llm)
+        {
+            llidm.add(getIDMODULE(m.getNom_module(),m.getSection().getId_Section()));
+        }
+
+        return FXCollections.observableList(llidm);
     }
 }

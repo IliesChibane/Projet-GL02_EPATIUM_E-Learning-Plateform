@@ -2,6 +2,7 @@ package sample;
 
 import Classes.Annonce;
 import Classes.Etudiant;
+import Classes.Module;
 import Classes.Utilisateur;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -10,9 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -20,12 +19,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class ClassroomController extends ScrollPane implements Initializable {
@@ -35,6 +38,13 @@ public class ClassroomController extends ScrollPane implements Initializable {
     AnchorPane anchorpane;
     @FXML
     VBox vboxx;
+    @FXML
+    ScrollPane sp;
+    @FXML
+    TextField contenu;
+    @FXML
+    ComboBox<String> module;
+    @FXML Button publier;
 
 
     private static ObservableList<Annonce> posts = FXCollections.observableArrayList();
@@ -49,48 +59,58 @@ public class ClassroomController extends ScrollPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ScrollBar bar = getVerticalScrollbar(anchorpane);
-        bar.getStyleClass().add("trans-btn-white-border");
-        bar.setMinSize(30,60);
-
-        //bar.setVisible(false);
-
+        publier.setDisable(true); // on ne peut pas publier d'annonce sans avoir selection le destinataire
         posts.removeAll();  //on clean notre liste
+        // on initialise la liste des module que le prof enseigne
+        try {
+            module.setItems(Module.getIDModuleProf(u.getIdd()));
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        sp.setContent(null);//on clean notre liste
         getPosts(); // on charge tous les posts de la bd et on leur prepare des hbox
-        j= postsNum;  //on met le nombre de posts qu'on a ici
         ajouterAnnonce();   // on charge les annonces
 
-        if(bar != null) {
-
-            bar.valueProperty().addListener(this::scrolled);
-
-        }else{
-            System.out.println(bar +"yo");
+        //dans le cas ou l'utilisateur est un etudiant on masque tout les composants permettant de publier une annonce
+        if(Utilisateur.typeUtilisateur(u.getIdd()).equals("Etudiant"))
+        {
+            contenu.setDisable(true);
+            contenu.setVisible(false);
+            publier.setDisable(true);
+            publier.setVisible(false);
+            module.setDisable(true);
+            module.setVisible(false);
         }
     }
 
     private void ajouterAnnonce() {
 
-        // System.out.println(postsNum);
-        vboxx.getChildren().clear();
+        sp.setContent(null);
         if(postsNum == 0){  //s'il n ya plus de posts à affciher on arrete le scroll
             ImageView img = new ImageView(new Image("/Pictures/empty.png",500,500,false,false));  // on leur affiche que c'est fini
-            vboxx.getChildren().add(img);
+            sp.setContent(img);
         }
         int l = 0;
-        while ( i < j && l <2) {
-            if (posts.get(i).isPub() == false) {
-                //  System.out.println("ce post n'est pas encore publié");
-                //boxes.get(i).setPadding( new Insets(20, 20, 20, 50));
+        vboxx = new VBox();
+        i = 0;
+        while (postsNum != 0) {
+
+                boxes.get(i).fillHeightProperty().set(true);
                 vboxx.getChildren().add(boxes.get(i));
-                posts.get(i).setPub(true);
                 i++;
                 l++;
                 postsNum--;
-            }
+
+
         }
+        postsNum = j;
+        vboxx.fillWidthProperty().set(true);
+        sp.setContent(vboxx);
+
     }
     private void getPosts(){
+        posts = FXCollections.observableArrayList();
+        boxes = FXCollections.observableArrayList();
         posts.addAll(u.chargerAnnonce());
         postsNum = posts.size();
         for (int k = 0; k < postsNum; k++) {
@@ -140,34 +160,19 @@ public class ClassroomController extends ScrollPane implements Initializable {
             boxes.add(box);
         }
     }
+    //permet d'activer le bouton publier apres avoir choisis le destinataire
+    @FXML public void ButtonActiver(){ publier.setDisable(false);}
 
-    private ScrollBar getVerticalScrollbar(AnchorPane anchorpane) {  //on attrappe le scrollbar de notre scrollPane
-        ScrollBar result = null;
-        for (Node n : anchorpane.lookupAll(".scroll-bar")) {
-            if (n instanceof ScrollBar) {
-                ScrollBar bar = (ScrollBar) n;
-                if (bar.getOrientation().equals(Orientation.VERTICAL)) {
-                    result = bar;
-                }
-            }
-        }
-        return result;
-    }
-
-    void scrolled(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-        double value = newValue.doubleValue();
-         System.out.println("Scrolled to " + value);
-        ScrollBar bar = getVerticalScrollbar(anchorpane);
-
-        if (value == bar.getMax()) {
-
-            //vboxx.getChildren().removeAll();
-            vboxx.getChildren().remove(0);
-            // System.out.println("Adding new Hboxes.");
-            //double targetValue = value * posts.size();
-            ajouterAnnonce();                      ////////////////////////////////ici on doit afficher les  annonces qui n'ont pas étaient affcihées.
-            bar.setValue(60);   //on reset le scrollbar
-        }
+    @FXML
+    public void publier() throws SQLException {
+        //permet d'eviter de publier des msg vide
+        if((!contenu.getText().equals(""))){
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Annonce.AjoutAnonce(contenu.getText(),module.getSelectionModel().getSelectedItem(),u.getIdd(),timestamp);
+        //on re actualise le classroom pour y afficher le msg
+        sp.setContent(null);
+        getPosts();
+        ajouterAnnonce();}
     }
 
 }

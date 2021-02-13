@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ClassroomController">
+<AnchorPane fx:id="anchorpane" maxHeight="661.0" maxWidth="797.0" prefHeight="625.0" prefWidth="797.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ClassroomController">
    <children>
-      <BorderPane prefHeight="650.0" prefWidth="797.0">
+      <BorderPane maxHeight="650.0" maxWidth="797.0" prefHeight="650.0" prefWidth="797.0">
          <top>
             <HBox prefHeight="68.0" prefWidth="811.0" BorderPane.alignment="CENTER">
                <children>
@@ -22,12 +26,29 @@
                </children>
             </HBox>
          </top>
-         <right>
-            <ScrollBar orientation="VERTICAL" prefHeight="635.0" prefWidth="14.0" BorderPane.alignment="CENTER" />
-         </right>
+         <bottom>
+            <TextField fx:id="contenu" alignment="CENTER" prefHeight="74.0" prefWidth="697.0" promptText="Votre annonce" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font></TextField>
+         </bottom>
          <center>
-            <VBox fx:id="vboxx" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
          </center>
+         <left>
+            <Button fx:id="publier" mnemonicParsing="false" onAction="#publier" prefHeight="58.0" prefWidth="52.0" styleClass="rounded-btn" text="Publier" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Button>
+         </left>
+         <right>
+            <ComboBox fx:id="module" onAction="#ButtonActiver" prefWidth="150.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
