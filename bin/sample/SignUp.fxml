@@ -53,6 +53,15 @@
          </VBox.margin>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
+         <children>
+            <TextField fx:id="email" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Email" styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
          </VBox.margin>
@@ -64,6 +73,9 @@
                </image>
             </ImageView>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <VBox.margin>
@@ -74,7 +86,7 @@
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="79.0" prefWidth="480.0">
          <children>
             <Label styleClass="white-text" text="Type                               " textFill="#dedee4" />
             <ComboBox fx:id="type" onAction="#continuer" prefWidth="150.0" styleClass="trans-btn-whitee-border" stylesheets="@style.css" visibleRowCount="2" />

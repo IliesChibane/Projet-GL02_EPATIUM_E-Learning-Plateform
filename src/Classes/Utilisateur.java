@@ -117,7 +117,7 @@ public class Utilisateur {
 
 
 
-	public Boolean inscription(String id, String nom, String prenom, String mdp, int groupe, String type, String specialite, String section, String niveau) {
+	public Boolean inscription(String id, String nom, String prenom, String mdp, int groupe, String type, String specialite, String section, String niveau, String email) {
 
 		int rs = 0;
 		PreparedStatement  ps = null;
@@ -132,13 +132,14 @@ public class Utilisateur {
 			if (type.equals("Enseignant")) {
 
 
-				sql =  "insert into enseignant values(?,?,?,?)";
+				sql =  "insert into enseignant values(?,?,?,?,?)";
 
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
 				ps.setString(2, nom);
 				ps.setString(3, prenom);
 				ps.setString(4, mdp);
+				ps.setString(5, email);
 
 
 				rs = ps.executeUpdate();
@@ -151,7 +152,7 @@ public class Utilisateur {
 			if (type.equals("Etudiant")) {
 
 
-				sql =  "insert into etudiant values(?,?,?,?,?,?)";
+				sql =  "insert into etudiant values(?,?,?,?,?,?,?)";
 
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
@@ -161,7 +162,7 @@ public class Utilisateur {
 				ps.setString(5, mdp);
 				String concat = niveau +" "+specialite+" "+section;
 				ps.setString(6, concat);
-
+				ps.setString(7, email);
 				rs = ps.executeUpdate();
 				if ( rs >0 ) {
 					status = true;

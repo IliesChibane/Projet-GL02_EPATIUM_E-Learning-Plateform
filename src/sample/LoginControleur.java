@@ -57,6 +57,8 @@ private TextField id;
  
  @FXML
  private TextField groupe;
+ @FXML
+ private TextField email;
 
  private String prob ="";
  private boolean doo = true;
@@ -168,7 +170,17 @@ private TextField id;
          }
      }
  }
-
+private void validerEmail(){
+     if(email.getText().isEmpty()){
+         prob = prob.concat(" Le champ email est obligatoire. ");
+         doo = false;
+     }else {
+         if (!email.getText().contains("@")) {
+             prob = prob.concat(" Le format de votre email est incorrect. ");
+             doo = false;
+         }
+     }
+}
  private void validerMDP(){
      if(mdp.getText().isEmpty() || mdp.getText().isEmpty()){
          prob =  prob.concat(" Il faut remplir le champ du mot de passe ainsi que sa  confirmation. ");
@@ -209,15 +221,16 @@ private TextField id;
      validerPreNom();
      validerMDP();
      validerGroupe();
+     validerEmail();
      validerFields();
 	  
 	  if(doo) {
 	      if(type.getSelectionModel().getSelectedItem().toString().equals("Etudiant")) {
-              if (u.inscription(id.getText(), nom.getText(), prenom.getText(), mdp.getText(), Integer.parseInt(groupe.getText()), type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText()))
+              if (u.inscription(id.getText(), nom.getText(), prenom.getText(), mdp.getText(), Integer.parseInt(groupe.getText()), type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText(), email.getText()))
                   Dialogue.afficherDialogue("Inscription faites avec succès");
               else Dialogue.afficherDialogue("Il y a eu une erreur lors de l'inscription");
           }else{
-              if (u.inscription(id.getText(), nom.getText(), prenom.getText(), mdp.getText(), 00, type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText()))
+              if (u.inscription(id.getText(), nom.getText(), prenom.getText(), mdp.getText(), 00, type.getSelectionModel().getSelectedItem().toString(), specialite.getText(), section.getText(), niveau.getText(), email.getText()))
                   Dialogue.afficherDialogue("Inscription faites avec succès");
               else Dialogue.afficherDialogue("Il y a eu une erreur lors de l'inscription");
           }
