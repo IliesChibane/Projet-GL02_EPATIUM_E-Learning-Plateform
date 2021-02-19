@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="543.0" styleClass="panevertee" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ModifierSupprimerSeanceController">
+   <children>
+      <ComboBox fx:id="jour" layoutX="63.0" layoutY="88.0" onAction="#SetupH" prefWidth="150.0" styleClass="trans-btn-white-border" stylesheets="@style.css" />
+      <ComboBox fx:id="horraire" layoutX="324.0" layoutY="88.0" prefWidth="150.0" styleClass="trans-btn-white-border" stylesheets="@style.css" />
+      <TextField fx:id="link" layoutX="67.0" layoutY="190.0" prefHeight="25.0" prefWidth="409.0" styleClass="trans-btn-white-border" stylesheets="@style.css" />
+      <Button layoutX="138.0" layoutY="260.0" mnemonicParsing="false" onAction="#ModifSeance" prefHeight="27.0" prefWidth="97.0" styleClass="trans-btn-white-border" text="Modifier" />
+      <Button layoutX="302.0" layoutY="260.0" mnemonicParsing="false" onAction="#Supp" prefHeight="27.0" prefWidth="97.0" styleClass="trans-btn-white-border" text="Supprimer" />
+      <Button fx:id="closeButton" layoutX="503.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" prefHeight="27.0" prefWidth="26.0" styleClass="trans-btn-white-border" text="X" />
+   </children>
+</AnchorPane>
