@@ -74,10 +74,10 @@
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox onMouseEntered="#init" prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label styleClass="white-text" text="Type                               " textFill="#dedee4" />
-            <ComboBox fx:id="type" prefWidth="150.0" styleClass="trans-btn-whitee-border" stylesheets="@style.css" visibleRowCount="2" />
+            <ComboBox fx:id="type" onAction="#continuer" prefWidth="150.0" styleClass="trans-btn-whitee-border" stylesheets="@style.css" visibleRowCount="2" />
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="30.0" />

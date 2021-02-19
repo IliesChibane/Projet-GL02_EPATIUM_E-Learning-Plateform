@@ -156,8 +156,8 @@ public class Utilisateur {
 				ps.setString(1, id);
 				ps.setString(2, nom);
 				ps.setString(3, prenom);
-				ps.setString(4, mdp);
-				ps.setInt(5, groupe);
+				ps.setInt(4, groupe);
+				ps.setString(5, mdp);
 				String concat = niveau +" "+specialite+" "+section;
 				ps.setString(6, concat);
 

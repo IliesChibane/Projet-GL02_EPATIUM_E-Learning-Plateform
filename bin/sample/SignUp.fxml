@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -23,6 +25,11 @@
       <HBox alignment="CENTER_LEFT" layoutX="5.0" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="id" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="ID" styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/face-scan.png" />
+               </image>
+            </ImageView>
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
@@ -30,6 +37,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="nom" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Nom" styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
@@ -38,6 +46,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="prenom" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Prénom" styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
@@ -49,6 +58,11 @@
          </VBox.margin>
          <children>
             <PasswordField fx:id="mdp" prefHeight="25.0" prefWidth="463.0" promptText="Mot de passe" styleClass="tf-box" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/lock.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
@@ -57,12 +71,13 @@
          </VBox.margin>
          <children>
             <PasswordField fx:id="confirmationMdp" prefHeight="25.0" prefWidth="458.0" promptText="Confimation du mot de passe" styleClass="tf-box" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
-      <HBox onMouseEntered="#init" prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label styleClass="white-text" text="Type                               " textFill="#dedee4" />
-            <ComboBox fx:id="type" prefWidth="150.0" styleClass="trans-btn-whitee-border" stylesheets="@style.css" visibleRowCount="2" />
+            <ComboBox fx:id="type" onAction="#continuer" prefWidth="150.0" styleClass="trans-btn-whitee-border" stylesheets="@style.css" visibleRowCount="2" />
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="30.0" />
@@ -71,6 +86,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="specialite" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Spécialité : ISIL, ACAD..." styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="4.0" />
@@ -79,6 +95,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="niveau" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Niveau : L1, L2..." styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
@@ -87,6 +104,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="section" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Section : A, B..." styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
@@ -95,6 +113,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="431.0" stylesheets="@style.css">
          <children>
             <TextField fx:id="groupe" layoutX="5.0" layoutY="5.0" maxWidth="445.0" prefHeight="26.0" prefWidth="421.0" promptText="Groupe" styleClass="tf-box" stylesheets="@style.css" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" />
