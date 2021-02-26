@@ -67,16 +67,22 @@ private TextField id;
  @FXML
  private void authentification(ActionEvent event) {
 	  String mode = u.identification(id.getText(),mdp.getText());
-	  switch (mode){
-          case "etudiant" : open("MenuEtudiant.fxml","etudiant");
-              ((Node)event.getSource()).getScene().getWindow().hide();
-          break;
-          case "enseignant" : open("MenuEnseignant.fxml","enseignant");
-              ((Node)event.getSource()).getScene().getWindow().hide();
-          break;
-          default : Dialogue.afficherDialogue("Allez vous inscrire d'abord");
+	  if(mode != null) {
+          switch (mode) {
+              case "etudiant":
+                  open("MenuEtudiant.fxml", "etudiant");
+                  ((Node) event.getSource()).getScene().getWindow().hide();
+                  break;
+              case "enseignant":
+                  open("MenuEnseignant.fxml", "enseignant");
+                  ((Node) event.getSource()).getScene().getWindow().hide();
+                  break;
+              default:
+                  Dialogue.afficherDialogue("Allez vous inscrire d'abord");
+          }
+      }else{
+          Dialogue.afficherDialogue("Allez vous inscrire d'abord");
       }
-
  }
  private void validerId(){
      //si l'id du prof dépasse la taille
@@ -155,7 +161,7 @@ private TextField id;
          }
      }
 
- private void validerFields(){
+ private void validerChamps(){
      if (type.getSelectionModel().getSelectedItem().toString().equals("Etudiant")) {
          boolean champVide = false;
          for (TextField t : fields) {
@@ -222,7 +228,7 @@ private void validerEmail(){
      validerMDP();
      validerGroupe();
      validerEmail();
-     validerFields();
+     validerChamps();
 	  
 	  if(doo) {
 	      if(type.getSelectionModel().getSelectedItem().toString().equals("Etudiant")) {

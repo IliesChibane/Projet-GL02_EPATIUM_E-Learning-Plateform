@@ -17,13 +17,20 @@ import sample.Dialogue;
 
 
 public class Utilisateur {
-	private static String nom, prenom, idd, section;  //on a besoin de es infos pour les afficher dans le menu
+	private static String nom, prenom, idd, section, mode, mdp, email;  //on a besoin de es infos pour les afficher dans le menu
 	final ObservableList<Fichier> data = FXCollections.observableArrayList();
 
 
-	public Utilisateur()
-	{
+	public Utilisateur() {
 
+	}
+
+	public static String getEmail() {
+		return email;
+	}
+
+	public static void setEmail(String email) {
+		Utilisateur.email = email;
 	}
 
 	public static String getNom() {
@@ -45,6 +52,7 @@ public class Utilisateur {
 	public String getIdd() {
 		return idd;
 	}
+
 	public String getIdSec() {
 		return section;
 	}
@@ -55,16 +63,17 @@ public class Utilisateur {
 
 	public String identification(String id, String mdp) {
 
-		ResultSet rs =null;
-		PreparedStatement  ps = null;
+		ResultSet rs = null;
+		PreparedStatement ps = null;
 		ConnectionClass cc = new ConnectionClass();
+		mode =""; // on reinitiallise si l'utilisateur a s'est reconnecté et a mit un faux mot de passe
 
-		String mode = "rien"; // Pour ouvrir la fenetre convenable (etudiant/enseignant)
+		//String mode = "rien"; // Pour ouvrir la fenetre convenable (etudiant/enseignant)
 		try {
 			Connection conn = ConnectionClass.c;
 			/*Il est preferable de creer de requete distincte pour la connexion etant donner que l'on fournis
 			un nom unique lors de la recherche sa n'augmente pas la complexite */
-			String sql =  "Select * From enseignant where id_prof = ? and mdp = ?";
+			String sql = "Select * From enseignant where id_prof = ? and mdp = ?";
 			String sql2 = "Select * From etudiant WHERE matricule = ? and mdp = ?";
 
 			ps = conn.prepareStatement(sql);
@@ -72,14 +81,14 @@ public class Utilisateur {
 			ps.setString(2, mdp);
 			rs = ps.executeQuery();
 
-			if(rs.next()){
+			if (rs.next()) {
 				nom = rs.getString("nom_prof"); // on prend ces informations pour les afficher lors de l'ouverture de la fenetre
 				prenom = rs.getString("prenom_prof");
 				idd = rs.getString("id_prof");
 
 
 				mode = "enseignant";
-				Dialogue.afficherDialogue("Bienvenue à EPATIUM "+ nom+", Status : enseignant");
+				Dialogue.afficherDialogue("Bienvenue à EPATIUM " + nom + ", Status : enseignant");
 			}
 			ps = conn.prepareStatement(sql2);
 			ps.setString(1, id);
@@ -87,19 +96,19 @@ public class Utilisateur {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				mode ="etudiant";
+				mode = "etudiant";
 				nom = rs.getString("nom_etudiant");
 				prenom = rs.getString("prenom_etudiant");
 				idd = rs.getString("matricule");
 				section = rs.getString("id_section");
 
-				Dialogue.afficherDialogue("Bienvenue à EPATIUM "+nom+", Status : etudiant");
+				Dialogue.afficherDialogue("Bienvenue à EPATIUM " + nom + ", Status : etudiant");
 			}
 
 		} catch (Exception e) {
 
 			Dialogue.afficherDialogue(e.getMessage());
-		}finally {
+		} finally {
 			try {
 				assert ps != null;
 				ps.close();
@@ -112,18 +121,16 @@ public class Utilisateur {
 
 		}
 
-		return mode;
+		return this.mode;
 	}
-
 
 
 	public Boolean inscription(String id, String nom, String prenom, String mdp, int groupe, String type, String specialite, String section, String niveau, String email) {
 
 		int rs = 0;
-		PreparedStatement  ps = null;
+		PreparedStatement ps = null;
 		boolean status = false;
-		String sql ="";
-
+		String sql = "";
 
 
 		try {
@@ -132,7 +139,7 @@ public class Utilisateur {
 			if (type.equals("Enseignant")) {
 
 
-				sql =  "insert into enseignant values(?,?,?,?,?)";
+				sql = "insert into enseignant values(?,?,?,?,?)";
 
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
@@ -143,7 +150,7 @@ public class Utilisateur {
 
 
 				rs = ps.executeUpdate();
-				if ( rs >0 ) {
+				if (rs > 0) {
 					status = true;
 				}
 
@@ -152,7 +159,7 @@ public class Utilisateur {
 			if (type.equals("Etudiant")) {
 
 
-				sql =  "insert into etudiant values(?,?,?,?,?,?,?)";
+				sql = "insert into etudiant values(?,?,?,?,?,?,?)";
 
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
@@ -160,11 +167,11 @@ public class Utilisateur {
 				ps.setString(3, prenom);
 				ps.setInt(4, groupe);
 				ps.setString(5, mdp);
-				String concat = niveau +" "+specialite+" "+section;
+				String concat = niveau + " " + specialite + " " + section;
 				ps.setString(6, concat);
 				ps.setString(7, email);
 				rs = ps.executeUpdate();
-				if ( rs >0 ) {
+				if (rs > 0) {
 					status = true;
 				}
 
@@ -174,7 +181,7 @@ public class Utilisateur {
 
 
 			Dialogue.afficherDialogue(e.getMessage());
-		}finally {
+		} finally {
 			try {
 				assert ps != null;
 				ps.close();
@@ -191,28 +198,26 @@ public class Utilisateur {
 	}
 
 
-
-
 	public Boolean uploadFichier(String FILE_NAME, FileInputStream FILE_DATA, File file) {
 
 		int rs = 0;
-		PreparedStatement  ps = null;
+		PreparedStatement ps = null;
 		boolean status = false;
-		String sql ="";
+		String sql = "";
 
 		try {
 
-			Connection conn =  ConnectionClass.c;
+			Connection conn = ConnectionClass.c;
 
-			sql =  "insert into fichiers values(?,?)";
+			sql = "insert into fichiers values(?,?)";
 
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, FILE_NAME);
 			FILE_DATA = new FileInputStream(file);
-			ps.setBinaryStream(2,(InputStream) FILE_DATA, (int) file.length());
+			ps.setBinaryStream(2, (InputStream) FILE_DATA, (int) file.length());
 
 			rs = ps.executeUpdate();
-			if ( rs >0 ) {
+			if (rs > 0) {
 				status = true;
 				Dialogue.afficherDialogue("Fichier téléchargé vers le serveur avec succès");
 			}
@@ -221,7 +226,7 @@ public class Utilisateur {
 
 
 			Dialogue.afficherDialogue(e.getMessage());
-		}finally {
+		} finally {
 			try {
 				assert ps != null;
 				ps.close();
@@ -237,24 +242,24 @@ public class Utilisateur {
 
 	}
 
-	public void consulterFichiers(TableView fichiers, ImageView icon){
+	public void consulterFichiers(TableView fichiers, ImageView icon) {
 
-		ResultSet rs =null;
+		ResultSet rs = null;
 		PreparedStatement ps = null;
-		String name ="";
+		String name = "";
 
 		try {
 			Connection conn = ConnectionClass.c;
 
-			String sql =  "Select * From fichiers ";
+			String sql = "Select * From fichiers ";
 
 			ps = conn.prepareStatement(sql);
 
 			rs = ps.executeQuery();
 
-			while(rs.next()){
+			while (rs.next()) {
 				name = rs.getString("file_name");
-				icon = new ImageView(new Image("/Pictures/dossier.png",100,100,false,false));
+				icon = new ImageView(new Image("/Pictures/dossier.png", 100, 100, false, false));
 				Fichier f = new Fichier(icon, name);
 				data.add(f);
 			}
@@ -264,7 +269,7 @@ public class Utilisateur {
 
 
 			Dialogue.afficherDialogue(e.getMessage());
-		}finally {
+		} finally {
 			try {
 				assert ps != null;
 				ps.close();
@@ -278,33 +283,34 @@ public class Utilisateur {
 		}
 
 	}
-	public void telechargerFichier(String file_name){
 
-		ResultSet rs =null;
+	public void telechargerFichier(String file_name) {
+
+		ResultSet rs = null;
 		PreparedStatement ps = null;
 
-		InputStream is ;
+		InputStream is;
 		OutputStream os;
 
 
 		try {
 			Connection conn = ConnectionClass.c;
 
-			String sql =  "Select * From fichiers where file_name = ?";
+			String sql = "Select * From fichiers where file_name = ?";
 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1,file_name);
+			ps.setString(1, file_name);
 
 			rs = ps.executeQuery();
 
-			while(rs.next()){
+			while (rs.next()) {
 				is = rs.getBinaryStream("file_data");
 				String home = System.getProperty("user.home");
-				os = new FileOutputStream(new File(home+"/Downloads/" + file_name));
+				os = new FileOutputStream(new File(home + "/Downloads/" + file_name));
 				byte[] content = new byte[4096];
 				int size = 0;
-				while((size = is.read(content)) != -1){
-					os.write(content,0,size);
+				while ((size = is.read(content)) != -1) {
+					os.write(content, 0, size);
 				}
 				os.close();
 				is.close();
@@ -315,7 +321,7 @@ public class Utilisateur {
 
 
 			Dialogue.afficherDialogue(e.getMessage());
-		}finally {
+		} finally {
 			try {
 				assert ps != null;
 				ps.close();
@@ -330,14 +336,14 @@ public class Utilisateur {
 
 	}
 
-	public void chercherFicher(TextField searchFiled, TableView table){
-		FilteredList<Fichier> filteredList = new FilteredList<Fichier>(data, e->true);
-		searchFiled.setOnKeyReleased(e ->{
-			searchFiled.textProperty().addListener((ObservableValue, oldValue, newValue)->{
-				filteredList.setPredicate((Predicate<? super Fichier>) fichier->{
-					if(newValue ==null || newValue.isEmpty()) return true;
+	public void chercherFicher(TextField searchFiled, TableView table) {
+		FilteredList<Fichier> filteredList = new FilteredList<Fichier>(data, e -> true);
+		searchFiled.setOnKeyReleased(e -> {
+			searchFiled.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
+				filteredList.setPredicate((Predicate<? super Fichier>) fichier -> {
+					if (newValue == null || newValue.isEmpty()) return true;
 					String lowerCaseSearch = newValue.toLowerCase();
-					if(fichier.getNom().toLowerCase().contains(lowerCaseSearch)) return true;
+					if (fichier.getNom().toLowerCase().contains(lowerCaseSearch)) return true;
 					return false;
 				});
 			});
@@ -349,7 +355,7 @@ public class Utilisateur {
 
 	}
 
-	public ObservableList chargerAnnonce(){
+	public ObservableList chargerAnnonce() {
 		ObservableList<Annonce> items = FXCollections.observableArrayList();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
@@ -358,20 +364,18 @@ public class Utilisateur {
 			Connection conn = ConnectionClass.c;
 
 			String sql;
-			if(typeUtilisateur(idd).equals("Prof")){
-				sql= "Select * From Annonce where id_prof = ? order by date_publication asc";
+			if (typeUtilisateur(idd).equals("Prof")) {
+				sql = "Select * From Annonce where id_prof = ? order by date_publication asc";
 				ps = conn.prepareStatement(sql);
-				ps.setString(1,idd);
-			}
-			else{
-				sql= "Select * From Annonce where id_module = any (?) order by date_publication asc";
+				ps.setString(1, idd);
+			} else {
+				sql = "Select * From Annonce where id_module = any (?) order by date_publication asc";
 				ps = conn.prepareStatement(sql);
 				LinkedList<Module> llm = Etudiant.getModule(Etudiant.getSectionE(idd));
 				String[] id = new String[100];
-				int i =0;
-				for(Module m : llm)
-				{
-					id[i] = Module.getIDMODULE(m.getNom_module(),m.getSection().getId_Section());
+				int i = 0;
+				for (Module m : llm) {
+					id[i] = Module.getIDMODULE(m.getNom_module(), m.getSection().getId_Section());
 					i++;
 				}
 				ps.setArray(1, conn.createArrayOf("text", id));
@@ -413,10 +417,202 @@ public class Utilisateur {
 		return items;
 	}
 
-	public static String typeUtilisateur(String id){
-		if(id.contains("E"))
+	public static String typeUtilisateur(String id) {
+		if (id.contains("E"))
 			return "Prof";
 		else return "Etudiant";
+	}
+
+	public static String getSection() {
+		return section;
+	}
+
+	public static void setSection(String section) {
+		Utilisateur.section = section;
+	}
+
+	public static String getMode() {
+		return mode;
+	}
+
+	public static void setMode(String mode) {
+		Utilisateur.mode = mode;
+	}
+
+	public static String getMdp() {
+		return mdp;
+	}
+
+	public static void setMdp(String mdp) {
+		Utilisateur.mdp = mdp;
+	}
+
+	public boolean changerMotDePasse(String password) {
+		int rs = 0;
+		PreparedStatement ps = null;
+		boolean status = false;
+		String sql = "";
+
+
+		try {
+
+			Connection conn = ConnectionClass.c;
+			if (mode.equals("enseignant")) {   //si l'utilisateur est un enseignant
+
+				sql = "update enseignant set mdp = ? where id_prof = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, password);
+				ps.setString(2, idd);
+
+
+				rs = ps.executeUpdate();
+				if (rs > 0) {
+					status = true;
+				}
+
+			} else { //si l'utilisateur est un etudiant
+
+
+				sql = "update etudiant set mdp = ? where matricule = ?";
+
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, password);
+				ps.setString(2, idd);
+
+				rs = ps.executeUpdate();
+				if (rs > 0) {
+					status = true;
+				}
+
+			}
+
+		} catch (Exception e) {
+			Dialogue.afficherDialogue(e.getMessage());
+		} finally {
+			try {
+				assert ps != null;
+				ps.close();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+
+		return status;
+	}
+
+	public boolean changerDonnees(String nom, String prenom, String email) {
+
+		int rs = 0;
+		PreparedStatement ps = null;
+		boolean status = false;
+		String sql = "";
+
+		try {
+
+			Connection conn = ConnectionClass.c;
+			if (mode.equals("enseignant")) {
+
+				sql = "update enseignant set nom_prof = ?, prenom_prof = ?, email = ? where id_prof = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, nom);
+				ps.setString(2, prenom);
+				ps.setString(3, email);
+				ps.setString(4, idd);
+
+				rs = ps.executeUpdate();
+				if (rs > 0) {
+					status = true;
+				}
+
+			} else {
+
+				sql = "update etudiant set nom_etudiant = ?, prenom_etudiant = ?, email = ? where matricule = ?";
+
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, nom);
+				ps.setString(2, prenom);
+				ps.setString(3, email);
+				ps.setString(4, idd);
+				rs = ps.executeUpdate();
+				if (rs > 0) {
+					status = true;
+				}
+
+			}
+
+		} catch (Exception e) {
+
+			Dialogue.afficherDialogue(e.getMessage());
+		} finally {
+			try {
+				assert ps != null;
+				ps.close();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+
+		return status;
+	}
+
+	public void afficherInfos() {
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		ConnectionClass cc = new ConnectionClass();
+		String sql;
+
+		try {
+			Connection conn = ConnectionClass.c;
+			if (mode.equals("enseignant")){
+				sql = "Select * From enseignant where id_prof = ? ";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, idd);
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					nom = rs.getString("nom_prof"); // on prend ces informations pour les afficher lors de l'ouverture de la fenetre
+					prenom = rs.getString("prenom_prof");
+					email = rs.getString("email");
+
+				}
+			}
+			else{
+				sql = "Select * From etudiant WHERE matricule = ? ";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, idd);
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					nom = rs.getString("nom_etudiant"); // on prend ces informations pour les afficher lors de l'ouverture de la fenetre
+					prenom = rs.getString("prenom_etudiant");
+					email = rs.getString("email");
+
+				}
+			}
+
+
+
+		} catch (Exception e) {
+
+			Dialogue.afficherDialogue(e.getMessage());
+		} finally {
+			try {
+				assert ps != null;
+				ps.close();
+				assert rs != null;
+				rs.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
 	}
 }
 

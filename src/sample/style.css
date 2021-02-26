@@ -142,3 +142,52 @@
     -fx-background-radius: 2em;
     -fx-pref-width: 16.5;
 }
+.tab-pane
+{
+-fx-tab-min-height: 2em;
+-fx-tab-max-height: 2em;
+}
+.tab .tab-label
+{
+-fx-background-color: transparent;
+-fx-alignment: CENTER;
+-fx-text-fill: -fx-text-base-color;
+}
+.tab-content-area
+{
+-fx-background-color: #82C46C;
+-fx-text-fill: #82C46C;
+-fx-padding: 0.0em;
+}
+.tab
+{
+-fx-background-insets: 0, 1, 2;
+-fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+-fx-padding: 0.083333em 0.5em 0.083333em 0.5em;
+-fx-text-fill: #82C46C;
+
+}
+.tab:top
+{
+-fx-background-color: #82C46C;
+}
+
+.tab-pane .headers-region
+{
+-fx-background-color: #82C46C;
+
+}
+.control-buttons-tab
+{
+-fx-background-color: #82C46C;
+-fx-background-insets: 0, 1, 2;
+-fx-text-fill: #151928;
+-fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+-fx-padding: 0.083333em 0.25em 0.083333em 0.25em;
+}
+
+
+
+
+
+

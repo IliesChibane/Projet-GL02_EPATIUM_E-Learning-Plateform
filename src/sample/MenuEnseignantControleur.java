@@ -1,7 +1,6 @@
 package sample;
 
 import Classes.Utilisateur;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,14 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 import javafx.scene.control.Button;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -31,13 +27,29 @@ public class MenuEnseignantControleur {
     Button decon;
 
     @FXML
-    private javafx.scene.control.Label iddd;
+    private static javafx.scene.control.Label iddd;
     @FXML
-    private javafx.scene.control.Label nomm;
+    private static javafx.scene.control.Label nomm;
     @FXML
-    private Label prenoom;
+    private static Label prenoom;
     @FXML
     private BorderPane enseignantPane;
+
+    public static Label getNomm() {
+        return nomm;
+    }
+
+    public static void setNomm(Label nomm) {
+        MenuEnseignantControleur.nomm = nomm;
+    }
+
+    public static Label getPrenoom() {
+        return prenoom;
+    }
+
+    public static void setPrenoom(Label prenoom) {
+        MenuEnseignantControleur.prenoom = prenoom;
+    }
 
     @FXML
     private ImageView photoProfile;
@@ -120,7 +132,6 @@ public class MenuEnseignantControleur {
     public void getEmploi(){
         getPage("EmploiEnseignant");
     }
-
     @FXML
     public void getDrive(){
         getPage("Drive");
@@ -140,5 +151,14 @@ public class MenuEnseignantControleur {
     @FXML
     public void getClassroom(){
         getPage("Classroom");
+    }
+
+    public void parametres() throws IOException{
+        Stage primaryStage =new Stage();
+        Parent root= FXMLLoader.load(getClass().getResource("Parametres.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.show();
     }
 }

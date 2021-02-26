@@ -62,7 +62,6 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
         id.setText(u.getIdd());
         id.getStyleClass().add("white-text");
         setPhotoProfile();
-
     }
     public void setPhotoProfile(){
         photoProfile.setImage(new Image("/Pictures/student.png",550,525,false,false));
@@ -135,6 +134,16 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     @FXML
     public void getClassroom(){
         getPage("Classroom");
+    }
+
+
+    public void parametres() throws IOException{
+        Stage primaryStage =new Stage();
+        Parent root= FXMLLoader.load(getClass().getResource("Parametres.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.show();
     }
 
 }

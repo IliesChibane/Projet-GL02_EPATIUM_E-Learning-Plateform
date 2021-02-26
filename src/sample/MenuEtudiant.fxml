@@ -73,7 +73,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="147.0" prefWidth="81.0">
                      <children>
-                        <Button fx:id="param" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" text="Paramètres">
+                        <Button fx:id="param" mnemonicParsing="false" onAction="#parametres" prefHeight="70.0" prefWidth="70.0" styleClass="rounded-btn" text="Paramètres">
                            <font>
                               <Font name="System Bold" size="9.0" />
                            </font>

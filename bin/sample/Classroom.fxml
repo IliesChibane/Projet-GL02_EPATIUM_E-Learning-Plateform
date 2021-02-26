@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -26,29 +26,48 @@
                </children>
             </HBox>
          </top>
-         <bottom>
-            <TextField fx:id="contenu" alignment="CENTER" prefHeight="74.0" prefWidth="697.0" promptText="Votre annonce" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font></TextField>
-         </bottom>
          <center>
-            <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="trans-btn-white-border" BorderPane.alignment="CENTER">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="707.0" />
               </content>
             </ScrollPane>
          </center>
-         <left>
-            <Button fx:id="publier" mnemonicParsing="false" onAction="#publier" prefHeight="58.0" prefWidth="52.0" styleClass="rounded-btn" text="Publier" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Button>
-         </left>
          <right>
-            <ComboBox fx:id="module" onAction="#ButtonActiver" prefWidth="150.0" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="472.0" prefWidth="7.0" BorderPane.alignment="CENTER" />
          </right>
+         <left>
+            <VBox prefHeight="472.0" prefWidth="37.0" BorderPane.alignment="CENTER" />
+         </left>
+         <bottom>
+            <HBox prefHeight="110.0" prefWidth="797.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="publier" mnemonicParsing="false" onAction="#publier" prefHeight="60.0" prefWidth="60.0" styleClass="rounded-btn" text="Publier">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="86.0" prefWidth="546.0">
+                     <children>
+                        <TextArea fx:id="contenu" prefHeight="110.0" prefWidth="527.0" promptText="Votre annonce">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ComboBox fx:id="module" onAction="#ButtonActiver" prefHeight="25.0" prefWidth="144.0" styleClass="panevertee" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

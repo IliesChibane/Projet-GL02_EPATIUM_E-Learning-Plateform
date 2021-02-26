@@ -4,24 +4,17 @@ import Classes.Annonce;
 import Classes.Etudiant;
 import Classes.Module;
 import Classes.Utilisateur;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -41,7 +34,7 @@ public class ClassroomController extends ScrollPane implements Initializable {
     @FXML
     ScrollPane sp;
     @FXML
-    TextField contenu;
+    TextArea contenu;
     @FXML
     ComboBox<String> module;
     @FXML Button publier;
@@ -147,16 +140,18 @@ public class ClassroomController extends ScrollPane implements Initializable {
             hb2.setPrefSize(50,50);
             HBox hb3 = new HBox();
             vb3.setPrefSize(340,100);
-            Label content = new Label();
+            Label content = new Label(posts.get(k).getContenu());
+           content.setMinWidth(100);
+            content.setMinHeight(200);
             content.setWrapText(true);
-            content.setText(posts.get(k).getContenu());
             hb3.getChildren().add(content);
             vb3.getChildren().add(hb1);
             vb3.getChildren().add(hb2);
             vb3.getChildren().add(hb3);
             box.getChildren().add(vb3);
 
-
+            //box.setStyle("-fx-padding: 0 0 0 0;");
+            box.setMargin(box, new Insets(0,0,50,0));
             boxes.add(box);
         }
     }
