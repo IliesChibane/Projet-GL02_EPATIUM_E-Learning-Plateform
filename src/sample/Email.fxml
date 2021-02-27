@@ -56,20 +56,6 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="67.0" prefWidth="161.0">
                            <children>
-                              <Label text="Envoyer à " />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="338.0">
-                           <children>
-                              <TextField fx:id="mailto" prefWidth="301.0" styleClass="trans-btn-white-border" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="71.0" prefWidth="496.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="67.0" prefWidth="161.0">
-                           <children>
                               <Label text="Mon Gmail" />
                            </children>
                         </VBox>
@@ -108,14 +94,14 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="253.0" prefWidth="519.0">
+                  <HBox prefHeight="325.0" prefWidth="617.0">
                      <children>
-                        <HBox alignment="TOP_CENTER" prefHeight="253.0" prefWidth="114.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="303.0" prefWidth="114.0">
                            <children>
                               <Label text="Message" />
                            </children>
                         </HBox>
-                        <TextArea fx:id="contenu" prefHeight="238.0" prefWidth="407.0" styleClass="trans-btn-white-border" />
+                        <TextArea fx:id="contenu" prefHeight="306.0" prefWidth="407.0" styleClass="trans-btn-white-border" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />

@@ -41,7 +41,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="472.0" prefWidth="597.0">
                      <children>
-                        <TableView fx:id="ListeEtudiant" prefHeight="200.0" prefWidth="560.0">
+                        <TableView fx:id="ListeEtudiant" onMouseClicked="#loadThing" prefHeight="200.0" prefWidth="560.0">
                           <columns>
                             <TableColumn fx:id="Matriculle" prefWidth="75.0" text="Matricule" />
                             <TableColumn fx:id="Nom" prefWidth="75.0" text="Nom" />

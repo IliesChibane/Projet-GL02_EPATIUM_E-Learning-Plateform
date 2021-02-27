@@ -3,17 +3,27 @@ package Classes;
 import java.io.*;
 import java.sql.*;
 import java.util.LinkedList;
+import java.util.Properties;
 import java.util.function.Predicate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import Connectivity.ConnectionClass;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sample.Dialogue;
+
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 
 public class Utilisateur {
@@ -596,6 +606,94 @@ public class Utilisateur {
 				e.printStackTrace();
 			}
 		}
+
+	}
+
+	public void envoyerEmail(String mailto, TextField mailfrom, PasswordField password, TextArea contenu, TextField subject) throws IOException {
+
+		String to = mailto;
+		String host = "smtp.gmail.com";
+		final String username = mailfrom.getText();
+		final String pass = password.getText();
+
+		//Configuration du serveur
+		Properties props = System.getProperties();
+		props.put("mail.smtp.auth","true");
+		props.put("mail.smtp.starttls.enable","true");
+		props.put("mail.smtp.host",host);
+		props.put("mail.smtp.port",587);
+
+		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication(){
+				return new PasswordAuthentication(username,pass);
+			}
+		});
+		try{
+
+			//Cr?ation du mail
+			MimeMessage m = new MimeMessage(session);
+			m.setFrom(new InternetAddress(username));
+			m.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
+			m.setSubject(subject.getText());
+			m.setText(contenu.getText());
+
+
+			//L'envoi du mail
+			Transport.send(m);
+			//SentBoolValue.setVisible(true);
+			//System.out.println("message sent yahoooooooooooooo");
+
+
+		}catch(MessagingException me){
+			Dialogue.afficherDialogue(me.getMessage());
+		}
+
+	}
+
+
+	public String chercherDestinataireEmail(String id) {
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		ConnectionClass cc = new ConnectionClass();
+		String destinataire="";
+
+		try {
+			Connection conn = ConnectionClass.c;
+			String sql = "Select email From enseignant where id_prof = ? ";
+			String sql2 = "Select email From etudiant WHERE matricule = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				destinataire = rs.getString("email");
+			}
+			ps = conn.prepareStatement(sql2);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				destinataire = rs.getString("email");
+			}
+
+		} catch (Exception e) {
+
+			Dialogue.afficherDialogue(e.getMessage());
+		} finally {
+			try {
+				assert ps != null;
+				ps.close();
+				assert rs != null;
+				rs.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		}
+
+		return destinataire;
 
 	}
 }
