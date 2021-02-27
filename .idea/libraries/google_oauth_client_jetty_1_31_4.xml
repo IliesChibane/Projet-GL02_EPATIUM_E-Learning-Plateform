@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="google-oauth-client-jetty-1.31.4">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/google-oauth-client-jetty-1.31.4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

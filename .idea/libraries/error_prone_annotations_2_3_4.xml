@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="error_prone_annotations-2.3.4">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/error_prone_annotations-2.3.4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

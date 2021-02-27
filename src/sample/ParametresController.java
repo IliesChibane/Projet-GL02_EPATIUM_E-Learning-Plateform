@@ -3,21 +3,12 @@ package sample;
 import Classes.Utilisateur;
 import Connectivity.ConnectionClass;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,23 +27,6 @@ public class ParametresController {
     @FXML private TextField email;
     private String prob;
     private boolean doo = true;
-
-
-
-    public void getPage(String fxmlFileName) {   //ouvrir le fichier fxml convenable selon le bouton
-
-        try {
-            URL filePath = this.getClass().getResource("/sample/" + fxmlFileName + ".fxml");
-            if (filePath == null) throw new java.io.FileNotFoundException("Cette page est corrompue");
-          //  vue = new FXMLLoader().load(filePath);
-
-
-        }catch(Exception e ) {
-            e.printStackTrace();
-        }
-
-    }
-
 
 
     @FXML
@@ -177,11 +151,18 @@ public class ParametresController {
         validerPreNom();
         if(doo == true) {
             if(u.changerDonnees(nom.getText(), prenom.getText(), email.getText())) {
-                Dialogue.afficherDialogue("Vos informations ont ete mises à jour !");
+                Dialogue.afficherDialogue("Vos informations ont ete mises a jour !");
                 quit();
+                Label l = new Label();
+                if(u.getMode().equals("enseignant")){
 
+
+                }else{
+
+
+                }
             }else{
-                Dialogue.afficherDialogue("Il y a eu un problème avec la mise à jour");
+                Dialogue.afficherDialogue("Il y a eu un probleme avec la mise à jour");
             }
         }
     }

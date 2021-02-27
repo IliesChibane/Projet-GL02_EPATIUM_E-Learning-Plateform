@@ -54,6 +54,13 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
     private ImageView photoProfile;
 
 
+    public Label getNom() {
+        return nom;
+    }
+    public Label getPrenom() {
+        return prenom;
+    }
+
     public void setUser(){  // on recup les infos de l'utilisateur pour les afficher dans le toolbar (appelle a cette méthode dans MenuEtudiant
         nom.setText(u.getNom());
         nom.getStyleClass().add("white-text");
@@ -62,6 +69,7 @@ public class MenuEtudiantControleur { // ce truc est fait pour controler le clas
         id.setText(u.getIdd());
         id.getStyleClass().add("white-text");
         setPhotoProfile();
+
     }
     public void setPhotoProfile(){
         photoProfile.setImage(new Image("/Pictures/student.png",550,525,false,false));
