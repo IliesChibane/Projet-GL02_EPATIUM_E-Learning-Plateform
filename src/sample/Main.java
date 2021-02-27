@@ -15,17 +15,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
        try {
-           System.out.println(System.getProperties());
+
            ConnectionClass cc= new ConnectionClass();
            cc.getConnection();
-
-        Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
-        Scene scene = new Scene(root);
-       scene.setFill(Color.TRANSPARENT);  
-       scene.getStylesheets().add(getClass().getResource("/sample/style.css").toExternalForm());
+           Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
+           Scene scene = new Scene(root);
+           scene.setFill(Color.TRANSPARENT);
+           scene.getStylesheets().add(getClass().getResource("/sample/style.css").toExternalForm());
         
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+           primaryStage.setScene(scene);
+           primaryStage.initStyle(StageStyle.TRANSPARENT);
       
         
         primaryStage.setTitle("Plateforme Epatium");

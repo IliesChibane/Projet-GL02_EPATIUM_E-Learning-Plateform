@@ -68,9 +68,10 @@ public class AjouterSeanceController implements Initializable {
         horraire.setDisable(true);
         link.setDisable(true);
         jour.setDisable(true);
-        jour.accessibleTextProperty().set("");
-        horraire.accessibleTextProperty().set("");
-        link.accessibleTextProperty().set("");
+        jour.setPromptText("");
+        horraire.setPromptText("");
+        link.setText("");
+        confirmation.setText("");
     }
 
     public void SetupType() throws SQLException, ClassNotFoundException {
@@ -108,13 +109,12 @@ public class AjouterSeanceController implements Initializable {
             String DateS = Seance.DateSeance(Seance.getNumJour(j));
         //-----------------------------------------------------------
         Seance.AjoutSeane(id_setion,id_module,type.getSelectionModel().getSelectedItem(),DateS,j,horraire.getSelectionModel().getSelectedItem(),link.getText(),u.getIdd());
-        confirmation.setText("Seance Ajoutée");
+        confirmation.setText("Seance Ajoutee");
+        EmploiEnseignantController.refresh();
     }
     @FXML
     private void quit() {
-        // get a handle to the stage
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        // do what you have to do
         stage.close();
     }
 }

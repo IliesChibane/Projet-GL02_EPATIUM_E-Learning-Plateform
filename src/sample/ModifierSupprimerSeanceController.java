@@ -27,26 +27,19 @@ public class ModifierSupprimerSeanceController implements Initializable {
     @FXML
     private Button closeButton;
 
-    private final Seance sec = EmploiEnseignantController.seance;
+    static Seance sec /*= EmploiEnseignantController.seance*/;
     private Utilisateur u = new Utilisateur();
+    public static String s1,s2,s3;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            Seance.InitSuppSeance();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         jour.setItems(FXCollections.observableArrayList(JourSemaine.values()));
-        jour.setPromptText(sec.getJour());
         try {
             horraire.setItems(Seance.getHorraireDispo(sec.getSection().getId_Section(),u.getIdd(),sec.getJour()));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        horraire.setPromptText(sec.getHorraire());
-        link.setText(sec.getLien());
-        System.out.println(jour.getSelectionModel().getSelectedItem()==null);
+        setInfo();
     }
 
     public void SetupH() throws SQLException {
@@ -88,14 +81,22 @@ public class ModifierSupprimerSeanceController implements Initializable {
         //-----------------------------------------------------------
 
         Seance.ModifSeance(j,h,DateS,l,sec.getSection().getId_Section(),sec.getJour(),sec.getHorraire(),sec.getDate());
-
+        EmploiEnseignantController.refresh();
         quit();
     }
 
     @FXML
     private void Supp() throws SQLException {
         Seance.SuppSeance(sec.getSection().getId_Section(),sec.getJour(),sec.getHorraire(),sec.getDate());
-
+        EmploiEnseignantController.refresh();
         quit();
     }
+
+    public void setInfo()
+    {
+        jour.setPromptText(sec.getJour());
+        horraire.setPromptText(sec.getHorraire());
+        link.setText(sec.getLien());
+    }
+
 }

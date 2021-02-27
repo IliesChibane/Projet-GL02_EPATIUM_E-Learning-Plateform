@@ -44,7 +44,7 @@ public class MenuEnseignantControleur {
 
 
     public void setUser(){
-        nomm.setText(u.getNom());
+        nomm.setText(Utilisateur.getNom());
         nomm.getStyleClass().add("white-text");
         prenoom.setText(u.getPrenom());
         prenoom.getStyleClass().add("white-text");

@@ -166,13 +166,13 @@ public class NotesEnseignantController implements Initializable {
             }
         }
 
-        if(b)
+        if(c)
         {
             Set<String> key = NTP.keySet();
             for(String NCK : key) {
                 PreparedStatement ps = null;
                 String sql;
-                if(!nouvelle_note_cours.get(NCK))
+                if(!nouvelle_note_tp.get(NCK))
                     sql = "Insert into notes values(?,?,?,?)";
                 else{
                     sql = "Update notes set note = ? where id_module = ? and type = ? and id_etudiant = ?";
@@ -193,7 +193,7 @@ public class NotesEnseignantController implements Initializable {
         if(!edditedCell.getNewValue().toString().equals(""))
         {
             NEM nem = TableNote.getSelectionModel().getSelectedItem();
-            if(!edditedCell.getOldValue().toString().equals(""))
+            if(edditedCell.getOldValue() != null)
             {
                 nouvelle_note_cours.put(nem.getEtudiant().getMatricule(),true);
             }else{
@@ -208,7 +208,7 @@ public class NotesEnseignantController implements Initializable {
         if(!edditedCell.getNewValue().toString().equals(""))
         {
             NEM nem = TableNote.getSelectionModel().getSelectedItem();
-            if(!edditedCell.getOldValue().toString().equals(""))
+            if(edditedCell.getOldValue() != null)
             {
                 nouvelle_note_td.put(nem.getEtudiant().getMatricule(),true);
             }else{
@@ -223,7 +223,7 @@ public class NotesEnseignantController implements Initializable {
         if(!edditedCell.getNewValue().toString().equals(""))
         {
             NEM nem = TableNote.getSelectionModel().getSelectedItem();
-            if(!edditedCell.getOldValue().toString().equals(""))
+            if(edditedCell.getOldValue() != null)
             {
                 nouvelle_note_tp.put(nem.getEtudiant().getMatricule(),true);
             }else{

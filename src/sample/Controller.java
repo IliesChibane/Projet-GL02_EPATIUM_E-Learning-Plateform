@@ -1,5 +1,6 @@
 package sample;
 
+import Classes.Seance;
 import Connectivity.ConnectionClass;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -24,6 +26,12 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        try {
+            Seance.InitSuppSeance();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         TranslateTransition t = new TranslateTransition(Duration.seconds(1), vboxx);
         t.setToX(vboxx.getLayoutX() * 23);

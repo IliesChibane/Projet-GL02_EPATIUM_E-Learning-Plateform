@@ -5,11 +5,17 @@ import Classes.Module;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -49,6 +55,16 @@ public class EtudiantsEnseignantController implements Initializable {
             Prenom.setCellValueFactory(cellData-> cellData.getValue().prenomProperty());
             ListeEtudiant.setItems(le);
         }
+    }
+
+    public void loadThing() throws IOException {
+        Stage primaryStage =new Stage();
+        Parent root= FXMLLoader.load(getClass().getResource("Email.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.show();
+
     }
 
 }

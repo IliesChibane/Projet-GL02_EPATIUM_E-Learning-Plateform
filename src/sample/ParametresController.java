@@ -155,14 +155,13 @@ public class ParametresController {
             if(u.changerDonnees(nom.getText(), prenom.getText(), email.getText())) {
                 Dialogue.afficherDialogue("Vos informations ont ete mises a jour !");
                 quit();
-                System.out.println(nom.getText());
-                System.out.println(nom.getText());
+               // System.out.println(nom.getText());
                 if(Utilisateur.getMode().equals("enseignant"))
                     menuEnseignantControleur.setUser();
                 else
                     menuEtudiantControleur.setUser();
             }else{
-                Dialogue.afficherDialogue("Il y a eu un probleme avec la mise � jour");
+                Dialogue.afficherDialogue("Il y a eu un probleme avec la mise a jour");
             }
         }
     }

@@ -22,5 +22,6 @@
     <orderEntry type="library" name="smtp" level="project" />
     <orderEntry type="library" name="jfoenix-1.0.0" level="project" />
     <orderEntry type="library" name="javaFX" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
