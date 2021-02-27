@@ -20,7 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 
 public class MenuEnseignantControleur {
-
+    public MenuEnseignantControleur(){
+        ParametresController.menuEnseignantControleur=this;
+    }
 
     @FXML
     Button decon;

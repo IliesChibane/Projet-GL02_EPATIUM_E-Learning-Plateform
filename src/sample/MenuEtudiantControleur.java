@@ -21,7 +21,9 @@ import java.net.URL;
 
 
 public class MenuEtudiantControleur { // ce truc est fait pour controler le classromm / pareil pout MenuEnseignantControleur
-
+    public MenuEtudiantControleur(){
+        ParametresController.menuEtudiantControleur=this;
+    }
 
     @FXML
     Button decon;

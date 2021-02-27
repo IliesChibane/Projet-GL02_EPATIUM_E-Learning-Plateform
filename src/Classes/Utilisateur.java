@@ -21,10 +21,6 @@ public class Utilisateur {
 	final ObservableList<Fichier> data = FXCollections.observableArrayList();
 
 
-	public Utilisateur() {
-
-	}
-
 	public static String getEmail() {
 		return email;
 	}
@@ -511,36 +507,24 @@ public class Utilisateur {
 		String sql = "";
 
 		try {
-
 			Connection conn = ConnectionClass.c;
 			if (mode.equals("enseignant")) {
-
 				sql = "update enseignant set nom_prof = ?, prenom_prof = ?, email = ? where id_prof = ?";
-				ps = conn.prepareStatement(sql);
-				ps.setString(1, nom);
-				ps.setString(2, prenom);
-				ps.setString(3, email);
-				ps.setString(4, idd);
-
-				rs = ps.executeUpdate();
-				if (rs > 0) {
-					status = true;
-				}
-
 			} else {
-
 				sql = "update etudiant set nom_etudiant = ?, prenom_etudiant = ?, email = ? where matricule = ?";
+			}
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, nom);
+			ps.setString(2, prenom);
+			ps.setString(3, email);
+			ps.setString(4, idd);
 
-				ps = conn.prepareStatement(sql);
-				ps.setString(1, nom);
-				ps.setString(2, prenom);
-				ps.setString(3, email);
-				ps.setString(4, idd);
-				rs = ps.executeUpdate();
-				if (rs > 0) {
-					status = true;
-				}
-
+			rs = ps.executeUpdate();
+			if (rs > 0) {
+				status = true;
+				Utilisateur.nom=nom;
+				Utilisateur.prenom=prenom;
+				Utilisateur.email=email;
 			}
 
 		} catch (Exception e) {

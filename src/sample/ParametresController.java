@@ -25,8 +25,10 @@ public class ParametresController {
     @FXML private TextField nom;
     @FXML private TextField prenom;
     @FXML private TextField email;
-    private String prob;
+    private String prob="";
     private boolean doo = true;
+    public static MenuEnseignantControleur menuEnseignantControleur;
+    public static MenuEtudiantControleur menuEtudiantControleur;
 
 
     @FXML
@@ -105,7 +107,7 @@ public class ParametresController {
           if(ancienMdp.getText().equals(chercherPassword())){
 
               u.changerMotDePasse(nouveauMdp.getText());
-              Dialogue.afficherDialogue("Votre mot de passe a été changé !");
+              Dialogue.afficherDialogue("Votre mot de passe a ï¿½tï¿½ changï¿½ !");
               quit();
 
           }else{
@@ -149,20 +151,18 @@ public class ParametresController {
         validerEmail();
         validerNom();
         validerPreNom();
-        if(doo == true) {
+        if(doo) {
             if(u.changerDonnees(nom.getText(), prenom.getText(), email.getText())) {
                 Dialogue.afficherDialogue("Vos informations ont ete mises a jour !");
                 quit();
-                Label l = new Label();
-                if(u.getMode().equals("enseignant")){
-
-
-                }else{
-
-
-                }
+                System.out.println(nom.getText());
+                System.out.println(nom.getText());
+                if(Utilisateur.getMode().equals("enseignant"))
+                    menuEnseignantControleur.setUser();
+                else
+                    menuEtudiantControleur.setUser();
             }else{
-                Dialogue.afficherDialogue("Il y a eu un probleme avec la mise à jour");
+                Dialogue.afficherDialogue("Il y a eu un probleme avec la mise ï¿½ jour");
             }
         }
     }
