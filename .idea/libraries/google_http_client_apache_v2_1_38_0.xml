@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="google-http-client-apache-v2-1.38.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/google-http-client-apache-v2-1.38.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
