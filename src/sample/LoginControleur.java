@@ -28,8 +28,8 @@ public class LoginControleur implements Initializable {
 	public Utilisateur u = new Utilisateur();
 	
 	
-@FXML
-private TextField id;
+ @FXML
+ private TextField id;
  
  @FXML
  private TextField nom;
@@ -264,13 +264,13 @@ private void validerEmail(){
 
 
 
- public void open(String fxml, String role){    //ceci est juste pour ouvrir la fenetre convenable
+ public static void open(String fxml, String role){    //ceci est juste pour ouvrir la fenetre convenable
    //  Parent root = null;
      Stage primaryStage = new Stage();
      FXMLLoader loader = new FXMLLoader();
      Pane root = null;
      try {
-         root = loader.load(getClass().getResource(fxml).openStream());
+         root = loader.load(LoginControleur.class.getResource(fxml).openStream());
 
 
          if(role.equals("etudiant")) {
@@ -286,7 +286,7 @@ private void validerEmail(){
          Scene scene = new Scene(root);
          scene.setFill(Color.TRANSPARENT);
          scene.getStylesheets().setAll(
-                 getClass().getResource("/sample/style.css").toExternalForm()
+                 LoginControleur.class.getResource("/sample/style.css").toExternalForm()
          );
 
          primaryStage.setScene(scene);

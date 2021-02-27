@@ -15,6 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
        try {
+           System.out.println(System.getProperties());
            ConnectionClass cc= new ConnectionClass();
            cc.getConnection();
 

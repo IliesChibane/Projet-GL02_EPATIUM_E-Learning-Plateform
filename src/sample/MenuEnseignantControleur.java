@@ -16,7 +16,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.Button;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -27,34 +26,17 @@ public class MenuEnseignantControleur {
     Button decon;
 
     @FXML
-    private static javafx.scene.control.Label iddd;
+    private  javafx.scene.control.Label iddd;
     @FXML
-    private static javafx.scene.control.Label nomm;
+    private  javafx.scene.control.Label nomm;
     @FXML
-    private static Label prenoom;
+    private  Label prenoom;
     @FXML
     private BorderPane enseignantPane;
-
-    public static Label getNomm() {
-        return nomm;
-    }
-
-    public static void setNomm(Label nomm) {
-        MenuEnseignantControleur.nomm = nomm;
-    }
-
-    public static Label getPrenoom() {
-        return prenoom;
-    }
-
-    public static void setPrenoom(Label prenoom) {
-        MenuEnseignantControleur.prenoom = prenoom;
-    }
-
     @FXML
     private ImageView photoProfile;
     @FXML
-    Button param;
+    private Button param;
 
     private Utilisateur u = new Utilisateur();
 
