@@ -137,4 +137,11 @@ public class DevoirEnseignantController implements Initializable {
         stickyNotesStage.hide();
     }
 
+    public void supprimerDevoir() throws SQLException {
+        if(devoirs.getSelectionModel().getSelectedItem() !=null ){
+            e.SuppDevoir(devoirs.getSelectionModel().getSelectedItem().toString());
+            devoirs.getItems().remove(titre.getText());
+        }
+    }
+
 }

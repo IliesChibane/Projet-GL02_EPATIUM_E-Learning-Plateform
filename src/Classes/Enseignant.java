@@ -216,5 +216,20 @@ public class Enseignant {
 
 
     }
+    public static void SuppDevoir(String titre) throws SQLException {
+        Connection conn = ConnectionClass.c;
+        int rs =0;
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM devoir WHERE titre_devoir = ? ";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,titre);
+        rs = ps.executeUpdate();
+        if (rs > 0) {
+            Dialogue.afficherDialogue("Devoir supprimee");
+        }else{
+            Dialogue.afficherDialogue("Le devoir n'a pas pu etre supprimee");
+        }
+        ps.close();
+    }
 
 }
