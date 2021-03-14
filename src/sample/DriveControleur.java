@@ -47,8 +47,8 @@ public class DriveControleur implements Initializable {
     public void chooseFile(ActionEvent event){
 
         FileChooser fc = new FileChooser();
-      /*  fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("PDF Files", "*.pdf")   //on peut les utiliser pour filtrer le type de fichiers à upload
+       /* fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Files", "*.pdf")   //on peut les utiliser pour filtrer le type de fichiers à upload
         );*/
         List<File> selectedFiles = fc.showOpenMultipleDialog(null);
         String FILE_NAME ="";
