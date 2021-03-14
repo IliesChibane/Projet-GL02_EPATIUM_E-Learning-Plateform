@@ -195,6 +195,8 @@ public class Etudiant{
     public ArrayList<String> voirListeDevoirs(String idSection) {
         ResultSet rs = null;
         PreparedStatement ps = null;
+        ResultSet rs2 = null;
+        PreparedStatement ps2 = null;
         String titreDevoir = "";
         String idModu = "";
         final ArrayList<String>  devoirsattribues = new ArrayList<>();
@@ -204,24 +206,24 @@ public class Etudiant{
 
 
             String sq = "Select * From module where id_section = ?";
-            String sql = "Select * From Devoir where id_Module = ? and date_remise >CURRENT_DATE and date_envoi >CURRENT_DATE  "; //afficher les devoirs desquels le delai ne s'est pas ecroul?  //delimitation par date
+            String sql = "Select * From Devoir where id_Module = ? and date_remise >=CURRENT_DATE and date_envoi >=CURRENT_DATE  "; //afficher les devoirs desquels le delai ne s'est pas ecroulee  //delimitation par date
             ps = conn.prepareStatement(sq);
             ps.setString(1,idSection);
-
             rs = ps.executeQuery();
 
             while  (rs.next()) {
                 idModu = rs.getString("id_module");
+                ps2 = conn.prepareStatement(sql);
+                ps2.setString(1,idModu);
+                rs2 = ps2.executeQuery();
+
+                while (rs2.next()) {
+                    titreDevoir = rs2.getString("titre_devoir");
+                    devoirsattribues.add(titreDevoir);
+                }
             }
 
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,idModu);
-            rs = ps.executeQuery();
 
-            while (rs.next()) {
-                titreDevoir = rs.getString("titre_devoir");
-                devoirsattribues.add(titreDevoir);
-            }
 
 
         } catch (Exception e) {
@@ -233,6 +235,10 @@ public class Etudiant{
                 ps.close();
                 assert rs != null;
                 rs.close();
+                assert ps2 != null;
+                ps2.close();
+                assert rs2 != null;
+                rs2.close();
             } catch (SQLException e) {
 
                 e.printStackTrace();

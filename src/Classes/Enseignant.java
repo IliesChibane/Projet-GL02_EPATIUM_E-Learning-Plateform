@@ -107,7 +107,7 @@ public class Enseignant {
 
                 rs2 = ps.executeUpdate();
                 if (rs2 > 0) {
-                    Dialogue.afficherDialogue("Devoir publié avec succès");
+                    Dialogue.afficherDialogue("Devoir publiee avec succees");
                 }
             } else {
                 Dialogue.afficherDialogue("Le module est inexistant");
@@ -143,7 +143,7 @@ public class Enseignant {
         try {
             Connection conn = ConnectionClass.c;
 
-            String sql = "Select * From devoir where id_prof = ?  AND date_remise BETWEEN  NOW() + '-4 months' AND NOW() ";
+            String sql = "Select * From devoir where id_prof = ?  AND date_remise BETWEEN  NOW() + '-4 months' AND NOW()  + '+1 months'";
 
             ps = conn.prepareStatement(sql);
             ps.setString(1,idProf);

@@ -72,7 +72,7 @@ public class DevoirEnseignantController implements Initializable {
         //trier la liste des devoirs par section
     }
     public void publierDevoir(){
-        e.publierDevoir(titre.getText(),sections.getSelectionModel().getSelectedItem().toString().concat(modules.getSelectionModel().getSelectedItem().toString()), u.getIdd(), java.sql.Date.valueOf(dateEnvoi.getValue()),java.sql.Date.valueOf(dateRemise.getValue()), explication.getText());
+        e.publierDevoir(titre.getText(),modules.getSelectionModel().getSelectedItem() +" "+ sections.getSelectionModel().getSelectedItem(), u.getIdd(), java.sql.Date.valueOf(dateEnvoi.getValue()),java.sql.Date.valueOf(dateRemise.getValue()), explication.getText());
         devoirs.getItems().removeAll();
         devoirs.getItems().add(titre.getText()); // on update la liste des devoirs à coté
 
