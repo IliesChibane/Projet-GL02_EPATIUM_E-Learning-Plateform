@@ -107,7 +107,7 @@ public class Enseignant {
 
                 rs2 = ps.executeUpdate();
                 if (rs2 > 0) {
-                    Dialogue.afficherDialogue("Devoir publié avec succès");
+                    Dialogue.afficherDialogue("Devoir publiee avec succees");
                 }
             } else {
                 Dialogue.afficherDialogue("Le module est inexistant");
@@ -143,7 +143,7 @@ public class Enseignant {
         try {
             Connection conn = ConnectionClass.c;
 
-            String sql = "Select * From devoir where id_prof = ?  AND date_remise BETWEEN  NOW() + '-4 months' AND NOW() ";
+            String sql = "Select * From devoir where id_prof = ?  AND date_remise BETWEEN  NOW() + '-4 months' AND NOW()  + '+1 months'";
 
             ps = conn.prepareStatement(sql);
             ps.setString(1,idProf);
@@ -215,6 +215,21 @@ public class Enseignant {
         }
 
 
+    }
+    public static void SuppDevoir(String titre) throws SQLException {
+        Connection conn = ConnectionClass.c;
+        int rs =0;
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM devoir WHERE titre_devoir = ? ";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,titre);
+        rs = ps.executeUpdate();
+        if (rs > 0) {
+            Dialogue.afficherDialogue("Devoir supprimee");
+        }else{
+            Dialogue.afficherDialogue("Le devoir n'a pas pu etre supprimee");
+        }
+        ps.close();
     }
 
 }

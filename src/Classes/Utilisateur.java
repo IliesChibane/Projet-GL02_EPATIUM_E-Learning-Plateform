@@ -71,7 +71,6 @@ public class Utilisateur {
 
 		ResultSet rs = null;
 		PreparedStatement ps = null;
-		ConnectionClass cc = new ConnectionClass();
 		mode =""; // on reinitiallise si l'utilisateur a s'est reconnecté et a mit un faux mot de passe
 
 		//String mode = "rien"; // Pour ouvrir la fenetre convenable (etudiant/enseignant)
@@ -558,7 +557,6 @@ public class Utilisateur {
 	public void afficherInfos() {
 		ResultSet rs = null;
 		PreparedStatement ps = null;
-		ConnectionClass cc = new ConnectionClass();
 		String sql;
 
 		try {
@@ -655,7 +653,6 @@ public class Utilisateur {
 	public String chercherDestinataireEmail(String id) {
 		ResultSet rs = null;
 		PreparedStatement ps = null;
-		ConnectionClass cc = new ConnectionClass();
 		String destinataire="";
 
 		try {

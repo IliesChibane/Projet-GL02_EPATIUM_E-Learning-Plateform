@@ -35,7 +35,8 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
                                     <Label layoutX="-2.0" layoutY="1.0" prefHeight="37.0" prefWidth="180.0" styleClass="green-text" text="      Historique" />
-                                    <ListView fx:id="devoirs" layoutX="-1.0" layoutY="35.0" onMouseEntered="#afficherDetailsDevoir" onMouseExited="#cacherDetailsDevoir" prefHeight="547.0" prefWidth="179.0" styleClass="trans-btn-white-border" />
+                                    <ListView fx:id="devoirs" layoutX="-1.0" layoutY="35.0" onMouseEntered="#afficherDetailsDevoir" onMouseExited="#cacherDetailsDevoir" prefHeight="506.0" prefWidth="179.0" styleClass="trans-btn-white-border" />
+                                    <Button layoutX="1.0" layoutY="548.0" mnemonicParsing="false" onAction="#supprimerDevoir" prefHeight="27.0" prefWidth="175.0" styleClass="trans-btn-white-border" text="Supprimer" />
                                  </children></AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="571.0">
                                  <children>

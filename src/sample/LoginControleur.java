@@ -222,6 +222,7 @@ private void validerEmail(){
  @FXML
  private void inscription(ActionEvent event) {
      prob = "";
+     doo = true;
      validerId();
      validerNom();
      validerPreNom();
