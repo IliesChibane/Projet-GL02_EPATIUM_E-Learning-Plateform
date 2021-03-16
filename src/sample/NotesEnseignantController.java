@@ -90,29 +90,12 @@ public class NotesEnseignantController implements Initializable {
         b = Module.getModule(idM).getProf_td().getId().equals(u.getIdd());
         c = Module.getModule(idM).getProf_tp().getId().equals(u.getIdd());
 
-        if(!a)
-        {
-            ExamC.setEditable(false);
-        }
-        else{
-            ExamC.setEditable(true);
-        }
+        ExamC.setEditable(a);
 
-        if(!b)
-        {
-            TDC.setEditable(false);
-        }
-        else{
-            TDC.setEditable(true);
-        }
+        TDC.setEditable(b);
 
-        if(!c)
-        {
-            TPC.setEditable(false);
+        TPC.setEditable(c);
         }
-        else{
-            TPC.setEditable(true);
-        }}
 
     }
 

@@ -29,7 +29,6 @@ public class ModifierSupprimerSeanceController implements Initializable {
 
     static Seance sec /*= EmploiEnseignantController.seance*/;
     private Utilisateur u = new Utilisateur();
-    public static String s1,s2,s3;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
