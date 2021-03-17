@@ -75,6 +75,21 @@
                      <children>
                         <Label styleClass="white-text" text="A propos de nous" textAlignment="CENTER" textFill="#dedee4">
                            <font>
+                              <Font name="Arial" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="47.0" prefWidth="480.0">
+                     <children>
+                        <Label prefHeight="46.0" prefWidth="450.0" styleClass="white-text" text="BOUROUINA Rania et CHIBANE Ilies." textAlignment="CENTER" textFill="#dedee4">
+                           <font>
                               <Font name="Arial" size="30.0" />
                            </font>
                         </Label>
@@ -85,6 +100,21 @@
                      <padding>
                         <Insets left="30.0" />
                      </padding>
+                  </HBox>
+                  <HBox prefHeight="47.0" prefWidth="480.0">
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <children>
+                        <Label prefHeight="46.0" prefWidth="450.0" styleClass="white-text" text="Deux Etudiants de ISIL B L3." textAlignment="CENTER" textFill="#dedee4">
+                           <font>
+                              <Font name="Arial" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
                   </HBox>
                </children></VBox>
             <Button layoutX="969.0" layoutY="7.0" mnemonicParsing="false" onAction="#quit" styleClass="trans-btn-white-border" text="X" />
