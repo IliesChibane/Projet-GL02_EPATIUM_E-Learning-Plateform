@@ -279,9 +279,9 @@ public class Seance {
             {
                 js++;
                 i++;
-                if(jour==7)
+                if(js==7)
                 {
-                    jour = 0;
+                    js= 0;
                 }
             }
         }
